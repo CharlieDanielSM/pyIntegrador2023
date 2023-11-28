@@ -4,17 +4,19 @@ import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import dao.ContratoDao;
+import modelo.Empleador;
+import modelo.Trabajador;
 
 /**
  *
  * @author Nelson
  */
 public class clienteContrato extends javax.swing.JPanel {
-    ContratoDao objCont = new ContratoDao;
+    ContratoDao objCont = new ContratoDao();
     /**
      * Creates new form clienteContrato
      */
-    public clienteContrato() {
+    public clienteContrato(Trabajador trab, Empleador empl) {
         FlatLightLaf.setup();
         initComponents();
     }

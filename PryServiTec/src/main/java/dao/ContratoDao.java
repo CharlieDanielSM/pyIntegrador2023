@@ -1,6 +1,5 @@
 package dao;
 
-package dao;
 import modelo.*;
 import util.MySQLConexion;
 import java.sql.Connection;
