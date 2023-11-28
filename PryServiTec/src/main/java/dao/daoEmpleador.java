@@ -6,14 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import modelo.Empleador;
+import modelo.empleador;
 import util.MySQLConexion;
 
 public class daoEmpleador {
 
     // Método para obtener todos los empleadores
-    public List<Empleador> listar() {
-        List<Empleador> empleadores = new ArrayList<>();
+    public List<empleador> listar() {
+        List<empleador> empleadores = new ArrayList<>();
 
         String sql = "SELECT codiEmpl, dniRucEmpl, nombEmpl, teleEmpl, emailEmpl, fk_codiTipoEmpl, fk_codiUsua FROM empleador";
 
@@ -30,7 +30,7 @@ public class daoEmpleador {
                 String fk_codiTipoEmpl = rs.getString("fk_codiTipoEmpl");
                 String fk_codiUsua = rs.getString("fk_codiUsua");
 
-                Empleador empleador = new Empleador(codiEmpl, dniRucEmpl, nombEmpl, teleEmpl, emailEmpl, fk_codiTipoEmpl, fk_codiUsua);
+                empleador empleador = new empleador(codiEmpl, dniRucEmpl, nombEmpl, teleEmpl, emailEmpl, fk_codiTipoEmpl, fk_codiUsua);
                 empleadores.add(empleador);
             }
         } catch (SQLException e) {
@@ -41,8 +41,8 @@ public class daoEmpleador {
     }
 
     // Método para obtener un solo empleador por su código
-    public Empleador obtener(String codiEmpl) {
-        Empleador empleador = null;
+    public empleador obtener(String codiEmpl) {
+        empleador empleador = null;
 
         String sql = "SELECT dniRucEmpl, nombEmpl, teleEmpl, emailEmpl, fk_codiTipoEmpl, fk_codiUsua FROM empleador WHERE codiEmpl = ?";
 
@@ -59,7 +59,7 @@ public class daoEmpleador {
                     String fk_codiTipoEmpl = rs.getString("fk_codiTipoEmpl");
                     String fk_codiUsua = rs.getString("fk_codiUsua");
 
-                    empleador = new Empleador(codiEmpl, dniRucEmpl, nombEmpl, teleEmpl, emailEmpl, fk_codiTipoEmpl, fk_codiUsua);
+                    empleador = new empleador(codiEmpl, dniRucEmpl, nombEmpl, teleEmpl, emailEmpl, fk_codiTipoEmpl, fk_codiUsua);
                 }
             }
         } catch (SQLException e) {
@@ -70,7 +70,7 @@ public class daoEmpleador {
     }
 
     // Método para crear un nuevo empleador
-    public boolean crear(Empleador empleador) {
+    public boolean crear(empleador empleador) {
         String sql = "INSERT INTO empleador (codiEmpl, dniRucEmpl, nombEmpl, teleEmpl, emailEmpl, fk_codiTipoEmpl, fk_codiUsua) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection con = MySQLConexion.getConexion();
@@ -81,8 +81,8 @@ public class daoEmpleador {
             st.setString(3, empleador.getNombEmpl());
             st.setString(4, empleador.getTeleEmpl());
             st.setString(5, empleador.getEmailEmpl());
-            st.setString(6, empleador.getFk_codiTipoEmpl());
-            st.setString(7, empleador.getFk_codiUsua());
+            st.setString(6, empleador.getFk_codigoTipoeEmpl());
+            st.setString(7, empleador.getFk_codiUsa());
 
             int rowsAffected = st.executeUpdate();
 
@@ -96,7 +96,7 @@ public class daoEmpleador {
     }
 
     // Método para editar un empleador existente
-    public boolean editar(Empleador empleador) {
+    public boolean editar(empleador empleador) {
         String sql = "UPDATE empleador SET dniRucEmpl = ?, nombEmpl = ?, teleEmpl = ?, emailEmpl = ?, fk_codiTipoEmpl = ?, fk_codiUsua = ? WHERE codiEmpl = ?";
 
         try (Connection con = MySQLConexion.getConexion();
@@ -106,8 +106,8 @@ public class daoEmpleador {
             st.setString(2, empleador.getNombEmpl());
             st.setString(3, empleador.getTeleEmpl());
             st.setString(4, empleador.getEmailEmpl());
-            st.setString(5, empleador.getFk_codiTipoEmpl());
-            st.setString(6, empleador.getFk_codiUsua());
+            st.setString(5, empleador.getFk_codigoTipoeEmpl());
+            st.setString(6, empleador.getFk_codiUsa());
             st.setString(7, empleador.getCodiEmpl());
 
             int rowsAffected = st.executeUpdate();

@@ -4,7 +4,6 @@ import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import dao.ContratoDao;
-import modelo.Empleador;
 import modelo.Trabajador;
 
 /**
@@ -16,13 +15,12 @@ public class clienteContrato extends javax.swing.JPanel {
     /**
      * Creates new form clienteContrato
      */
-    public clienteContrato(Trabajador trab, Empleador empl) {
+    public clienteContrato(Trabajador trab) {
         FlatLightLaf.setup();
         initComponents();
     }
 
     public void generar(){
-        txtCodContrat.setText(objCont.obtenerNuevoCodigoContrato());
         // Obtener la fecha actual
         txtCodContrat.setText(TOOL_TIP_TEXT_KEY);
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
