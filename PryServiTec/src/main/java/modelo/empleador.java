@@ -1,41 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package modelo;
 
-/**
- *
- * @author Adria
- */
+/* 🚀 Developed by NelsonJGP */
 public class empleador {
     private String codiEmpl;
     private String dniRucEmpl;
     private String nombEmpl;
     private String teleEmpl;
     private String emailEmpl;
-    private String fk_codigoTipoeEmpl;
-    private String fk_codiUsa;
+    private String fk_codiTipoEmpl;
+    private String fk_codiUsua;
 
     public empleador() {
     }
 
-    public empleador(String codiEmpl, String dniRucEmpl, String nombEmpl, String teleEmpl, String emailEmpl, String fk_codigoTipoeEmpl, String fk_codiUsa) {
+    public empleador(String codiEmpl, String dniRucEmpl, String nombEmpl, String teleEmpl, String emailEmpl, String fk_codiTipoEmpl, String fk_codiUsua) {
         this.codiEmpl = codiEmpl;
         this.dniRucEmpl = dniRucEmpl;
         this.nombEmpl = nombEmpl;
         this.teleEmpl = teleEmpl;
         this.emailEmpl = emailEmpl;
-        this.fk_codigoTipoeEmpl = fk_codigoTipoeEmpl;
-        this.fk_codiUsa = fk_codiUsa;
-    }
-
-    public String getFk_codiUsa() {
-        return fk_codiUsa;
-    }
-
-    public void setFk_codiUsa(String fk_codiUsa) {
-        this.fk_codiUsa = fk_codiUsa;
+        this.fk_codiTipoEmpl = fk_codiTipoEmpl;
+        this.fk_codiUsua = fk_codiUsua;
     }
 
     public String getCodiEmpl() {
@@ -78,13 +64,19 @@ public class empleador {
         this.emailEmpl = emailEmpl;
     }
 
-    public String getFk_codigoTipoeEmpl() {
-        return fk_codigoTipoeEmpl;
+    public String getFk_codiTipoEmpl() {
+        return fk_codiTipoEmpl;
     }
 
-    public void setFk_codigoTipoeEmpl(String fk_codigoTipoeEmpl) {
-        this.fk_codigoTipoeEmpl = fk_codigoTipoeEmpl;
+    public void setFk_codiTipoEmpl(String fk_codiTipoEmpl) {
+        this.fk_codiTipoEmpl = fk_codiTipoEmpl;
     }
-    
+
+    public String getFk_codiUsua() {
+        return fk_codiUsua;
+    }
+
+    public void setFk_codiUsua(String fk_codiUsua) {
+        this.fk_codiUsua = fk_codiUsua;
+    }
 }
-

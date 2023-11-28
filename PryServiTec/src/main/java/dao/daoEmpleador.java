@@ -81,8 +81,8 @@ public class daoEmpleador {
             st.setString(3, empleador.getNombEmpl());
             st.setString(4, empleador.getTeleEmpl());
             st.setString(5, empleador.getEmailEmpl());
-            st.setString(6, empleador.getFk_codigoTipoeEmpl());
-            st.setString(7, empleador.getFk_codiUsa());
+            st.setString(6, empleador.getFk_codiTipoEmpl());
+            st.setString(7, empleador.getFk_codiUsua());
 
             int rowsAffected = st.executeUpdate();
 
@@ -106,8 +106,8 @@ public class daoEmpleador {
             st.setString(2, empleador.getNombEmpl());
             st.setString(3, empleador.getTeleEmpl());
             st.setString(4, empleador.getEmailEmpl());
-            st.setString(5, empleador.getFk_codigoTipoeEmpl());
-            st.setString(6, empleador.getFk_codiUsa());
+            st.setString(5, empleador.getFk_codiTipoEmpl());
+            st.setString(6, empleador.getFk_codiUsua());
             st.setString(7, empleador.getCodiEmpl());
 
             int rowsAffected = st.executeUpdate();

@@ -8,7 +8,7 @@ public class Trabajador {
     private String nombTrab;
     private String ApelTrab;
     private String teleTrab;
-    private char sexoTrab;
+    private String sexoTrab;
     private String emailTrab;
     private String codiEspe; // Codigo Especialidad
     private String codiUsua; // Codigo Usuario
@@ -16,7 +16,7 @@ public class Trabajador {
     public Trabajador() {
     }
 
-    public Trabajador(String codiTrab, String dniTrab, String nombTrab, String ApelTrab, String teleTrab, char sexoTrab, String emailTrab, String codiEspe, String codiUsua) {
+    public Trabajador(String codiTrab, String dniTrab, String nombTrab, String ApelTrab, String teleTrab, String sexoTrab, String emailTrab, String codiEspe, String codiUsua) {
         this.codiTrab = codiTrab;
         this.dniTrab = dniTrab;
         this.nombTrab = nombTrab;
@@ -68,11 +68,11 @@ public class Trabajador {
         this.teleTrab = teleTrab;
     }
 
-    public char getSexoTrab() {
+    public String getSexoTrab() {
         return sexoTrab;
     }
 
-    public void setSexoTrab(char sexoTrab) {
+    public void setSexoTrab(String sexoTrab) {
         this.sexoTrab = sexoTrab;
     }
 

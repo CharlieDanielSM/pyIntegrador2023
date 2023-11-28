@@ -37,7 +37,7 @@ public class frmMenuAdmin extends javax.swing.JFrame {
         
         //Seccion Categorias
         mnSeccion2.iconImg("services.png");
-        mnSeccion2.textoSeccion("Gestionar Servicios");
+        mnSeccion2.textoSeccion("Gestionar Trabajadores");
         
         //Seccion Categorias
         mnSeccion3.iconImg("solicitud.png");
@@ -230,7 +230,7 @@ public class frmMenuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_volverPanelMousePressed
 
     private void mnSeccion2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnSeccion2MouseClicked
-        MostrarPanel(new adminServicios3());
+        MostrarPanel(new AdminTrabajador());
     }//GEN-LAST:event_mnSeccion2MouseClicked
 
     private void mnSeccion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnSeccion1MouseClicked

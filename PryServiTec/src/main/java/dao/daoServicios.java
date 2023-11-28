@@ -7,6 +7,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.DetalleTrabajador;
+import modelo.Servicioadmin;
 import modelo.Servicios;
 import util.MySQLConexionOriginal;
 
@@ -16,9 +17,8 @@ public class daoServicios {
     public List<Servicios> obtenerServicios() {
         List<Servicios> servicios = new ArrayList<>();
 
-        // Reemplaza MySQLConexion con tu clase de conexión a la base de datos
 
-        String sql = "SELECT id, nombre_servicio, descripcion FROM servicios";
+        String sql = "SELECT codiEspe, nombEspe FROM especialidad";
 
         try {
             PreparedStatement st = con.prepareStatement(sql);
@@ -39,7 +39,31 @@ public class daoServicios {
 
         return servicios;
     }
-        
+         public List<Servicioadmin> obtenerServicios2() {
+        List<Servicioadmin> servicios = new ArrayList<>();
+
+
+        String sql = "SELECT * FROM especialidad";
+
+        try {
+            PreparedStatement st = con.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                String id = rs.getString("codiEspe");
+                String nombreServicio = rs.getString("nombEspe");
+                String descripcion = rs.getString("descEspe");
+                Servicioadmin sv = new Servicioadmin(nombreServicio, descripcion);
+                sv.setId(id);
+                
+                servicios.add(sv);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return servicios;
+    }   
     public boolean CrearServicio(Servicios servicio) {
         // Reemplaza MySQLConexion con tu clase de conexión a la base de datos
 
