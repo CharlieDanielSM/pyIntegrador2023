@@ -195,26 +195,7 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
-        String usuario = campoUsu.getText();
-        String contra = new String(campoCon.getPassword());
-        System.out.println("usuario: "+usuario+", "+"contraseña: "+contra);
-        Autenticacion1 aut = daoUs.autenticar(usuario, contra);
-        if (aut.isContraseñaValida() && aut.isUsuarioValido()) {
-            entrarLogin(aut.getUsuario());
-        } else {
-            int tipoError = 0;  // Ningún error por defecto
-            mensajeError.setText("");
-            if (!aut.isUsuarioValido()){
-                tipoError = 1;  // Error de usuario
-                mensajeError.setText("El nombre de usuario no existe .");
-            } else if (!aut.isContraseñaValida()){
-                tipoError = 2; // Error de contraseña
-                mensajeError.setText("El nombre de usuario o contraseña no son válidos .");
-            }
-            mostrarError(tipoError);
-            System.out.println("aut valores (usuario|contraseña):"+aut.isUsuarioValido()+", "+aut.isContraseñaValida());
-            System.out.println("error tipo : "+tipoError);
-        }
+
     }//GEN-LAST:event_btnIngresarMouseClicked
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
@@ -225,26 +206,7 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-String usuario = campoUsu.getText();
-        String contra = new String(campoCon.getPassword());
-        System.out.println("usuario: "+usuario+", "+"contraseña: "+contra);
-        Autenticacion1 aut = daoUs.autenticar(usuario, contra);
-        if (aut.isContraseñaValida() && aut.isUsuarioValido()) {
-            entrarLogin(aut.getUsuario());
-        } else {
-            int tipoError = 0;  // Ningún error por defecto
-            mensajeError.setText("");
-            if (!aut.isUsuarioValido()){
-                tipoError = 1;  // Error de usuario
-                mensajeError.setText("El nombre de usuario no existe .");
-            } else if (!aut.isContraseñaValida()){
-                tipoError = 2; // Error de contraseña
-                mensajeError.setText("El nombre de usuario o contraseña no son válidos .");
-            }
-            mostrarError(tipoError);
-            System.out.println("aut valores (usuario|contraseña):"+aut.isUsuarioValido()+", "+aut.isContraseñaValida());
-            System.out.println("error tipo : "+tipoError);
-        }
+
     }//GEN-LAST:event_btnIngresarActionPerformed
         
     /**
