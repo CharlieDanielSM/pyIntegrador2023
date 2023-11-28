@@ -20,7 +20,7 @@ public class clienteContrato extends javax.swing.JPanel {
     }
 
     public void generar(){
-        txtCodNego.setText(objCont.obtenerNuevoCodigoContr;
+   //     txtCodNego.setText(objCont.obtenerNuevoCodigoContr
         
         // Obtener la fecha actual
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");

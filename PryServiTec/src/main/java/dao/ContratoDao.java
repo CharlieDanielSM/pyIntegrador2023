@@ -17,7 +17,7 @@ public class ContratoDao
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;    
     
-    public List<ContratoDto> listarContrato() {
+     public List<ContratoDto> listarContrato() {
         List<ContratoDto> contratos = new ArrayList<>();
         try {
             String query = "SELECT * FROM Contrato";
@@ -32,6 +32,7 @@ public class ContratoDao
                 contrato.setFechFincont(resultSet.getString("fechFinCont"));
                 contrato.setEstCont(resultSet.getString("estaCont"));
                 contrato.setDescCont(resultSet.getString("descCont"));
+                contrato.setCodiEmpl(resultSet.getString("fk_codiEmpl"));
 
                 contratos.add(contrato);
             }
