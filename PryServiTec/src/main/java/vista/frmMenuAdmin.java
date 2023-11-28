@@ -37,7 +37,7 @@ public class frmMenuAdmin extends javax.swing.JFrame {
         
         //Seccion Categorias
         mnSeccion2.iconImg("services.png");
-        mnSeccion2.textoSeccion("Gestionar Servicios");
+        mnSeccion2.textoSeccion("Gestionar Trabajadores");
         
         //Seccion Categorias
         mnSeccion3.iconImg("solicitud.png");
@@ -70,6 +70,7 @@ public class frmMenuAdmin extends javax.swing.JFrame {
         volverPanel = new javax.swing.JPanel();
         volverIcon = new javax.swing.JLabel();
         txtSeccion = new javax.swing.JLabel();
+        btnOfertas = new guiRecursos.cstmButon();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -174,6 +175,25 @@ public class frmMenuAdmin extends javax.swing.JFrame {
 
         jPanel2.add(volverPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, -1, 50));
 
+        btnOfertas.setForeground(new java.awt.Color(255, 255, 255));
+        btnOfertas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/iconCobranza.png"))); // NOI18N
+        btnOfertas.setText("Cobranzas");
+        btnOfertas.setBorderColor(null);
+        btnOfertas.setColor(new java.awt.Color(65, 67, 73));
+        btnOfertas.setColorClick(new java.awt.Color(114, 119, 130));
+        btnOfertas.setColorOver(new java.awt.Color(87, 91, 99));
+        btnOfertas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnOfertas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnOfertas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnOfertas.setIconTextGap(15);
+        btnOfertas.setMargin(new java.awt.Insets(0, 10, 0, 0));
+        btnOfertas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOfertasActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnOfertas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 210, 60));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 210, 490));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -210,13 +230,17 @@ public class frmMenuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_volverPanelMousePressed
 
     private void mnSeccion2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnSeccion2MouseClicked
-        MostrarPanel(new adminServicios3());
+        MostrarPanel(new AdminTrabajador());
     }//GEN-LAST:event_mnSeccion2MouseClicked
 
     private void mnSeccion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnSeccion1MouseClicked
         // TODO add your handling code here:
         MostrarPanel(new adminUsuarios());
     }//GEN-LAST:event_mnSeccion1MouseClicked
+
+    private void btnOfertasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOfertasActionPerformed
+        MostrarPanel(new adminCobranza());
+    }//GEN-LAST:event_btnOfertasActionPerformed
 
     public void MostrarPanel(JPanel panel){
         panel.setSize(content.getWidth(),content.getHeight());
@@ -278,6 +302,7 @@ public class frmMenuAdmin extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private guiRecursos.GuiBarraVentana barraVentana1;
+    private guiRecursos.cstmButon btnOfertas;
     private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

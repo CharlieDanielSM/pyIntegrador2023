@@ -285,8 +285,8 @@ public class daoUsuario {
             ps.setString(3, empleador.getNombEmpl());
             ps.setString(4, empleador.getTeleEmpl());
             ps.setString(5, empleador.getEmailEmpl());
-            ps.setString(6, empleador.getFk_codigoTipoeEmpl());
-            ps.setString(7, empleador.getFk_codiUsa());
+            ps.setString(6, empleador.getFk_codiTipoEmpl());
+            ps.setString(7, empleador.getFk_codiUsua());
             ps.executeUpdate();
           JOptionPane.showMessageDialog(null, "USUARIO REGISTRADO");  
 

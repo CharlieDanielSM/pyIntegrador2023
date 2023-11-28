@@ -1,6 +1,5 @@
-
-
 package dao;
+
 import modelo.*;
 import util.MySQLConexion;
 import java.sql.Connection;
@@ -11,8 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ContratoDao 
-{ 
+public class ContratoDao { 
     Connection conn = MySQLConexion.getConexion();
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;    
@@ -79,4 +77,26 @@ public class ContratoDao
     
     
     
+<<<<<<< HEAD
+=======
+    public String obtenerNuevoCodigoContrato() {
+        String nuevoCodigo = null;
+
+        String obtenerUltimoCodigoSQL = "SELECT CONCAT('C', LPAD(COALESCE(MAX(SUBSTRING(codiCont, 2)), 0) + 1, 4, '0')) AS nuevoCodigo FROM contrato";
+
+        try (Connection con = MySQLConexion.getConexion();
+             PreparedStatement st = con.prepareStatement(obtenerUltimoCodigoSQL);
+             ResultSet rs = st.executeQuery()) {
+
+            if (rs.next()) {
+                nuevoCodigo = rs.getString("nuevoCodigo");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return nuevoCodigo;
+    }
+>>>>>>> de883438f8a56d51a53b2a72868345293d225245
 }

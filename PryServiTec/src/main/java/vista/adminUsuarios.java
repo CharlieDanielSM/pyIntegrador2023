@@ -44,7 +44,6 @@ public class adminUsuarios extends javax.swing.JPanel {
           daoUsuario X=new daoUsuario();
      TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
     int validacion;
-    int tipo=0;
 
     public adminUsuarios() {
         FlatLightLaf.setup();
@@ -216,6 +215,9 @@ public class adminUsuarios extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tablaMouseEntered(evt);
+            }
         });
         jScrollPane1.setViewportView(tabla);
 
@@ -335,13 +337,13 @@ public class adminUsuarios extends javax.swing.JPanel {
                                    if(numeroString.length() == 11){
                                        if(esNumeroEntero(numero)){
 
-                                           if(tipocuenta.equals("Persona Juridica")){
-                                            e.setFk_codigoTipoeEmpl("20");
-                                              e.setNombEmpl(nombre);
-                                           }else{
+                                            if(tipocuenta.equals("Persona Juridica")){
+                                                e.setFk_codiTipoEmpl("20");
+                                                e.setNombEmpl(nombre);
+                                            }else{
                                             if(validarletra(nombre)==true ){
-                                             e.setFk_codigoTipoeEmpl("10");
-                                             e.setNombEmpl(nombre);
+                                                e.setFk_codiTipoEmpl("10");
+                                                e.setNombEmpl(nombre);
 
                                             }else{
                                                 System.out.println("INGRESAR SOLO LETRAS PARA EL NOMBRE"); 
@@ -353,7 +355,7 @@ public class adminUsuarios extends javax.swing.JPanel {
                                                 e.setCodiEmpl(X.generarCodigoEspecialidad() );
                                                 e.setDniRucEmpl(dni);
                                                 e.setEmailEmpl(correo);
-                                                e.setFk_codiUsa(usuario);
+                                                e.setFk_codiUsua(usuario);
                                                 e.setTeleEmpl(numeroString);
 
                                                 X.crearUsuario(u, e);
@@ -395,6 +397,8 @@ public class adminUsuarios extends javax.swing.JPanel {
         juser.setText("");     
         jdni.setText("");
         jcorreo.setText("");
+        txtid.setText(X.generarCodigoEspecialidad()); 
+
     }
     private boolean esNumeroEntero(String cadena) {
         try {
@@ -547,12 +551,11 @@ public void actualizarTabla() {
         btndelete.setEnabled(false);
         btnupdate.setEnabled(false);  
         limpiar();
-       txtid.setText(X.generarCodigoEspecialidad()); 
     }//GEN-LAST:event_btnnewActionPerformed
 
     private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
  
-       String id,usuario,contra,correo,numero,nombre,dni,tipocuenta,tipo;
+       String id,usuario,contra,correo,numero,nombre,dni,tipo;
         nombre=txtnombre.getText();
         usuario=txtuser.getText();
         contra=txtcontra.getText();
@@ -562,7 +565,7 @@ public void actualizarTabla() {
         dni=txtdni.getText();
                 String numeroString = "51" +numero; 
 
-        tipocuenta="";
+String tipocuenta = (String) cbtipocuenta.getSelectedItem();
 
         tipo="";
                                       if(tipocuenta.equals("Persona Juridica")){
@@ -660,6 +663,10 @@ public void actualizarTabla() {
         
         
     }//GEN-LAST:event_EXCELActionPerformed
+
+    private void tablaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tablaMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

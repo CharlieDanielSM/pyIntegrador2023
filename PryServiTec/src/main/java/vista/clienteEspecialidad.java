@@ -36,7 +36,7 @@ import modelo.Servicios;
  * @author Nelson
  */
 public class clienteEspecialidad extends javax.swing.JPanel {
-
+    List<Especialidad> listaEspecialidad;
     /**
      * Creates new form clienteEspecialidad
      */
@@ -59,6 +59,7 @@ public class clienteEspecialidad extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         Scroll = new guiRecursos.GuiJScrollPane();
         contentServ = new javax.swing.JPanel();
+        cstmButon1 = new guiRecursos.cstmButon();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -83,6 +84,18 @@ public class clienteEspecialidad extends javax.swing.JPanel {
 
         jPanel1.add(Scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 890, 510));
 
+        cstmButon1.setForeground(new java.awt.Color(0, 0, 0));
+        cstmButon1.setText("Ver Tabla");
+        cstmButon1.setColor(new java.awt.Color(204, 204, 204));
+        cstmButon1.setColorClick(new java.awt.Color(215, 219, 221));
+        cstmButon1.setColorOver(new java.awt.Color(189, 195, 199));
+        cstmButon1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cstmButon1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cstmButon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 30, 120, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -94,10 +107,22 @@ public class clienteEspecialidad extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cstmButon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cstmButon1ActionPerformed
+        new clienteTablaEsp(listaEspecialidad).setVisible(true);
+        /*ExportarExcel obj;
+        try {
+            obj = new ExportarExcel();
+            obj.exportarExcel(sa);
+        } catch (IOException ex) {
+            System.out.println("Error: " + ex);
+        }*/
+
+    }//GEN-LAST:event_cstmButon1ActionPerformed
     
     public void mostrarEspecialidades() {
         daoEspecialidad dao = new daoEspecialidad();
-        List<Especialidad> listaEspecialidad = dao.listar();
+        listaEspecialidad = dao.listar();
 
         int numColumnas = 3;
         int velocidadScroll = 16;
@@ -250,6 +275,7 @@ public class clienteEspecialidad extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private guiRecursos.GuiJScrollPane Scroll;
     private javax.swing.JPanel contentServ;
+    private guiRecursos.cstmButon cstmButon1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

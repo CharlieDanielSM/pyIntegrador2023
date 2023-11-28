@@ -10,10 +10,14 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import javax.swing.BorderFactory;
@@ -25,9 +29,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableModel;
 import modelo.Especialidad;
 import modelo.Trabajador;
 import modelo.Usuario;
+import recursos.ExportarExcel;
 
 /**
  *
@@ -38,7 +44,7 @@ public class clienteOfertas extends javax.swing.JPanel{
     daoTrabajador daoTrab = new daoTrabajador();
     daoEspecialidad daoEsp = new daoEspecialidad();
     Usuario user;
-
+    List<Trabajador> trabajadores;
     /**
      * Creates new form clienteServicios
      */
@@ -63,15 +69,40 @@ public class clienteOfertas extends javax.swing.JPanel{
         contentServ.revalidate();
         contentServ.repaint();
         
-        List<Trabajador> trabajadores;
         if (Opcion.equals("General")) {
             trabajadores = daoTrab.listar();
         } else {
             trabajadores = daoTrab.obtenerTrabajadoresPorEspecialidad(daoEsp.obtenerIdEspecialidadPorNombre(Opcion));
         }
+        if (trabajadores.isEmpty()) {
+            mostrarMensajeVacio();
+        } else {
+            exMostrar();
+        }
+        
+    }
 
-        int numColumnas = 3;
+    private void mostrarMensajeVacio() {
+        contentServ.removeAll(); // Elimina todos los componentes existentes en el JPanel
+
+        JLabel mensajeLabel = new JLabel("No hay trabajadores para mostrar.");
+        mensajeLabel.setFont(new Font("Arial", Font.BOLD, 20)); // Tamaño 20 y en negrita
+
+        // Configura el layout del JPanel para centrar el mensaje
+        contentServ.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(50, 0, 0, 0); // Ajusta el espacio en la parte superior
+
+        contentServ.add(mensajeLabel, gbc);
+        contentServ.revalidate(); // Vuelve a validar el diseño del JPanel
+        contentServ.repaint();    // Repinta el JPanel para mostrar los cambios
+    }
+    
+    public void exMostrar(){
         int velocidadScroll = 16;
+        int numColumnas = 3;
 
         // Agrega un espaciado entre paneles en el GridLayout
         int hgap = 20; // Espaciado horizontal
@@ -125,7 +156,7 @@ public class clienteOfertas extends javax.swing.JPanel{
 
         // Mostrar el ID del servicio y la fecha de creación de la cuenta del trabajador
 
-        infoPanel.add(new JLabel("Servicio: " + daoEsp.obtenerIdEspecialidadPorNombre(trabajador.getCodiEspe())));
+        infoPanel.add(new JLabel("Especialidad: " + daoEsp.obtener(trabajador.getCodiEspe()).getNombEspe()));
         infoPanel.add(new JLabel("E-mail: " + trabajador.getEmailTrab()));
 
         infoPanel.add(Box.createRigidArea(new Dimension(0, 10)));
@@ -188,7 +219,7 @@ public class clienteOfertas extends javax.swing.JPanel{
         contentServ.revalidate();
         Scroll.getVerticalScrollBar().setUnitIncrement(velocidadScroll);
     }
-
+    
     public class DropShadowPanel extends JPanel {
 
         private static final long serialVersionUID = 1L;
@@ -234,6 +265,7 @@ public class clienteOfertas extends javax.swing.JPanel{
         Scroll = new guiRecursos.GuiJScrollPane();
         contentServ = new javax.swing.JPanel();
         cmbServicios = new javax.swing.JComboBox<>();
+        cstmButon1 = new guiRecursos.cstmButon();
 
         Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -266,6 +298,18 @@ public class clienteOfertas extends javax.swing.JPanel{
         });
         Panel.add(cmbServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 200, -1));
 
+        cstmButon1.setForeground(new java.awt.Color(0, 0, 0));
+        cstmButon1.setText("Ver Tabla");
+        cstmButon1.setColor(new java.awt.Color(204, 204, 204));
+        cstmButon1.setColorClick(new java.awt.Color(215, 219, 221));
+        cstmButon1.setColorOver(new java.awt.Color(189, 195, 199));
+        cstmButon1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cstmButon1ActionPerformed(evt);
+            }
+        });
+        Panel.add(cstmButon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, 120, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -282,12 +326,25 @@ public class clienteOfertas extends javax.swing.JPanel{
         mostrarTrabajadoresEnScrollPanel(cmbServicios.getSelectedItem().toString());
     }//GEN-LAST:event_cmbServiciosActionPerformed
 
+    private void cstmButon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cstmButon1ActionPerformed
+        new clienteTablaTrab(trabajadores).setVisible(true);
+        /*ExportarExcel obj;
+        try {
+            obj = new ExportarExcel();
+            obj.exportarExcel(sa);
+        } catch (IOException ex) {
+            System.out.println("Error: " + ex);
+        }*/
+        
+    }//GEN-LAST:event_cstmButon1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panel;
     private guiRecursos.GuiJScrollPane Scroll;
     private javax.swing.JComboBox<String> cmbServicios;
     private javax.swing.JPanel contentServ;
+    private guiRecursos.cstmButon cstmButon1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
