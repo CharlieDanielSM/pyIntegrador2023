@@ -1,7 +1,7 @@
 package vista;
 
 import com.formdev.flatlaf.FlatLightLaf;
-import dao.daoContrato;
+import dao.ContratoDao;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 
@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
  * @author Nelson
  */
 public class clienteContrato extends javax.swing.JPanel {
-    daoContrato objCont = new daoContrato();
+    ContratoDao objCont = new ContratoDao();
     /**
      * Creates new form clienteContrato
      */
@@ -20,7 +20,7 @@ public class clienteContrato extends javax.swing.JPanel {
     }
 
     public void generar(){
-        txtCodNego.setText(objCont.obtenerNuevoCodigoContrato());
+        txtCodNego.setText(objCont.obtenerNuevoCodigoContr;
         
         // Obtener la fecha actual
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
