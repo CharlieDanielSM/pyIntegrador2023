@@ -41,7 +41,7 @@ public class clienteOfertas extends javax.swing.JPanel{
     daoTrabajador daoTrab = new daoTrabajador();
     daoEspecialidad daoEsp = new daoEspecialidad();
     Usuario user;
-
+    List<Trabajador> trabajadores;
     /**
      * Creates new form clienteServicios
      */
@@ -66,15 +66,15 @@ public class clienteOfertas extends javax.swing.JPanel{
         contentServ.revalidate();
         contentServ.repaint();
         
-        List<Trabajador> trabajadores;
         if (Opcion.equals("General")) {
             trabajadores = daoTrab.listar();
         } else {
             trabajadores = daoTrab.obtenerTrabajadoresPorEspecialidad(daoEsp.obtenerIdEspecialidadPorNombre(Opcion));
         }
-
-        int numColumnas = 3;
         int velocidadScroll = 16;
+        if (!trabajadores.isEmpty()) {
+        
+            int numColumnas = 3;
 
         // Agrega un espaciado entre paneles en el GridLayout
         int hgap = 20; // Espaciado horizontal
@@ -188,6 +188,9 @@ public class clienteOfertas extends javax.swing.JPanel{
             contentServ.add(trabPanel);
         }
 
+
+        }
+
         contentServ.revalidate();
         Scroll.getVerticalScrollBar().setUnitIncrement(velocidadScroll);
     }
@@ -271,16 +274,16 @@ public class clienteOfertas extends javax.swing.JPanel{
         Panel.add(cmbServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 200, -1));
 
         cstmButon1.setForeground(new java.awt.Color(0, 0, 0));
-        cstmButon1.setText("visualizar en tabla");
-        cstmButon1.setColor(new java.awt.Color(102, 102, 102));
-        cstmButon1.setColorClick(new java.awt.Color(204, 204, 204));
-        cstmButon1.setColorOver(new java.awt.Color(153, 153, 153));
+        cstmButon1.setText("Ver Tabla");
+        cstmButon1.setColor(new java.awt.Color(204, 204, 204));
+        cstmButon1.setColorClick(new java.awt.Color(215, 219, 221));
+        cstmButon1.setColorOver(new java.awt.Color(189, 195, 199));
         cstmButon1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cstmButon1ActionPerformed(evt);
             }
         });
-        Panel.add(cstmButon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 200, -1));
+        Panel.add(cstmButon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, 120, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -299,6 +302,7 @@ public class clienteOfertas extends javax.swing.JPanel{
     }//GEN-LAST:event_cmbServiciosActionPerformed
 
     private void cstmButon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cstmButon1ActionPerformed
+        new clienteTablaTrab(trabajadores).setVisible(true);
         /*ExportarExcel obj;
         try {
             obj = new ExportarExcel();
