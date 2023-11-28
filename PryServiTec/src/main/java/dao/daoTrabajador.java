@@ -180,7 +180,7 @@ public class daoTrabajador {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Lista Vacia");
         }
 
         return trabajadores;

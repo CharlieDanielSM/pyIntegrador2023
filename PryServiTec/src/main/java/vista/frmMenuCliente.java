@@ -245,11 +245,11 @@ public class frmMenuCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnServiciosActionPerformed
 
     private void btnServicios1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServicios1ActionPerformed
-        MostrarPanel(new clienteServicios());
+        
     }//GEN-LAST:event_btnServicios1ActionPerformed
 
     private void btnEspecialidades1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEspecialidades1ActionPerformed
-        // TODO add your handling code here:
+        MostrarPanel(new clienteEspecialidad());
     }//GEN-LAST:event_btnEspecialidades1ActionPerformed
 
     public void MostrarPanel(JPanel panel){

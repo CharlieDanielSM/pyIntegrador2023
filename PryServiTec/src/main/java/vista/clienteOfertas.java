@@ -10,8 +10,11 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -71,10 +74,35 @@ public class clienteOfertas extends javax.swing.JPanel{
         } else {
             trabajadores = daoTrab.obtenerTrabajadoresPorEspecialidad(daoEsp.obtenerIdEspecialidadPorNombre(Opcion));
         }
-        int velocidadScroll = 16;
-        if (!trabajadores.isEmpty()) {
+        if (trabajadores.isEmpty()) {
+            mostrarMensajeVacio();
+        } else {
+            exMostrar();
+        }
         
-            int numColumnas = 3;
+    }
+
+    private void mostrarMensajeVacio() {
+        contentServ.removeAll(); // Elimina todos los componentes existentes en el JPanel
+
+        JLabel mensajeLabel = new JLabel("No hay trabajadores para mostrar.");
+        mensajeLabel.setFont(new Font("Arial", Font.BOLD, 20)); // Tamaño 20 y en negrita
+
+        // Configura el layout del JPanel para centrar el mensaje
+        contentServ.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(50, 0, 0, 0); // Ajusta el espacio en la parte superior
+
+        contentServ.add(mensajeLabel, gbc);
+        contentServ.revalidate(); // Vuelve a validar el diseño del JPanel
+        contentServ.repaint();    // Repinta el JPanel para mostrar los cambios
+    }
+    
+    public void exMostrar(){
+        int velocidadScroll = 16;
+        int numColumnas = 3;
 
         // Agrega un espaciado entre paneles en el GridLayout
         int hgap = 20; // Espaciado horizontal
@@ -128,7 +156,7 @@ public class clienteOfertas extends javax.swing.JPanel{
 
         // Mostrar el ID del servicio y la fecha de creación de la cuenta del trabajador
 
-        infoPanel.add(new JLabel("Servicio: " + daoEsp.obtenerIdEspecialidadPorNombre(trabajador.getCodiEspe())));
+        infoPanel.add(new JLabel("Especialidad: " + daoEsp.obtener(trabajador.getCodiEspe()).getNombEspe()));
         infoPanel.add(new JLabel("E-mail: " + trabajador.getEmailTrab()));
 
         infoPanel.add(Box.createRigidArea(new Dimension(0, 10)));
@@ -188,13 +216,10 @@ public class clienteOfertas extends javax.swing.JPanel{
             contentServ.add(trabPanel);
         }
 
-
-        }
-
         contentServ.revalidate();
         Scroll.getVerticalScrollBar().setUnitIncrement(velocidadScroll);
     }
-
+    
     public class DropShadowPanel extends JPanel {
 
         private static final long serialVersionUID = 1L;
