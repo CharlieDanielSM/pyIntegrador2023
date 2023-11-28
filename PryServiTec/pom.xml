@@ -40,6 +40,16 @@
             <version>1.0</version>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.7-20101029</version>
+        </dependency>
+        <dependency>
+            <groupId>itext5-itextpdf</groupId>
+            <artifactId>itext5-itextpdf</artifactId>
+            <version>5.5.12</version>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
