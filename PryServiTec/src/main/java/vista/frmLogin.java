@@ -1,21 +1,20 @@
 package vista;
 
-import dao.daoUsuario2;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import modelo.Autenticacion1;
-import modelo.Usuario2;
 import com.formdev.flatlaf.FlatLightLaf;
+import dao.daoUsuario;
+import modelo.Autenticacion;
+import modelo.Usuario;
 /**
  *
  * @author Nelson
  */
 public class frmLogin extends javax.swing.JFrame {
-    
-    daoUsuario2 daoUs = new daoUsuario2();
+    daoUsuario daoUser = new daoUsuario();
     boolean mostrarContrasena = false;
     
     public frmLogin() {
@@ -206,7 +205,23 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-
+        String user = campoUsu.getText();
+        String pass = new String(campoCon.getPassword());
+        Autenticacion aut = daoUser.autenticar(user, pass);
+        
+        //System.out.println("Contraseña valida?"+aut.isContraseñaValida());
+        //System.out.println("Usuario valido?"+aut.isUsuarioValido());
+        
+        if (aut.isContraseñaValida()&& aut.isUsuarioValido()) {
+            Usuario dato = daoUser.obtener(user);
+            //System.out.println("tipo usuario: "+dato.getTipoUsua());
+            entrarLogin(dato);
+            mostrarError(0);
+        } else if (!aut.isUsuarioValido()) {
+            mostrarError(1);
+        } else if (!aut.isContraseñaValida()) {
+            mostrarError(2);
+        }
     }//GEN-LAST:event_btnIngresarActionPerformed
         
     /**
@@ -266,12 +281,13 @@ public class frmLogin extends javax.swing.JFrame {
         imageIconCambiar(frmLogin.class.getResource("/images/infoerror.png"), label, 20);
     }
     
-    public void entrarLogin(Usuario2 user){
-        int tipo = user.getTipo();
+    public void entrarLogin(Usuario user){
+        String tipo = user.getTipoUsua();
         switch (tipo) {
-            case 1: new frmMenuAdmin(user).setVisible(true); break;
-            case 2: new frmMenuTrabajador(user).setVisible(true); break;
-            case 3: new frmMenuCliente(user).setVisible(true); break;
+            case "admin": new frmMenuAdmin(user).setVisible(true); break;
+            case "trabajador": new frmMenuTrabajador(user).setVisible(true); break;
+            case "empleador": new frmMenuCliente(user).setVisible(true); break;
+            case "cliente": new frmMenuCliente(user).setVisible(true); break;
             default:
         }
         this.dispose();

@@ -1,25 +1,23 @@
 package vista;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Image;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import modelo.Usuario;
-import modelo.Usuario2;
 
 /**
  *
  * @author Nelson
  */
 public class frmMenuCliente extends javax.swing.JFrame {
-    Usuario2 user;
+    Usuario user;
     /**
      * Creates new form frmMenu
      */
-    public frmMenuCliente(Usuario2 user) {
+    public frmMenuCliente(Usuario user) {
         initComponents();
         MostrarPanel(new clienteInicio());
         
