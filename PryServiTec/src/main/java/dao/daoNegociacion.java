@@ -1,7 +1,6 @@
 
 package dao;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -43,10 +42,10 @@ public class daoNegociacion {
     }
 
     // Método para obtener una negociación por su código
-    public Negociacion obtener(String codiNego) {
+    public Negociacion obtenerNegociacion(String codiNego) {
         Negociacion negociacion = null;
 
-        String sql = "SELECT fechNego, estaNego, montNego, descNego, fk_codiTrab, fk_codiCliente FROM negociacion WHERE codiNego = ?";
+        String sql = "SELECT  FROM negociacion WHERE codiNego = ?";
 
         try (Connection con = MySQLConexion.getConexion();
              PreparedStatement st = con.prepareStatement(sql)) {

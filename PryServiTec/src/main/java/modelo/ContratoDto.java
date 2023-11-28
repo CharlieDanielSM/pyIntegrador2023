@@ -7,6 +7,7 @@ public class ContratoDto
     private String fechFincont ;
     private String estCont;
     private String descCont;
+    private String codiNego;
     private String codiEmpl;
     private String codiTrab;
 
@@ -14,17 +15,26 @@ public class ContratoDto
     public ContratoDto() {
     }
 
-    public ContratoDto(String codiCont, String fechCont, String fechInicCont, String fechFincont, String estCont, String descCont, String codiEmpl, String codiTrab) {
+    public ContratoDto(String codiCont, String fechCont, String fechInicCont, String fechFincont, String estCont, String descCont, String codiNego, String codiEmpl, String codiTrab) {
         this.codiCont = codiCont;
         this.fechCont = fechCont;
         this.fechInicCont = fechInicCont;
         this.fechFincont = fechFincont;
         this.estCont = estCont;
         this.descCont = descCont;
+        this.codiNego = codiNego;
         this.codiEmpl = codiEmpl;
         this.codiTrab = codiTrab;
     }
 
+    public String getCodiNego() {
+        return codiNego;
+    }
+
+    public void setCodiNego(String codiNego) {
+        this.codiNego = codiNego;
+    }
+    
     public String getCodiEmpl() {
         return codiEmpl;
     }
@@ -91,10 +101,7 @@ public class ContratoDto
 
     @Override
     public String toString() {
-        return "ContratoDto{" + "codiCont=" + codiCont + ", fechCont=" + fechCont + ", fechInicCont=" + fechInicCont + ", fechFincont=" + fechFincont + ", estCont=" + estCont + ", descCont=" + descCont + ", codiEmpl=" + codiEmpl + ", codiTrab=" + codiTrab + '}';
+        return "ContratoDto{" + "codiCont=" + codiCont + ", fechCont=" + fechCont + ", fechInicCont=" + fechInicCont + ", fechFincont=" + fechFincont + ", estCont=" + estCont + ", descCont=" + descCont + ", codiNego=" + codiNego + ", codiEmpl=" + codiEmpl + ", codiTrab=" + codiTrab + '}';
     }
-
-
-    
     
 }

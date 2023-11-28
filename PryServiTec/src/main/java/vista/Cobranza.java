@@ -11,24 +11,44 @@ public class Cobranza extends javax.swing.JInternalFrame {
     
     public void actualizarTabla() {
         ContratoDao contratoDao = new ContratoDao();
-        EmpleadorDao empleadorDao = new EmpleadorDao();
         List<ContratoDto> listaContra = contratoDao.listarContrato();
-
         DefaultTableModel modeloTabla = (DefaultTableModel) jTable1.getModel();
         modeloTabla.setRowCount(0);
 
         for (ContratoDto contra : listaContra) {
-            EmpleadorDto empleador = empleadorDao.obtenerEmpleadorPorID(contra.getCodiEmpl());
-
-            if (empleador != null) {
-                Object[] fila = {contra.getCodiCont(), contra.getFechCont(), contra.getEstCont(), contra.getFechFincont(),empleador.getNombEmpl()};
+                Object[] fila = {contra.getCodiCont(), contra.getFechCont(), contra.getEstCont(), contra.getFechFincont()};
                 modeloTabla.addRow(fila);
-                
-            }
 
         }
     }
+    public void listaContratoCliente( String Emp) {
+        ContratoDao contratoDao = new ContratoDao();
+        EmpleadorDao empleadorDao = new EmpleadorDao();
+        daoNegociacion negociadao= new daoNegociacion();
+        List<ContratoDto> listaContra = contratoDao.listarContXEmpleador(Emp);
 
+        DefaultTableModel modeloTabla = (DefaultTableModel) jTable2.getModel();
+        modeloTabla.setRowCount(0);
+
+        for (ContratoDto contra : listaContra) {
+            EmpleadorDto empleador = empleadorDao.obtenerEmpleadorPorID(contra.getCodiEmpl());
+            Negociacion negociacion= negociadao.obtenerNegociacion(contra.getCodiNego());
+            
+            /*if (empleador != null) {
+                Object[] fila = {contra.getCodiCont(), contra.getFechCont(), empleador.getNombEmpl(),negociacion.getMontNego()};
+                modeloTabla.addRow(fila);
+                
+            }*/
+           
+            System.out.println("Codi: "+contra.getCodiCont());
+            System.out.println("CodiEMPL: "+contra.getCodiEmpl());
+            System.out.println("fecha: "+ contra.getFechCont());
+            System.out.println("Nego: "+ empleador);
+
+            System.out.println("nomb: "+empleador.getNombEmpl());
+            System.out.println("monto: "+negociacion.getMontNego());
+        }
+    }
     
     private boolean existeSeleccion() {
         int i = jTable1.getSelectedRow();
@@ -59,7 +79,10 @@ public class Cobranza extends javax.swing.JInternalFrame {
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnFacturar = new javax.swing.JButton();
+
+        setClosable(true);
+        setIconifiable(true);
 
         jLabel1.setText("Cibranza Clientes");
 
@@ -84,6 +107,11 @@ public class Cobranza extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
 
         jTabbedPane1.addTab("Clientes", jScrollPane2);
@@ -103,7 +131,12 @@ public class Cobranza extends javax.swing.JInternalFrame {
 
         jTabbedPane2.addTab("Detalle", jScrollPane3);
 
-        jButton1.setText("Facturar");
+        btnFacturar.setText("Facturar");
+        btnFacturar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFacturarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,7 +153,7 @@ public class Cobranza extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
+                        .addComponent(btnFacturar)))
                 .addContainerGap(292, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -135,7 +168,7 @@ public class Cobranza extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar)
-                    .addComponent(jButton1))
+                    .addComponent(btnFacturar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -146,10 +179,44 @@ public class Cobranza extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+
+    final int[] clickCount = {0};
+    if (evt.getClickCount() >= 2) {
+        
+        String codigo;
+        
+        int pos=jTable1.getSelectedRow();
+        codigo = jTable1.getValueAt(pos, 1).toString();
+        listaContratoCliente(codigo);
+       
+       clickCount[0] = 0; 
+    } else {
+        clickCount[0]++;
+    }
+        
+        
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void btnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturarActionPerformed
+
+        int pos=jTable2.getSelectedRow();
+        if(pos !=1)
+        {
+        }
+        else
+        {
+           JOptionPane.showMessageDialog(null,"No hay registros por facturar");
+        }
+        
+        
+        
+    }//GEN-LAST:event_btnFacturarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnFacturar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

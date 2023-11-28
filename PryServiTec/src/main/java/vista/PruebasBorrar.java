@@ -58,9 +58,9 @@ public class PruebasBorrar extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        Cobranza frmCate= new Cobranza();
-        this.jDesktopPane1.add(frmCate);
-        frmCate.setVisible(true);
+            Cobranza frmCate= new Cobranza();
+            this.jDesktopPane1.add(frmCate);
+            frmCate.setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
