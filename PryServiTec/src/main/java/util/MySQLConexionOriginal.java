@@ -1,11 +1,11 @@
 package util;
 import java.sql.*;
-public class MySQLConexion {
+public class MySQLConexionOriginal {
 	public static Connection getConexion(){ 
 		Connection con = null;
 		try {
                 Class.forName("com.mysql.cj.jdbc.Driver"); 
-		String url = "jdbc:mysql://localhost/bdservitec"; 
+		String url = "jdbc:mysql://localhost/bdservitec2"; 
 		String usr = "root";
 		String psw = ""; 
 		con = DriverManager.getConnection(url,usr,psw); 

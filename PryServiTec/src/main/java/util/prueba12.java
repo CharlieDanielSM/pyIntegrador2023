@@ -1,8 +1,8 @@
 package util;
-public class prueba1 {
+public class prueba12 {
 
     public static void main(String[] args) {
-       MySQLConexionOriginal.getConexion();
+       MySQLConexion.getConexion();
     }
     
 }

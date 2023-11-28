@@ -1,13 +1,13 @@
 package vista;
 
-import dao.daoUsuario;
+import dao.daoUsuario2;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import modelo.Autenticacion;
-import modelo.Usuario;
+import modelo.Autenticacion1;
+import modelo.Usuario2;
 import com.formdev.flatlaf.FlatLightLaf;
 /**
  *
@@ -15,7 +15,7 @@ import com.formdev.flatlaf.FlatLightLaf;
  */
 public class frmLogin extends javax.swing.JFrame {
     
-    daoUsuario daoUs = new daoUsuario();
+    daoUsuario2 daoUs = new daoUsuario2();
     boolean mostrarContrasena = false;
     
     public frmLogin() {
@@ -198,7 +198,7 @@ public class frmLogin extends javax.swing.JFrame {
         String usuario = campoUsu.getText();
         String contra = new String(campoCon.getPassword());
         System.out.println("usuario: "+usuario+", "+"contraseña: "+contra);
-        Autenticacion aut = daoUs.autenticar(usuario, contra);
+        Autenticacion1 aut = daoUs.autenticar(usuario, contra);
         if (aut.isContraseñaValida() && aut.isUsuarioValido()) {
             entrarLogin(aut.getUsuario());
         } else {
@@ -228,7 +228,7 @@ public class frmLogin extends javax.swing.JFrame {
 String usuario = campoUsu.getText();
         String contra = new String(campoCon.getPassword());
         System.out.println("usuario: "+usuario+", "+"contraseña: "+contra);
-        Autenticacion aut = daoUs.autenticar(usuario, contra);
+        Autenticacion1 aut = daoUs.autenticar(usuario, contra);
         if (aut.isContraseñaValida() && aut.isUsuarioValido()) {
             entrarLogin(aut.getUsuario());
         } else {
@@ -304,7 +304,7 @@ String usuario = campoUsu.getText();
         imageIconCambiar(frmLogin.class.getResource("/images/infoerror.png"), label, 20);
     }
     
-    public void entrarLogin(Usuario user){
+    public void entrarLogin(Usuario2 user){
         int tipo = user.getTipo();
         switch (tipo) {
             case 1: new frmMenuAdmin(user).setVisible(true); break;

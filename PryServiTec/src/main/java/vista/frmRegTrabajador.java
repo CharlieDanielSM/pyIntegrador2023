@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.sql.SQLIntegrityConstraintViolationException ;
-import util.MySQLConexion;
+import util.MySQLConexionOriginal;
 import java.sql.*;
 import java.util.Date;
 
@@ -23,8 +23,8 @@ import java.util.Date;
  */
 public class frmRegTrabajador extends javax.swing.JFrame {
     daoServicios daoServ = new daoServicios();
-    daoUsuario daousuUser=new daoUsuario();
-                  Connection con = MySQLConexion.getConexion();
+    daoUsuario2 daousuUser=new daoUsuario2();
+                  Connection con = MySQLConexionOriginal.getConexion();
                   int campointento=0;
                   int campointento2=0;
                   int validacion=1;
@@ -363,13 +363,13 @@ private int idservicio(String nombreServicio) {
                                if(validacion==1){
                                    if(numeroString.length() == 11){
                                        if(esNumeroEntero(numero)){
-                                                                                   Usuario y=new Usuario(2, nombre, apellido, usuario, contra, correo,numeroString);
-                                       daoUsuario x=new daoUsuario();
+                                                                                   Usuario2 y=new Usuario2(2, nombre, apellido, usuario, contra, correo,numeroString);
+                                       daoUsuario2 x=new daoUsuario2();
                                         x.crearUsuario(y); 
                                        int idservicio= idservicio(servicio);
                                                java.sql.Date sqlDate = new java.sql.Date(fechaCreacion.getTime());
 
-                                       Trabajador z=new Trabajador(nombre, idservicio, sqlDate, usuario);
+                                       Trabajador2 z=new Trabajador2(nombre, idservicio, sqlDate, usuario);
                                         x.crearTrabajador(z);
                                       JOptionPane.showMessageDialog(null, "TRABAJADOR REGISTRADO");  
                                                                               limpiar();

@@ -2,7 +2,7 @@ package vista;
 
 
 import com.formdev.flatlaf.FlatLightLaf;
-import dao.daoUsuario;
+import dao.daoUsuario2;
 import java.awt.Color;
 import java.awt.Image;
 import java.net.URL;
@@ -10,8 +10,8 @@ import java.sql.Connection;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import modelo.Usuario;
-import util.MySQLConexion;
+import modelo.Usuario2;
+import util.MySQLConexionOriginal;
 import java.sql.*;
 
 /**
@@ -22,7 +22,7 @@ public class frmRegCliente extends javax.swing.JFrame {
 
     /**
      * Creates new form frmRegistro
-     */  Connection con = MySQLConexion.getConexion();
+     */  Connection con = MySQLConexionOriginal.getConexion();
                   int campointento=0;
                   int campointento2=0;
                   int validacion=1;
@@ -313,8 +313,8 @@ public class frmRegCliente extends javax.swing.JFrame {
                                     if(validacion==1){
                                                 if (numeroString.length() == 11 ) {
                                                     if(esNumeroEntero(numero)){
-                                                         Usuario y=new Usuario(3, nombre, apellido, usuario, contra, correo,numeroString);
-                                                         daoUsuario x=new daoUsuario();
+                                                         Usuario2 y=new Usuario2(3, nombre, apellido, usuario, contra, correo,numeroString);
+                                                         daoUsuario2 x=new daoUsuario2();
                                                           x.crearUsuario(y); 
                                                           JOptionPane.showMessageDialog(null, "CLIENTE REGISTRADO");
                                                           limpiar();

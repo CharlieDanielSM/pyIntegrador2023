@@ -1,67 +1,104 @@
 
 package modelo;
 
-import java.sql.Date;
-
 /* 🚀 Developed by NelsonJGP */
 public class Trabajador {
-    private int id;
-    private String nombre;
-    private int servicioId;
-    private Date fechaCreacion;
-    private String usuario;
-    
+    private String codiTrab;
+    private String dniTrab;
+    private String nombTrab;
+    private String ApelTrab;
+    private String teleTrab;
+    private char sexoTrab;
+    private String emailTrab;
+    private String codiEspe; // Codigo Especialidad
+    private String codiUsua; // Codigo Usuario
+
     public Trabajador() {
     }
 
-    public Trabajador(String nombre, int servicioId, Date fechaCreacion, String usuario) {
-        this.nombre = nombre;
-        this.servicioId = servicioId;
-        this.fechaCreacion = fechaCreacion;
-        this.usuario = usuario;
+    public Trabajador(String codiTrab, String dniTrab, String nombTrab, String ApelTrab, String teleTrab, char sexoTrab, String emailTrab, String codiEspe, String codiUsua) {
+        this.codiTrab = codiTrab;
+        this.dniTrab = dniTrab;
+        this.nombTrab = nombTrab;
+        this.ApelTrab = ApelTrab;
+        this.teleTrab = teleTrab;
+        this.sexoTrab = sexoTrab;
+        this.emailTrab = emailTrab;
+        this.codiEspe = codiEspe;
+        this.codiUsua = codiUsua;
     }
 
-    
-
-    public int getId() {
-        return id;
+    public String getCodiTrab() {
+        return codiTrab;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCodiTrab(String codiTrab) {
+        this.codiTrab = codiTrab;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getDniTrab() {
+        return dniTrab;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setDniTrab(String dniTrab) {
+        this.dniTrab = dniTrab;
     }
 
-    public int getServicioId() {
-        return servicioId;
+    public String getNombTrab() {
+        return nombTrab;
     }
 
-    public void setServicioId(int servicioId) {
-        this.servicioId = servicioId;
+    public void setNombTrab(String nombTrab) {
+        this.nombTrab = nombTrab;
     }
 
-    public Date getFechaCreacion() {
-        return fechaCreacion;
+    public String getApelTrab() {
+        return ApelTrab;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
+    public void setApelTrab(String ApelTrab) {
+        this.ApelTrab = ApelTrab;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getTeleTrab() {
+        return teleTrab;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setTeleTrab(String teleTrab) {
+        this.teleTrab = teleTrab;
     }
-    
+
+    public char getSexoTrab() {
+        return sexoTrab;
+    }
+
+    public void setSexoTrab(char sexoTrab) {
+        this.sexoTrab = sexoTrab;
+    }
+
+    public String getEmailTrab() {
+        return emailTrab;
+    }
+
+    public void setEmailTrab(String emailTrab) {
+        this.emailTrab = emailTrab;
+    }
+
+    public String getCodiEspe() {
+        return codiEspe;
+    }
+
+    public void setCodiEspe(String codiEspe) {
+        this.codiEspe = codiEspe;
+    }
+
+    public String getCodiUsua() {
+        return codiUsua;
+    }
+
+    public void setCodiUsua(String codiUsua) {
+        this.codiUsua = codiUsua;
+    }
+
     
 }
