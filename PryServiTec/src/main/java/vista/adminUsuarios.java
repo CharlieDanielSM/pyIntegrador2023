@@ -7,11 +7,14 @@ package vista;
 import com.formdev.flatlaf.FlatLightLaf;
 import dao.daoServicios;
 import dao.daoTrabajador2;
-import dao.daoUsuario2;
+import dao.daoUsuario;
 import java.awt.Color;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JRadioButton;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -23,7 +26,9 @@ import javax.swing.event.RowSorterEvent;
 import javax.swing.event.RowSorterListener;
 import modelo.Servicios;
 import modelo.Trabajador2;
+import modelo.Usuario;
 import modelo.Usuario2;
+import modelo.empleador;
 
 /**
  *
@@ -36,92 +41,44 @@ public class adminUsuarios extends javax.swing.JPanel {
      */
      DefaultTableModel model = new DefaultTableModel();
           DefaultTableModel model1 = new DefaultTableModel();
-
+          daoUsuario X=new daoUsuario();
      TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
-     daoUsuario2 daos=new daoUsuario2();
-    ButtonGroup tipoCuentaGroup = new ButtonGroup();
-    daoServicios daoServ = new daoServicios();
     int validacion;
     int tipo=0;
-     daoUsuario2 daousuUser=new daoUsuario2();
 
     public adminUsuarios() {
         FlatLightLaf.setup();
         initComponents();
-        comboServiciosListar();
-         funcionbotones();
         btnupdate.setEnabled(false);
-        int id=daos.verid();
-        txtid.setText(String.valueOf(id));
         tabla.setModel(model);
-        model.addColumn("ID");
+        model.addColumn("IDEMPLEADO");
         model.addColumn("TIPO DE CUENTA");
-        model.addColumn("USUARIO");
-        model.addColumn("SERVICIO");
+        model.addColumn("CODIGO");
+        model.addColumn("CONTRASEÑA");
+        model.addColumn("DNI");
         model.addColumn("NOMBRE");
-        model.addColumn("APELLIDO");
-        model.addColumn("CORREO");
-        model.addColumn("CONTRASEÑA");  
-        model.addColumn("NUMERO");
-        juser.setText("");
+        model.addColumn("TELEFONO");
+        model.addColumn("EMAIL");
+        juser.setText("");     
+        jdni.setText("");
+        jcorreo.setText("");
+
         txtnumeroayuda.setText("");
-        daos.iniciartabla(model);
+        X.Iniciartabla(model);
+        txtid.setText(X.generarCodigoEspecialidad()); 
         actualizarTabla();
-                btndelete.setEnabled(false);
-                btnupdate.setEnabled(false);
+        btndelete.setEnabled(false);
+        btnupdate.setEnabled(false);
         cbtipo.addItem("Todo");
-        cbtipo.addItem("Cliente");
-        cbtipo.addItem("Trabajador");
-        cbtipo.addItem("Admin");
-    }
-        public void comboServiciosListar(){
-        List<Servicios> listaServicios = daoServ.obtenerServicios();
-        for (Servicios servicio : listaServicios) {
-            cmbServicios.addItem(servicio.getNombre_servicio());
-        }
-    }
-    public void funcionbotones(){
-        tipoCuentaGroup.add(botoncliente);
-        tipoCuentaGroup.add(botonadmin);
-        tipoCuentaGroup.add(botontrabajador);
-        
-
-                        botontrabajador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // Manejar la selección del JRadioButton "Trabajador"
-                if (botontrabajador.isSelected()) {
-                    System.out.println("Trabajador seleccionado");
-                     jLabel10.setVisible(true);
-                    cmbServicios.setVisible(true);
-                    tipo=3;
-                }
-            }
-        });
-            botoncliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // Manejar la selección del JRadioButton "Cliente"
-                if (botoncliente.isSelected()) {
-                    System.out.println("Cliente seleccionado");
-                    jLabel10.setVisible(false);
-                    cmbServicios.setVisible(false);
-                    tipo=2;
-                }
-            }
-        });
-            botonadmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // Manejar la selección del JRadioButton "Cliente"
-                if (botonadmin.isSelected()) {
-                    System.out.println("Cliente seleccionado");
-                    jLabel10.setVisible(false);
-                    cmbServicios.setVisible(false);
-                    tipo=1;
-                }
-            }
-        });
-
+        cbtipo.addItem("Persona Natural");
+        cbtipo.addItem("Persona Juridica");
+   
+        cbtipocuenta.addItem("Persona Natural");
+        cbtipocuenta.addItem("Persona Juridica");
 
     }
+  
+ 
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -136,21 +93,13 @@ public class adminUsuarios extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        botoncliente = new javax.swing.JRadioButton();
-        botonadmin = new javax.swing.JRadioButton();
-        txtid = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
         txtnombre = new javax.swing.JTextField();
-        txtuser = new javax.swing.JTextField();
-        txtcorreo = new javax.swing.JTextField();
+        txtdni = new javax.swing.JTextField();
         txtcontra = new javax.swing.JTextField();
-        txtapellido = new javax.swing.JTextField();
         txtnum = new javax.swing.JTextField();
-        cmbServicios = new javax.swing.JComboBox<>();
         btnadd = new javax.swing.JButton();
         btndelete = new javax.swing.JButton();
         btnupdate = new javax.swing.JButton();
@@ -159,60 +108,51 @@ public class adminUsuarios extends javax.swing.JPanel {
         tabla = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
         txtbusqueda = new javax.swing.JTextField();
-        cbtipo = new javax.swing.JComboBox<>();
         juser = new javax.swing.JLabel();
         txtnumeroayuda = new javax.swing.JLabel();
-        botontrabajador = new javax.swing.JRadioButton();
+        cbtipocuenta = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txtid = new javax.swing.JTextField();
+        jdni = new javax.swing.JLabel();
+        jcorreo = new javax.swing.JLabel();
+        cbtipo = new javax.swing.JComboBox<>();
+        txtcorreo = new javax.swing.JTextField();
+        txtuser = new javax.swing.JTextField();
+        EXCEL = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("CRUD Usuarios");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 400, 40));
+        jLabel1.setText("CRUD EMPLEADOR");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 400, 40));
 
-        jLabel2.setText("ID");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 95, -1, -1));
+        jLabel2.setText("Codigo Usuario");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
         jLabel3.setText("NOMBRE");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 264, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
-        jLabel4.setText("USUARIO");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 214, -1, -1));
-
-        jLabel5.setText("APELLIDO");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 304, -1, -1));
+        jLabel4.setText("DNI/RUC");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, -1, -1));
 
         jLabel6.setText("CONTRASEÑA");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 344, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, -1, -1));
 
         jLabel7.setText("NUMERO");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 415, -1, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 90, -1, -1));
 
         jLabel8.setText("CORREO");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 375, -1, -1));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, -1, -1));
+        add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 107, -1));
 
-        botoncliente.setText("CLIENTE");
-        add(botoncliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 127, -1, -1));
-
-        botonadmin.setText("ADMIN");
-        add(botonadmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 166, -1, -1));
-
-        txtid.setEditable(false);
-        add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 92, 107, -1));
-
-        jLabel10.setText("SERVICIO");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 461, -1, -1));
-        add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 261, 107, -1));
-
-        txtuser.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtdni.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtuserKeyReleased(evt);
+                txtdniKeyReleased(evt);
             }
         });
-        add(txtuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 211, 107, -1));
-        add(txtcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 372, 107, -1));
-        add(txtcontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 341, 107, -1));
-        add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 301, 107, -1));
+        add(txtdni, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 107, -1));
+        add(txtcontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 107, -1));
 
         txtnum.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -227,14 +167,7 @@ public class adminUsuarios extends javax.swing.JPanel {
                 txtnumKeyReleased(evt);
             }
         });
-        add(txtnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 412, 107, -1));
-
-        cmbServicios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbServiciosActionPerformed(evt);
-            }
-        });
-        add(cmbServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 458, 107, -1));
+        add(txtnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 90, 150, -1));
 
         btnadd.setText("AÑADIR");
         btnadd.addActionListener(new java.awt.event.ActionListener() {
@@ -242,7 +175,7 @@ public class adminUsuarios extends javax.swing.JPanel {
                 btnaddActionPerformed(evt);
             }
         });
-        add(btnadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 521, 99, -1));
+        add(btnadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, 99, -1));
 
         btndelete.setText("ELIMINAR");
         btndelete.addActionListener(new java.awt.event.ActionListener() {
@@ -250,7 +183,7 @@ public class adminUsuarios extends javax.swing.JPanel {
                 btndeleteActionPerformed(evt);
             }
         });
-        add(btndelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 521, 107, -1));
+        add(btndelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 510, 107, -1));
 
         btnupdate.setText("ACTUALIZAR");
         btnupdate.addActionListener(new java.awt.event.ActionListener() {
@@ -258,7 +191,7 @@ public class adminUsuarios extends javax.swing.JPanel {
                 btnupdateActionPerformed(evt);
             }
         });
-        add(btnupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 550, -1, -1));
+        add(btnupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, -1, -1));
 
         btnnew.setText("NUEVO");
         btnnew.addActionListener(new java.awt.event.ActionListener() {
@@ -266,7 +199,7 @@ public class adminUsuarios extends javax.swing.JPanel {
                 btnnewActionPerformed(evt);
             }
         });
-        add(btnnew, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 550, 107, -1));
+        add(btnnew, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 540, 107, -1));
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -286,10 +219,10 @@ public class adminUsuarios extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tabla);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 588, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 890, 320));
 
         jLabel11.setText("BUSQUEDA:");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(366, 66, -1, -1));
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, -1, -1));
 
         txtbusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -302,23 +235,59 @@ public class adminUsuarios extends javax.swing.JPanel {
                 txtbusquedaKeyTyped(evt);
             }
         });
-        add(txtbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 56, 367, 30));
+        add(txtbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 300, 30));
+
+        juser.setText("codigo");
+        add(juser, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 107, -1));
+
+        txtnumeroayuda.setText("NUMERO");
+        add(txtnumeroayuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 110, 107, -1));
+
+        add(cbtipocuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, -1, -1));
+
+        jLabel9.setText("TIPO DE CUENTA");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, -1, 20));
+
+        jLabel10.setText("ID Empleador");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+
+        txtid.setEditable(false);
+        add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 100, -1));
+
+        jdni.setText("dni");
+        add(jdni, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 50, -1));
+
+        jcorreo.setText("correo");
+        add(jcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, -1, -1));
 
         cbtipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbtipoActionPerformed(evt);
             }
         });
-        add(cbtipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(831, 60, 93, -1));
+        add(cbtipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 30, -1, -1));
 
-        juser.setText("USUARIO");
-        add(juser, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 239, 107, -1));
+        txtcorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtcorreoKeyReleased(evt);
+            }
+        });
+        add(txtcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 110, -1));
 
-        txtnumeroayuda.setText("NUMERO");
-        add(txtnumeroayuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 436, 107, -1));
+        txtuser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtuserKeyReleased(evt);
+            }
+        });
+        add(txtuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 110, -1));
 
-        botontrabajador.setText("TRABAJADR");
-        add(botontrabajador, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 127, -1, -1));
+        EXCEL.setText("EXCEL");
+        EXCEL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EXCELActionPerformed(evt);
+            }
+        });
+        add(EXCEL, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 510, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtbusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedaKeyPressed
@@ -345,42 +314,52 @@ public class adminUsuarios extends javax.swing.JPanel {
    
     private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
         // TODO add your handling code here:
-        String nombre,apellido,contra,usuario,numero,correo,servicio;
+        String nombre,dni,contra,usuario,numero,correo,tipocuenta;
         nombre=txtnombre.getText();
-        apellido=txtapellido.getText();
         usuario=txtuser.getText();
+        dni=txtdni.getText();
         contra=txtcontra.getText();
         correo=txtcorreo.getText();
-        servicio=cmbServicios.getSelectedItem().toString();
+        tipocuenta=cbtipocuenta.getSelectedItem().toString();
+        String tipoc="";
         numero=txtnum.getText();
-        Date fechaCreacion = new Date();
         String numeroString = "51" +numero; 
-        
-        if(tipo!=0){
-                               if (!nombre.isEmpty() && !apellido.isEmpty() && !usuario.isEmpty() &&
+                                              Usuario u=new Usuario();
+                                              empleador e=new empleador();
+  
+                               if (!nombre.isEmpty() && !dni.isEmpty() && !usuario.isEmpty() &&
                         !contra.isEmpty() && !correo.isEmpty() && 
                         !numero.isEmpty()) {
                         
-                            if(validarletra(nombre)==true && validarletra(apellido)==true){
-                                                               if(validacion==1){
+                                   if(validacion==1){
                                    if(numeroString.length() == 11){
                                        if(esNumeroEntero(numero)){
-                                       Usuario2 y=new Usuario2(tipo, nombre, apellido, usuario, contra, correo,numeroString);
-                                       daoUsuario2 x=new daoUsuario2();
-                                        x.crearUsuario(y); 
-                                        
-                                       int idservicio= daoServ.idservicio(servicio);
 
-                                      JOptionPane.showMessageDialog(null, "USUARIO REGISTRADO");  
+                                           if(tipocuenta.equals("Persona Juridica")){
+                                            e.setFk_codigoTipoeEmpl("20");
+                                              e.setNombEmpl(nombre);
+                                           }else{
+                                            if(validarletra(nombre)==true ){
+                                             e.setFk_codigoTipoeEmpl("10");
+                                             e.setNombEmpl(nombre);
+
+                                            }else{
+                                                System.out.println("INGRESAR SOLO LETRAS PARA EL NOMBRE"); 
+                                            }  
+                                           }                                               
+                                                u.setCodiUsua(usuario);
+                                                u.setPassUsua(contra);
+                                                u.setTipoUsua("cliente");
+                                                e.setCodiEmpl(X.generarCodigoEspecialidad() );
+                                                e.setDniRucEmpl(dni);
+                                                e.setEmailEmpl(correo);
+                                                e.setFk_codiUsa(usuario);
+                                                e.setTeleEmpl(numeroString);
+
+                                                X.crearUsuario(u, e);
                                       
                                                                               limpiar();
-                                        if(tipo==3){
-                                                java.sql.Date sqlDate = new java.sql.Date(fechaCreacion.getTime());
 
-                                              Trabajador2 z=new Trabajador2(nombre, idservicio, sqlDate, usuario);
-                                               x.crearTrabajador(z);
-
-                                        }   
                                         actualizarTabla();                                     
 
                                        }else{
@@ -397,30 +376,25 @@ public class adminUsuarios extends javax.swing.JPanel {
                                 JOptionPane.showMessageDialog(null, "USUARIO YA EXISTENTE");
  
                                }
-                            }else{
-                            }
+                            
                     }else{
                    JOptionPane.showMessageDialog(null,"Todos los campos deben estar completos");
 
                     } 
-        }else{
-                             JOptionPane.showMessageDialog(null,"SELECCIONE UN TIPO DE CUENTA");
-  
-        }
+        
 
     }//GEN-LAST:event_btnaddActionPerformed
     private void limpiar(){
         txtnombre.setText("");
-        txtapellido.setText("");
-        txtuser.setText("");
+        txtdni.setText("");
         txtcorreo.setText("");
         txtnum.setText("");
         txtnumeroayuda.setText("");
         txtcontra.setText("");
-        juser.setText("");
-                      int id=daos.verid();
-        txtid.setText(String.valueOf(id));
-
+        txtuser.setText("");
+        juser.setText("");     
+        jdni.setText("");
+        jcorreo.setText("");
     }
     private boolean esNumeroEntero(String cadena) {
         try {
@@ -438,27 +412,13 @@ public class adminUsuarios extends javax.swing.JPanel {
        txtnum.setText("");
         }
     }
-      public Vector<String> getNombreColumnas() {
-        Vector<String> columnas = new Vector<>();
-        // Agrega los nombres de las columnas según la estructura de tu tabla
-        columnas.add("ID");          
-        columnas.add("TIPO DE CUENTA");
-        columnas.add("USUARIO");
-        columnas.add("SERVICIO");
-        columnas.add("NOMBRE");
-       columnas.add("APELLIDO");
-        columnas.add("CORREO");
-        columnas.add("CONTRASEÑA");  
-        columnas.add("NUMERO");
-        // Agrega más columnas según sea necesario
-        return columnas;
-    }
+
 public void actualizarTabla() {
     // Limpiar el modelo
     model.setRowCount(0);
 
     // Volver a cargar los datos en el modelo
-    daos.iniciartabla(model);
+    X.Iniciartabla(model);
 
     // Notificar al TableRowSorter sobre los cambios en el modelo
     sorter.modelStructureChanged();
@@ -481,37 +441,37 @@ public void actualizarTabla() {
     int filaSeleccionadaModelo = sorter.convertRowIndexToModel(filaSeleccionada);
 
         System.out.println("fila"+filaSeleccionadaModelo);
-             int id = Integer.parseInt(model.getValueAt(filaSeleccionadaModelo, 0).toString());
-             System.out.println("ID ELIMINAR"+id);
-             daousuUser.eliminarusuario(id);
+             String  usuario = (txtuser.getText());
+             System.out.println("ID ELIMINAR"+usuario);
+             X.eliminarUsuario(usuario);
             actualizarTabla();
-     
+            limpiar();
 
 
 
     }//GEN-LAST:event_btndeleteActionPerformed
 
-    private void txtuserKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtuserKeyReleased
-       String nombreuser= txtuser.getText();
+    private void txtdniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdniKeyReleased
+       String dni= txtdni.getText();
 
-        if(nombreuser.equals("")){
-                      juser.setText("");
+        if(dni.equals("")){
+                      jdni.setText("");
 
       }else{
-        if(daousuUser.usuarioverificar(nombreuser)==true){
-            juser.setText("NOMBRE USUARIO YA EXISTE");
-            juser.setForeground(Color.RED);
+        if(X.dniverificar(dni)==true){
+            jdni.setText("DNI USUARIO YA EXISTE");
+            jdni.setForeground(Color.RED);
             validacion=2;
 
         }else{
-            juser.setText("NOMBRE USUARIO VALIDO");
+            jdni.setText("DNI USUARIO VALIDO");
             Color verdeOscuro = new Color(0, 128, 0);
-            juser.setForeground(verdeOscuro);
+            jdni.setForeground(verdeOscuro);
             validacion=1;
 
         }  
-      }        // TODO add your handling code here:
-    }//GEN-LAST:event_txtuserKeyReleased
+      }       // TODO add your handling code here:
+    }//GEN-LAST:event_txtdniKeyReleased
 
     private void txtnumFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtnumFocusGained
         // TODO add your handling code here:
@@ -546,10 +506,6 @@ public void actualizarTabla() {
 
     }//GEN-LAST:event_txtnumFocusLost
 
-    private void cmbServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbServiciosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbServiciosActionPerformed
-
     private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
         // TODO add your handling code here:
         btnadd.setEnabled(false);
@@ -558,47 +514,31 @@ public void actualizarTabla() {
         int filaSeleccionadaModelo = tabla.getSelectedRow();
      int filaSeleccionada = sorter.convertRowIndexToModel(filaSeleccionadaModelo);
         System.out.println("FILA"+filaSeleccionada);
-        int id = Integer.parseInt(model.getValueAt(filaSeleccionada, 0).toString());
-        String tipo12 = (model.getValueAt(filaSeleccionada, 1).toString());
-        String usuario = (model.getValueAt(filaSeleccionada, 2).toString());
-        String nombreServicio = (model.getValueAt(filaSeleccionada, 3).toString());
-        String nombre = (model.getValueAt(filaSeleccionada, 4).toString());
-        String apellido = (model.getValueAt(filaSeleccionada, 5).toString());
-        String correo = (model.getValueAt(filaSeleccionada, 6).toString());
-        String password = (model.getValueAt(filaSeleccionada, 7).toString());
-        String numero = (model.getValueAt(filaSeleccionada, 8).toString());
-        switch(tipo12){
-            case "CLIENTE":
-               botoncliente.setSelected(true);     
-               botonadmin.setSelected(false);
-               botontrabajador.setSelected(false); 
-                    jLabel10.setVisible(false);
-                    cmbServicios.setVisible(false);
-               break;
-            case "TRABAJADOR":
-               botoncliente.setSelected(false);     
-               botonadmin.setSelected(false);
-               botontrabajador.setSelected(true);   
-                    jLabel10.setVisible(true);
-                    cmbServicios.setVisible(true);
-               break;
-            case "ADMIN":
-               botoncliente.setSelected(false);     
-               botonadmin.setSelected(true);
-               botontrabajador.setSelected(false); 
-                    jLabel10.setVisible(false);
-                    cmbServicios.setVisible(false);
-                break;
-            
-        }
-        cmbServicios.setSelectedItem(nombreServicio);
-        txtid.setText(""+id);
+        String id = (model.getValueAt(filaSeleccionada, 0).toString());
+        String tipocuenta = (model.getValueAt(filaSeleccionada, 1).toString());
+        String codigo = (model.getValueAt(filaSeleccionada, 2).toString());
+        String contra = (model.getValueAt(filaSeleccionada, 3).toString());
+        String dni = (model.getValueAt(filaSeleccionada, 4).toString());
+        String nombre = (model.getValueAt(filaSeleccionada, 5).toString());
+        String telefono = (model.getValueAt(filaSeleccionada, 6).toString());
+        String mail = (model.getValueAt(filaSeleccionada, 7).toString());
+        
+        
+        txtid.setText(id);
+        txtuser.setText(""+codigo);
         txtnombre.setText(""+nombre);
-        txtapellido.setText(""+apellido);
-        txtuser.setText(""+usuario);
-        txtcorreo.setText(""+correo);
-        txtnum.setText(""+numero);
-        txtcontra.setText(""+password );
+        txtdni.setText(""+dni);
+        txtcorreo.setText(""+mail);
+        txtnum.setText(""+telefono);
+        txtcontra.setText(""+contra );
+        if(tipocuenta.equals("Persona Natural"))        {
+            cbtipocuenta.setSelectedItem("Persona Natural");
+        }else{
+            cbtipocuenta.setSelectedItem("Persona Juridica");
+
+        }
+                
+        
 
     }//GEN-LAST:event_tablaMouseClicked
 
@@ -607,90 +547,148 @@ public void actualizarTabla() {
         btndelete.setEnabled(false);
         btnupdate.setEnabled(false);  
         limpiar();
+       txtid.setText(X.generarCodigoEspecialidad()); 
     }//GEN-LAST:event_btnnewActionPerformed
 
     private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
-        int id=Integer.parseInt(txtid.getText());
  
-        String nombre,apellido,contra,usuario,numero,correo,servicio;
+       String id,usuario,contra,correo,numero,nombre,dni,tipocuenta,tipo;
         nombre=txtnombre.getText();
-        apellido=txtapellido.getText();
         usuario=txtuser.getText();
         contra=txtcontra.getText();
         correo=txtcorreo.getText();
         numero=txtnum.getText();
-        Date fechaCreacion = new Date();
-          java.sql.Date sqlDate = new java.sql.Date(fechaCreacion.getTime());
+        id=txtid.getText();
+        dni=txtdni.getText();
+                String numeroString = "51" +numero; 
 
-        String numeroString = "51" +numero; 
-       daousuUser.actualizarusuario(id, tipo, nombre, apellido, usuario, contra, correo, numero);
+        tipocuenta="";
 
-        if(tipo==3){
-            daoTrabajador2 x=new daoTrabajador2();
-            x.actualizartrabajador(id, nombre, tipo, sqlDate, usuario);
-        }else{
-
-        }
-    actualizarTabla();
-        limpiar();
+        tipo="";
+                                      if(tipocuenta.equals("Persona Juridica")){
+                                            tipo="20";
+                                           }else{
+                                            if(validarletra(nombre)==true ){
+                                            tipo="10";  }
+            
+                                     }
+                                      
+          X.actualizarusuario(id, dni, nombre, numeroString, correo, tipo, usuario, contra);
+        actualizarTabla();
+        limpiar(); 
     }//GEN-LAST:event_btnupdateActionPerformed
-
+                                      
     private void cbtipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbtipoActionPerformed
-  
-      String textoBusqueda = "";
+        // TODO add your handling code here:
+            String textoBusqueda = "";
          String opcionSeleccionada = (String) cbtipo.getSelectedItem();
                 switch (opcionSeleccionada) {
                     case "Todo":
                               textoBusqueda = "";
                         break;
 
-                    case "Cliente":
+                    case "Persona Natural":
                         // Acciones para la Opción 2
-                        textoBusqueda = "CLIENTE";
+                        textoBusqueda = "Persona Natural";
                         break;
 
-                    case "Trabajador":
-                        textoBusqueda = "TRABAJADOR";
+                    case "Persona Juridica":
+                        textoBusqueda = "Persona Juridica";
                         break;
 
-                   case "Admin":
-                       textoBusqueda = "ADMIN";
-                        break;
                 }
         sorter.setRowFilter(RowFilter.regexFilter("(?i)" + textoBusqueda));
         tabla.setRowSorter(sorter);
 
-        int rowCount = sorter.getViewRowCount();
+        int rowCount = sorter.getViewRowCount();  
+ 
     }//GEN-LAST:event_cbtipoActionPerformed
+
+    private void txtcorreoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcorreoKeyReleased
+        // TODO add your handling code here:
+                    String correo= txtcorreo.getText();
+
+        if(correo.equals("")){
+                      jcorreo.setText("");
+
+      }else{
+        if(X.correoverificar(correo)==true){
+            jcorreo.setText("CORREO YA EXISTE");
+            jcorreo.setForeground(Color.RED);
+            validacion=2;
+
+        }else{
+            jcorreo.setText("CORREO USUARIO VALIDO");
+            Color verdeOscuro = new Color(0, 128, 0);
+            jcorreo.setForeground(verdeOscuro);
+            validacion=1;
+
+        }  
+      }
+    }//GEN-LAST:event_txtcorreoKeyReleased
+
+    private void txtuserKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtuserKeyReleased
+        // TODO add your handling code here:
+               String nombreuser= txtuser.getText();
+
+        if(nombreuser.equals("")){
+                      juser.setText("");
+
+      }else{
+        if(X.usuarioverificar(nombreuser)==true){
+            juser.setText("NOMBRE USUARIO YA EXISTE");
+            juser.setForeground(Color.RED);
+            validacion=2;
+
+        }else{
+            juser.setText("NOMBRE USUARIO VALIDO");
+            Color verdeOscuro = new Color(0, 128, 0);
+            juser.setForeground(verdeOscuro);
+            validacion=1;
+
+        }  
+      } 
+    }//GEN-LAST:event_txtuserKeyReleased
+
+    private void EXCELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EXCELActionPerformed
+         try {
+             // TODO add your handling code here:
+             X.exportarExcel(tabla);
+         } catch (IOException ex) {
+             Logger.getLogger(adminUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+        
+    }//GEN-LAST:event_EXCELActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton botonadmin;
-    private javax.swing.JRadioButton botoncliente;
-    private javax.swing.JRadioButton botontrabajador;
+    private javax.swing.JButton EXCEL;
     private javax.swing.JButton btnadd;
     private javax.swing.JButton btndelete;
     private javax.swing.JButton btnnew;
     private javax.swing.JButton btnupdate;
     private javax.swing.JComboBox<String> cbtipo;
-    private javax.swing.JComboBox<String> cmbServicios;
+    private javax.swing.JComboBox<String> cbtipocuenta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jcorreo;
+    private javax.swing.JLabel jdni;
     private javax.swing.JLabel juser;
     private javax.swing.JTable tabla;
-    private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtbusqueda;
     private javax.swing.JTextField txtcontra;
     private javax.swing.JTextField txtcorreo;
+    private javax.swing.JTextField txtdni;
     private javax.swing.JTextField txtid;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JTextField txtnum;

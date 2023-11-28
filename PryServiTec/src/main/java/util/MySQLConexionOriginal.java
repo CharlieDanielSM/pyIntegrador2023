@@ -5,7 +5,7 @@ public class MySQLConexionOriginal {
 		Connection con = null;
 		try {
                 Class.forName("com.mysql.cj.jdbc.Driver"); 
-		String url = "jdbc:mysql://localhost/bdservitec2"; 
+		String url = "jdbc:mysql://localhost/bdservitec"; 
 		String usr = "root";
 		String psw = ""; 
 		con = DriverManager.getConnection(url,usr,psw); 
