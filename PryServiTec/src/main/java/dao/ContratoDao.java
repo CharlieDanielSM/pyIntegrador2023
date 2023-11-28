@@ -71,14 +71,7 @@ public class ContratoDao {
         }
         return contratos;
     }
-
     
-    
-    
-    
-    
-<<<<<<< HEAD
-=======
     public String obtenerNuevoCodigoContrato() {
         String nuevoCodigo = null;
 
@@ -98,5 +91,4 @@ public class ContratoDao {
 
         return nuevoCodigo;
     }
->>>>>>> de883438f8a56d51a53b2a72868345293d225245
 }
