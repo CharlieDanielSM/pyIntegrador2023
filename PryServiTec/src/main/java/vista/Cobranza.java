@@ -1,6 +1,7 @@
 
 package vista;
-import dao.;
+import dao.*;
+import modelo.*;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -8,13 +9,13 @@ public class Cobranza extends javax.swing.JInternalFrame {
 
     
         public void actualizarTabla() {
-        ContratoDao categoriaDao = new ContratoDao(); 
-        List<ContratoDto> listaCategorias = categoriaDao.listar();
+        ContratoDao contratoDao = new ContratoDao(); 
+        List<ContratoDto> listaContra = contratoDao.listarContrato();
         DefaultTableModel modeloTabla = (DefaultTableModel) jTable1.getModel();
         modeloTabla.setRowCount(0);
 
-        for (CategoriaDto categoria : listaCategorias) {
-            Object[] fila = {categoria.getCodiCate(), categoria.getNombCate(), categoria.getDescCate()};
+        for (ContratoDto contra : listaContra) {
+            Object[] fila = {contra.getCodiCont(), contra.getFechCont(), contra.getEstCont(),contra.getFechFincont()};
             modeloTabla.addRow(fila);
         }
     }
@@ -30,14 +31,9 @@ public class Cobranza extends javax.swing.JInternalFrame {
     
     
     
-    
-    
-    
-    
-    
-    
     public Cobranza() {
         initComponents();
+        actualizarTabla();
     }
 
     @SuppressWarnings("unchecked")
@@ -49,15 +45,30 @@ public class Cobranza extends javax.swing.JInternalFrame {
         btnBuscar = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        jTable2 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
         jLabel1.setText("Cibranza Clientes");
 
         btnBuscar.setText("Buscar");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        jTabbedPane1.addTab("Clientes", jScrollPane2);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -70,22 +81,7 @@ public class Cobranza extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
-
-        jTabbedPane1.addTab("Clientes", jScrollPane2);
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(jTable2);
 
         jTabbedPane2.addTab("Detalle", jScrollPane3);
 
@@ -141,8 +137,8 @@ public class Cobranza extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }
