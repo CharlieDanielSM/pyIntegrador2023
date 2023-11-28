@@ -14,6 +14,7 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import javax.swing.BorderFactory;
@@ -25,9 +26,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableModel;
 import modelo.Especialidad;
 import modelo.Trabajador;
 import modelo.Usuario;
+import recursos.ExportarExcel;
 
 /**
  *
@@ -234,6 +237,7 @@ public class clienteOfertas extends javax.swing.JPanel{
         Scroll = new guiRecursos.GuiJScrollPane();
         contentServ = new javax.swing.JPanel();
         cmbServicios = new javax.swing.JComboBox<>();
+        cstmButon1 = new guiRecursos.cstmButon();
 
         Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -266,6 +270,18 @@ public class clienteOfertas extends javax.swing.JPanel{
         });
         Panel.add(cmbServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 200, -1));
 
+        cstmButon1.setForeground(new java.awt.Color(0, 0, 0));
+        cstmButon1.setText("visualizar en tabla");
+        cstmButon1.setColor(new java.awt.Color(102, 102, 102));
+        cstmButon1.setColorClick(new java.awt.Color(204, 204, 204));
+        cstmButon1.setColorOver(new java.awt.Color(153, 153, 153));
+        cstmButon1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cstmButon1ActionPerformed(evt);
+            }
+        });
+        Panel.add(cstmButon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 200, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -282,12 +298,24 @@ public class clienteOfertas extends javax.swing.JPanel{
         mostrarTrabajadoresEnScrollPanel(cmbServicios.getSelectedItem().toString());
     }//GEN-LAST:event_cmbServiciosActionPerformed
 
+    private void cstmButon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cstmButon1ActionPerformed
+        /*ExportarExcel obj;
+        try {
+            obj = new ExportarExcel();
+            obj.exportarExcel(sa);
+        } catch (IOException ex) {
+            System.out.println("Error: " + ex);
+        }*/
+        
+    }//GEN-LAST:event_cstmButon1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panel;
     private guiRecursos.GuiJScrollPane Scroll;
     private javax.swing.JComboBox<String> cmbServicios;
     private javax.swing.JPanel contentServ;
+    private guiRecursos.cstmButon cstmButon1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
