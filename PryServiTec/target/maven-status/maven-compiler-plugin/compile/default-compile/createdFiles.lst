@@ -8,7 +8,18 @@ vista\adminUsuarios$5.class
 vista\clienteServicios$DropShadowPanel.class
 vista\clienteContrato.class
 guiRecursos\GuiJScrollPane$ScrollLayout.class
+<<<<<<< HEAD
 vista\frmRegTrabajador$13.class
+=======
+<<<<<<< HEAD
+vista\clienteEspecialidad.class
+=======
+<<<<<<< HEAD
+vista\clienteEspecialidad.class
+=======
+>>>>>>> a7a0105f7b53b0bcdcba5491d238d99c4dba233f
+>>>>>>> c8f7f6ebce014359b077dd2767e825aefba609ac
+>>>>>>> 33363c03723b4a0d72b6cc75cb1442df0f41e9c4
 vista\frmRegTrabajador$5.class
 vista\adminUsuarios$12.class
 vista\frmMenuCliente$3.class
@@ -20,6 +31,7 @@ vista\frmRegCliente$8.class
 guiRecursos\CustomFont.class
 vista\clienteInicio.class
 vista\frmLogin.class
+<<<<<<< HEAD
 vista\frmMenuTrabajador$1.class
 modelo\Usuario2.class
 vista\clienteOfertas2$1.class
@@ -27,6 +39,22 @@ vista\clienteServicios$1.class
 vista\frmRegCliente$2.class
 guiRecursos\GuiJScrollPane.class
 vista\frmLogin$4.class
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c8f7f6ebce014359b077dd2767e825aefba609ac
+vista\clienteEspecialidad$1.class
+vista\frmMenuAdmin$1.class
+modelo\Usuario2.class
+vista\clienteOfertas2$1.class
+<<<<<<< HEAD
+=======
+=======
+vista\frmMenuAdmin$1.class
+>>>>>>> a7a0105f7b53b0bcdcba5491d238d99c4dba233f
+>>>>>>> c8f7f6ebce014359b077dd2767e825aefba609ac
+>>>>>>> 33363c03723b4a0d72b6cc75cb1442df0f41e9c4
 vista\frmRegTrabajador$11.class
 vista\frmLogin$1.class
 modelo\Usuario.class
@@ -53,6 +81,18 @@ guiRecursos\GuiBarraVentana$4.class
 dao\daoTrabajador2.class
 vista\adminUsuarios$11.class
 modelo\Autenticacion1.class
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+vista\clienteOfertas2$DropShadowPanel.class
+guiRecursos\GuiBarraVentana$4.class
+modelo\Autenticacion1.class
+=======
+guiRecursos\GuiBarraVentana$4.class
+>>>>>>> a7a0105f7b53b0bcdcba5491d238d99c4dba233f
+>>>>>>> c8f7f6ebce014359b077dd2767e825aefba609ac
+>>>>>>> 33363c03723b4a0d72b6cc75cb1442df0f41e9c4
 dao\daoUsuario.class
 vista\clienteTablaTrab$1.class
 vista\frmRegTrabajador$1.class
@@ -61,6 +101,13 @@ guiRecursos\GuiBoton$1.class
 vista\frmLogin$3.class
 vista\frmRegTrabajador$12.class
 vista\adminUsuarios$1.class
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c8f7f6ebce014359b077dd2767e825aefba609ac
+>>>>>>> 33363c03723b4a0d72b6cc75cb1442df0f41e9c4
 vista\clienteOfertas2$2.class
 vista\clienteServicios.class
 guiRecursos\varUI.class
@@ -69,6 +116,16 @@ vista\adminUsuarios$4.class
 vista\adminUsuarios.class
 vista\clienteTablaTrab.class
 dao\daoNegociacion.class
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+vista\adminServicios3$8.class
+vista\adminUsuarios$4.class
+>>>>>>> a7a0105f7b53b0bcdcba5491d238d99c4dba233f
+>>>>>>> c8f7f6ebce014359b077dd2767e825aefba609ac
+>>>>>>> 33363c03723b4a0d72b6cc75cb1442df0f41e9c4
 modelo\Calificacion.class
 vista\adminUsuarios$9.class
 vista\frmRegCliente$9.class
@@ -79,11 +136,160 @@ vista\frmRegTrabajador.class
 dao\daoEspecialidad.class
 guiRecursos\prueba$1.class
 vista\frmRegCliente$12.class
+<<<<<<< HEAD
 vista\adminUsuarios$6.class
 vista\clienteNegociacion$2.class
 modelo\Trabajador2.class
 dao\daoServicios.class
 modelo\Servicios.class
+=======
+dao\daoServicios.class
+modelo\Servicios.class
+vista\frmElegirTipo$1.class
+guiRecursos\prueba.class
+vista\frmElegirTipo$4.class
+vista\adminUsuarios$3.class
+guiRecursos\ScrollBarWin11UI$1.class
+modelo\DetalleTrabajador.class
+<<<<<<< HEAD
+dao\daoUsuario2.class
+vista\adminUsuarios$13.class
+modelo\Especialidad.class
+=======
+<<<<<<< HEAD
+dao\daoUsuario2.class
+vista\adminUsuarios$13.class
+modelo\Especialidad.class
+=======
+vista\adminUsuarios$13.class
+>>>>>>> a7a0105f7b53b0bcdcba5491d238d99c4dba233f
+>>>>>>> c8f7f6ebce014359b077dd2767e825aefba609ac
+vista\frmElegirTipo$2.class
+vista\adminServicios3$6.class
+guiRecursos\GuiBarraVentana.class
+vista\frmRegCliente$3.class
+vista\frmLogin$5.class
+vista\frmRegCliente$4.class
+<<<<<<< HEAD
+=======
+vista\adminUsuarios$14.class
+>>>>>>> c8f7f6ebce014359b077dd2767e825aefba609ac
+vista\frmLogin$6.class
+vista\adminUsuarios$2.class
+guiRecursos\GuibotonPanel.class
+guiRecursos\ScrollBarWin11UI$ScrollButton.class
+<<<<<<< HEAD
+vista\clienteNegociacion.class
+vista\clienteOfertas2.class
+=======
+<<<<<<< HEAD
+vista\clienteNegociacion.class
+vista\clienteOfertas2.class
+=======
+>>>>>>> a7a0105f7b53b0bcdcba5491d238d99c4dba233f
+>>>>>>> c8f7f6ebce014359b077dd2767e825aefba609ac
+modelo\Autenticacion.class
+vista\frmRegTrabajador$9.class
+vista\frmRegCliente$10.class
+vista\clienteOfertas$DropShadowPanel.class
+<<<<<<< HEAD
+modelo\Negociacion.class
+=======
+<<<<<<< HEAD
+ContratoDto.class
+modelo\Negociacion.class
+=======
+>>>>>>> a7a0105f7b53b0bcdcba5491d238d99c4dba233f
+>>>>>>> c8f7f6ebce014359b077dd2767e825aefba609ac
+vista\adminUsuarios$5.class
+vista\clienteServicios$DropShadowPanel.class
+vista\adminServicios3$1.class
+vista\frmElegirTipo$3.class
+vista\frmRegTrabajador$13.class
+vista\adminUsuarios$12.class
+vista\frmMenuCliente$3.class
+guiRecursos\ScrollBarWin11UI$2.class
+<<<<<<< HEAD
+vista\clienteEspecialidad$DropShadowPanel.class
+=======
+<<<<<<< HEAD
+vista\clienteEspecialidad$DropShadowPanel.class
+=======
+>>>>>>> a7a0105f7b53b0bcdcba5491d238d99c4dba233f
+>>>>>>> c8f7f6ebce014359b077dd2767e825aefba609ac
+vista\frmRegTrabajador$8.class
+vista\frmRegCliente$8.class
+vista\clienteOfertas$2.class
+vista\clienteInicio.class
+vista\frmMenuAdmin$4.class
+vista\frmMenuTrabajador$1.class
+vista\adminServicios3$12.class
+vista\clienteServicios$1.class
+vista\adminServicios3$7.class
+vista\frmRegCliente$2.class
+guiRecursos\GuiJScrollPane.class
+vista\frmLogin$4.class
+modelo\Usuario.class
+<<<<<<< HEAD
+util\prueba12.class
+vista\clienteNegociacion$1.class
+=======
+<<<<<<< HEAD
+util\prueba12.class
+vista\clienteNegociacion$1.class
+=======
+>>>>>>> a7a0105f7b53b0bcdcba5491d238d99c4dba233f
+>>>>>>> c8f7f6ebce014359b077dd2767e825aefba609ac
+util\prueba1.class
+vista\adminServicios3$11.class
+dao\daoTrabajador.class
+vista\adminServicios3$2.class
+vista\frmMenuCliente$2.class
+vista\frmRegCliente$1.class
+guiRecursos\GuimenuBoton$1.class
+vista\frmRegCliente$7.class
+guiRecursos\PolygonCorner.class
+<<<<<<< HEAD
+vista\clienteOfertas2$3.class
+guiRecursos\ScrollBarWin11UI$ScrollButton$1.class
+dao\daoTrabajador2.class
+=======
+<<<<<<< HEAD
+vista\clienteOfertas2$3.class
+guiRecursos\ScrollBarWin11UI$ScrollButton$1.class
+dao\daoTrabajador2.class
+=======
+guiRecursos\ScrollBarWin11UI$ScrollButton$1.class
+>>>>>>> a7a0105f7b53b0bcdcba5491d238d99c4dba233f
+>>>>>>> c8f7f6ebce014359b077dd2767e825aefba609ac
+vista\adminUsuarios$11.class
+vista\frmRegTrabajador$1.class
+guiRecursos\cstmButon.class
+vista\clienteOfertas$1.class
+guiRecursos\GuiBoton$1.class
+vista\frmRegTrabajador$12.class
+vista\clienteServicios.class
+guiRecursos\varUI.class
+guiRecursos\GuiBarraVentana$3.class
+vista\frmMenuAdmin$3.class
+vista\adminUsuarios.class
+vista\adminUsuarios$9.class
+vista\frmRegCliente$9.class
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c8f7f6ebce014359b077dd2767e825aefba609ac
+dao\daoEspecialidad.class
+vista\adminUsuarios$6.class
+vista\clienteNegociacion$2.class
+modelo\Trabajador2.class
+<<<<<<< HEAD
+=======
+=======
+vista\adminUsuarios$6.class
+>>>>>>> a7a0105f7b53b0bcdcba5491d238d99c4dba233f
+>>>>>>> c8f7f6ebce014359b077dd2767e825aefba609ac
+>>>>>>> 33363c03723b4a0d72b6cc75cb1442df0f41e9c4
 vista\frmMenuCliente$4.class
 guiRecursos\prueba.class
 vista\clienteVerServicio$1.class
@@ -101,6 +307,15 @@ vista\adminUsuarios$13.class
 util\MySQLConexion.class
 modelo\Especialidad.class
 util\MySQLConexionOriginal.class
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+util\MySQLConexionOriginal.class
+=======
+>>>>>>> a7a0105f7b53b0bcdcba5491d238d99c4dba233f
+>>>>>>> c8f7f6ebce014359b077dd2767e825aefba609ac
+>>>>>>> 33363c03723b4a0d72b6cc75cb1442df0f41e9c4
 vista\frmMenuTrabajador.class
 recursos\ExportarExcel.class
 vista\adminUsuarios$7.class
@@ -123,9 +338,16 @@ guiRecursos\GuibotonPanel.class
 guiRecursos\ScrollBarWin11UI$ScrollButton.class
 vista\clienteNegociacion.class
 vista\frmMenuTrabajador$2.class
+<<<<<<< HEAD
 vista\clienteOfertas2.class
 modelo\ContratoDto.class
 modelo\Autenticacion.class
 vista\frmRegTrabajador$9.class
+=======
+<<<<<<< HEAD
+modelo\empleador.class
+=======
+>>>>>>> c8f7f6ebce014359b077dd2767e825aefba609ac
+>>>>>>> 33363c03723b4a0d72b6cc75cb1442df0f41e9c4
 vista\adminUsuarios$8.class
 vista\frmRegCliente$10.class

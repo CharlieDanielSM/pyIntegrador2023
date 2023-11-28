@@ -40,5 +40,6 @@ public class Usuario {
         this.tipoUsua = tipoUsua;
     }
     
-    
+
+            
 }

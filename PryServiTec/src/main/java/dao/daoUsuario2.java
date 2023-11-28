@@ -8,11 +8,11 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.*;
-import util.MySQLConexionOriginal;
+import util.MySQLConexion;
 
 /* 🚀 Developed by NelsonJGP */
 public class daoUsuario2 {
-    Connection con = MySQLConexionOriginal.getConexion();
+    Connection con = MySQLConexion.getConexion();
     
     public void crearUsuario(Usuario2 usuario) {
         String sql = "INSERT INTO usuario (tipo, nombre, apellido, usuario, password, correo,numero) VALUES (?,?, ?, ?, ?, ?, ?)";
@@ -47,35 +47,7 @@ public class daoUsuario2 {
     }
     
     // Método para iniciar sesión con detalles de autenticación
-    public Autenticacion1 autenticar(String usuario, String contraseña) {
-        String sql = "SELECT id FROM usuario WHERE usuario = ?";
 
-        try {
-            PreparedStatement st = con.prepareStatement(sql);
-            st.setString(1, usuario);
-            ResultSet rs = st.executeQuery();
-
-            if (rs.next()) {
-                // Usuario existe
-                int idUsuario = rs.getInt("id");
-
-                // Comprobar si la contraseña coincide
-                if (validarContraseña(idUsuario, contraseña)) {
-                    // Obtener los datos adicionales del usuario
-                    Usuario2 usuarioAutenticado = obtenerUsuario(idUsuario);
-                    return new Autenticacion1(true, true, usuarioAutenticado); // Usuario y contraseña válidos
-                } else {
-                    return new Autenticacion1(true, false, null); // Contraseña incorrecta
-                }
-            } else {
-                return new Autenticacion1(false, false, null); // Usuario incorrecto
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        // Error
-        return new Autenticacion1(false, false, null);
-    }
     
     public boolean validarContraseña(int idUsuario, String contraseña) {
         String sql = "SELECT password FROM usuario WHERE id = ?";
@@ -117,7 +89,7 @@ public class daoUsuario2 {
         return null; // Devuelve null si no se encuentra el usuario
     }
     private String obtenerNombreServicio(int idServicio) {
-        Connection con = MySQLConexionOriginal.getConexion();
+        Connection con = MySQLConexion.getConexion();
         String nombreServicio = "";
 
         try {
@@ -145,7 +117,7 @@ public class daoUsuario2 {
         return nombreServicio;
     }
         public void iniciartabla(DefaultTableModel model) {
-        Connection con = MySQLConexionOriginal.getConexion(); 
+        Connection con = MySQLConexion.getConexion(); 
         try {
             String sql = "SELECT u.id, u.tipo, u.nombre, u.apellido, u.usuario, u.password, u.correo, u.numero, t.servicio_id FROM usuario u LEFT JOIN trabajador t ON u.usuario = t.usuario ORDER BY u.id ASC";
             
@@ -197,7 +169,7 @@ public class daoUsuario2 {
         }
     }
   public int verid() {
-            Connection con = MySQLConexionOriginal.getConexion(); 
+            Connection con = MySQLConexion.getConexion(); 
 
         try {
             String sql = "SELECT MAX(id) FROM usuario";
@@ -241,7 +213,7 @@ public class daoUsuario2 {
         }
     }
       public void  actualizarusuario(int id,int tipo,String nombre,String apellido,String usuario,String contra,String correo,String numero){
-                 Connection con = MySQLConexionOriginal.getConexion(); 
+                 Connection con = MySQLConexion.getConexion(); 
         String sql = "UPDATE usuario SET tipo=?, nombre=?, apellido=?, usuario=?, password=?, correo=?, numero=? WHERE id=?";
             try {
                 PreparedStatement ps=con.prepareStatement(sql);
@@ -270,7 +242,7 @@ public class daoUsuario2 {
         }
       }
           public void eliminarusuario(int id){
-        Connection con=MySQLConexionOriginal.getConexion();
+        Connection con=MySQLConexion.getConexion();
         try {
             String sql="DELETE from usuario WHERE id=?";
             PreparedStatement ps=con.prepareStatement(sql);
@@ -290,4 +262,7 @@ public class daoUsuario2 {
             }
         }
     }
+     public void generarid(){
+         
+     }
 }
