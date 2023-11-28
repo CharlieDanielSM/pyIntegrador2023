@@ -3,12 +3,18 @@ vista\frmRegCliente$11.class
 vista\frmRegCliente$5.class
 guiRecursos\GuiJScrollPane$ScrollLayout.class
 vista\clienteEspecialidad.class
+<<<<<<< HEAD
 vista\AdminTrabajador$10.class
 vista\frmRegTrabajador$5.class
 guiRecursos\cstmButon$1.class
 vista\clienteVerServicio$StarRenderer.class
 vista\AdminTrabajador$1.class
 vista\adminServicios3$4.class
+=======
+vista\frmRegTrabajador$5.class
+guiRecursos\cstmButon$1.class
+vista\clienteVerServicio$StarRenderer.class
+>>>>>>> 93b2ab04f8bb19f0234a07ed36b5a892840c3f4f
 guiRecursos\CustomFont.class
 vista\frmLogin.class
 vista\clienteEspecialidad$1.class
@@ -17,11 +23,14 @@ modelo\Usuario2.class
 vista\clienteOfertas2$1.class
 vista\frmRegTrabajador$11.class
 vista\frmLogin$1.class
+<<<<<<< HEAD
 vista\adminServicios3$3.class
 vista\AdminTrabajador$7.class
 vista\frmElegirTipo$5.class
 vista\frmElegirTipo.class
 modelo\Servicioadmin.class
+=======
+>>>>>>> 93b2ab04f8bb19f0234a07ed36b5a892840c3f4f
 vista\frmMenuCliente$1.class
 vista\frmRegTrabajador$6.class
 guiRecursos\GuiBoton.class
@@ -29,15 +38,18 @@ vista\frmLogin$2.class
 vista\adminUsuarios$10.class
 vista\frmRegTrabajador$10.class
 vista\adminServicios3$9.class
+<<<<<<< HEAD
 vista\AdminTrabajador$6.class
+=======
+vista\PruebasBorrar$2.class
+>>>>>>> 93b2ab04f8bb19f0234a07ed36b5a892840c3f4f
 vista\clienteVerServicio.class
 guiRecursos\ScrollBarWin11UI.class
 vista\clienteOfertas2$DropShadowPanel.class
+dao\daoEmpleador.class
 guiRecursos\GuiBarraVentana$4.class
 modelo\Autenticacion1.class
 dao\daoUsuario.class
-vista\adminServicios3$5.class
-vista\adminServicios3$10.class
 vista\frmLogin$3.class
 vista\adminUsuarios$1.class
 vista\clienteOfertas2$2.class
@@ -45,7 +57,6 @@ vista\adminServicios3$8.class
 vista\adminUsuarios$4.class
 dao\daoNegociacion.class
 modelo\Calificacion.class
-vista\frmMenuAdmin.class
 vista\frmRegTrabajador$7.class
 vista\frmRegCliente$6.class
 modelo\Trabajador.class
@@ -66,6 +77,10 @@ vista\adminUsuarios$13.class
 modelo\Especialidad.class
 vista\frmElegirTipo$2.class
 vista\adminServicios3$6.class
+<<<<<<< HEAD
+=======
+recursos\ExportarExcel.class
+>>>>>>> 93b2ab04f8bb19f0234a07ed36b5a892840c3f4f
 vista\clienteContrato$1.class
 guiRecursos\GuiBarraVentana.class
 vista\frmRegCliente$3.class
@@ -76,6 +91,7 @@ vista\adminUsuarios$2.class
 guiRecursos\GuibotonPanel.class
 guiRecursos\ScrollBarWin11UI$ScrollButton.class
 vista\clienteNegociacion.class
+vista\PruebasBorrar.class
 vista\clienteOfertas2.class
 modelo\ContratoDto.class
 modelo\Autenticacion.class
@@ -104,18 +120,25 @@ vista\frmMenuTrabajador$1.class
 vista\adminServicios3$12.class
 vista\clienteServicios$1.class
 vista\adminServicios3$7.class
+vista\clienteTablaTrab$3.class
 vista\frmRegCliente$2.class
 guiRecursos\GuiJScrollPane.class
 vista\AdminTrabajador$12.class
 vista\frmLogin$4.class
 modelo\Usuario.class
 util\prueba12.class
+<<<<<<< HEAD
 vista\AdminTrabajador.class
+=======
+vista\PruebasBorrar$1.class
+modelo\EmpleadorDto.class
+>>>>>>> 93b2ab04f8bb19f0234a07ed36b5a892840c3f4f
 vista\clienteNegociacion$1.class
 util\prueba1.class
 vista\adminServicios3$11.class
 dao\daoTrabajador.class
 vista\adminServicios3$2.class
+vista\clienteTablaTrab$2.class
 vista\frmMenuCliente$2.class
 vista\frmRegCliente$1.class
 guiRecursos\GuimenuBoton$1.class
@@ -125,6 +148,7 @@ vista\clienteOfertas2$3.class
 guiRecursos\ScrollBarWin11UI$ScrollButton$1.class
 dao\daoTrabajador2.class
 vista\adminUsuarios$11.class
+vista\clienteTablaTrab$1.class
 vista\frmRegTrabajador$1.class
 guiRecursos\cstmButon.class
 vista\clienteOfertas$1.class
@@ -138,21 +162,24 @@ guiRecursos\varUI.class
 guiRecursos\GuiBarraVentana$3.class
 vista\frmMenuAdmin$3.class
 vista\adminUsuarios.class
+vista\clienteTablaTrab.class
 vista\adminUsuarios$9.class
 vista\frmRegCliente$9.class
 dao\daoEspecialidad.class
 vista\adminUsuarios$6.class
 vista\clienteNegociacion$2.class
 modelo\Trabajador2.class
+<<<<<<< HEAD
 vista\AdminTrabajador$5.class
+=======
+>>>>>>> 93b2ab04f8bb19f0234a07ed36b5a892840c3f4f
 vista\frmMenuCliente$4.class
 vista\clienteVerServicio$1.class
 guiRecursos\GuimenuBoton.class
+vista\Cobranza$1.class
 vista\frmRegTrabajador$14.class
 vista\frmRegTrabajador$4.class
-vista\clienteOfertas.class
 guiRecursos\GuiBarraVentana$2.class
-vista\clienteOfertas$3.class
 vista\frmRegCliente.class
 vista\frmMenuCliente.class
 util\MySQLConexion.class
@@ -168,9 +195,11 @@ util\SQLConexion.class
 vista\clienteNegociacion$3.class
 guiRecursos\GuiBarraVentana$1.class
 guiRecursos\GuibotonPanel$1.class
-vista\frmMenuAdmin$2.class
-vista\adminServicios3.class
 vista\frmMenuTrabajador$2.class
 modelo\empleador.class
+<<<<<<< HEAD
 vista\AdminTrabajador$3.class
+=======
+>>>>>>> 93b2ab04f8bb19f0234a07ed36b5a892840c3f4f
 vista\adminUsuarios$8.class
+dao\EmpleadorDao.class

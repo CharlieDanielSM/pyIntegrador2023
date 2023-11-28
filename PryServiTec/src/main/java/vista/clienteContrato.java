@@ -1,9 +1,10 @@
 package vista;
 
 import com.formdev.flatlaf.FlatLightLaf;
-import dao.ContratoDao;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
+import dao.ContratoDao;
+import modelo.Trabajador;
 
 /**
  *
@@ -14,14 +15,18 @@ public class clienteContrato extends javax.swing.JPanel {
     /**
      * Creates new form clienteContrato
      */
-    public clienteContrato() {
+    public clienteContrato(Trabajador trab) {
         FlatLightLaf.setup();
         initComponents();
     }
 
     public void generar(){
+<<<<<<< HEAD
         
+=======
+>>>>>>> 93b2ab04f8bb19f0234a07ed36b5a892840c3f4f
         // Obtener la fecha actual
+        txtCodContrat.setText(TOOL_TIP_TEXT_KEY);
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
         String fechaFormateada = formato.format(new java.sql.Date(new java.util.Date().getTime()));
         txtFecNego.setText(fechaFormateada);
@@ -38,7 +43,7 @@ public class clienteContrato extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtCodNego = new javax.swing.JTextField();
+        txtCodContrat = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtFecNego = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -67,8 +72,8 @@ public class clienteContrato extends javax.swing.JPanel {
         jLabel2.setText("Codigo");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, 20));
 
-        txtCodNego.setEnabled(false);
-        jPanel1.add(txtCodNego, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 100, -1));
+        txtCodContrat.setEnabled(false);
+        jPanel1.add(txtCodContrat, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 100, -1));
 
         jLabel3.setText("Fecha");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 40, 20));
@@ -121,13 +126,13 @@ public class clienteContrato extends javax.swing.JPanel {
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 80, 50, 20));
 
         txtCodTrab.setText("codigo");
-        jPanel1.add(txtCodTrab, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 60, 20));
+        jPanel1.add(txtCodTrab, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 60, 20));
 
         jLabel10.setText("cod: ");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 30, 20));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 30, 20));
 
         txtTrabNombre.setEnabled(false);
-        jPanel1.add(txtTrabNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 190, -1));
+        jPanel1.add(txtTrabNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 150, -1));
 
         jLabel11.setText("Para :");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, 20));
@@ -178,7 +183,7 @@ public class clienteContrato extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTextArea mensaje;
     private javax.swing.JLabel txtCaracteres;
-    private javax.swing.JTextField txtCodNego;
+    private javax.swing.JTextField txtCodContrat;
     private javax.swing.JLabel txtCodTrab;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtFecNego;
