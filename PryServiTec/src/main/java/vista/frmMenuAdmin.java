@@ -8,18 +8,18 @@ import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import modelo.Usuario;
+import modelo.Usuario2;
 
 /**
  *
  * @author Nelson
  */
 public class frmMenuAdmin extends javax.swing.JFrame {
-    Usuario user;
+    Usuario2 user;
     /**
      * Creates new form frmMenu
      */
-    public frmMenuAdmin(Usuario user) {
+    public frmMenuAdmin(Usuario2 user) {
         FlatLightLaf.setup();
         initComponents();
         this.user = user;

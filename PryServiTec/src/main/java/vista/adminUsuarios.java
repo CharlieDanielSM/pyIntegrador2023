@@ -6,8 +6,8 @@ package vista;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import dao.daoServicios;
-import dao.daoTrabajador;
-import dao.daoUsuario;
+import dao.daoTrabajador2;
+import dao.daoUsuario2;
 import java.awt.Color;
 import java.util.Date;
 import java.util.List;
@@ -22,8 +22,8 @@ import javax.swing.JRadioButton;
 import javax.swing.event.RowSorterEvent;
 import javax.swing.event.RowSorterListener;
 import modelo.Servicios;
-import modelo.Trabajador;
-import modelo.Usuario;
+import modelo.Trabajador2;
+import modelo.Usuario2;
 
 /**
  *
@@ -38,12 +38,12 @@ public class adminUsuarios extends javax.swing.JPanel {
           DefaultTableModel model1 = new DefaultTableModel();
 
      TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
-     daoUsuario daos=new daoUsuario();
+     daoUsuario2 daos=new daoUsuario2();
     ButtonGroup tipoCuentaGroup = new ButtonGroup();
     daoServicios daoServ = new daoServicios();
     int validacion;
     int tipo=0;
-     daoUsuario daousuUser=new daoUsuario();
+     daoUsuario2 daousuUser=new daoUsuario2();
 
     public adminUsuarios() {
         FlatLightLaf.setup();
@@ -365,8 +365,8 @@ public class adminUsuarios extends javax.swing.JPanel {
                                                                if(validacion==1){
                                    if(numeroString.length() == 11){
                                        if(esNumeroEntero(numero)){
-                                       Usuario y=new Usuario(tipo, nombre, apellido, usuario, contra, correo,numeroString);
-                                       daoUsuario x=new daoUsuario();
+                                       Usuario2 y=new Usuario2(tipo, nombre, apellido, usuario, contra, correo,numeroString);
+                                       daoUsuario2 x=new daoUsuario2();
                                         x.crearUsuario(y); 
                                         
                                        int idservicio= daoServ.idservicio(servicio);
@@ -377,7 +377,7 @@ public class adminUsuarios extends javax.swing.JPanel {
                                         if(tipo==3){
                                                 java.sql.Date sqlDate = new java.sql.Date(fechaCreacion.getTime());
 
-                                              Trabajador z=new Trabajador(nombre, idservicio, sqlDate, usuario);
+                                              Trabajador2 z=new Trabajador2(nombre, idservicio, sqlDate, usuario);
                                                x.crearTrabajador(z);
 
                                         }   
@@ -626,7 +626,7 @@ public void actualizarTabla() {
        daousuUser.actualizarusuario(id, tipo, nombre, apellido, usuario, contra, correo, numero);
 
         if(tipo==3){
-            daoTrabajador x=new daoTrabajador();
+            daoTrabajador2 x=new daoTrabajador2();
             x.actualizartrabajador(id, nombre, tipo, sqlDate, usuario);
         }else{
 

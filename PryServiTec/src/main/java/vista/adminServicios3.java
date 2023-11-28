@@ -11,7 +11,7 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import modelo.Servicios;
-import util.MySQLConexion;
+import util.MySQLConexionOriginal;
 
 /**
  *

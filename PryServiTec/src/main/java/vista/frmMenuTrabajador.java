@@ -5,18 +5,18 @@ import java.awt.Image;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import modelo.Usuario;
+import modelo.Usuario2;
 
 /**
  *
  * @author Nelson
  */
 public class frmMenuTrabajador extends javax.swing.JFrame {
-    Usuario user;
+    Usuario2 user;
     /**
      * Creates new form frmMenu
      */
-    public frmMenuTrabajador(Usuario user) {
+    public frmMenuTrabajador(Usuario2 user) {
         initComponents();
         this.user = user;
         imageIconCambiar(getClass().getClassLoader().getResource("images/icon/volver.png"), volverIcon, 40);

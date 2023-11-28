@@ -3,46 +3,29 @@ package vista;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
-import java.awt.event.MouseEvent;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import modelo.Usuario;
+import modelo.Usuario2;
 
 /**
  *
  * @author Nelson
  */
 public class frmMenuCliente extends javax.swing.JFrame {
-    Usuario user;
+    Usuario2 user;
     /**
      * Creates new form frmMenu
      */
-    public frmMenuCliente(Usuario user) {
+    public frmMenuCliente(Usuario2 user) {
         initComponents();
         MostrarPanel(new clienteInicio());
         
         this.user = user;
-        imageIconCambiar(getClass().getClassLoader().getResource("images/icon/volver.png"), volverIcon, 40);
         
         ImageUsuario();
-        crearSecciones();
-    }
-    public void crearSecciones(){
-        //Seccion Inicio
-        mnSeccion1.iconImg("inicio.png");
-        mnSeccion1.textoSeccion("Inicio");
-        
-        //Seccion Categorias
-        mnSeccion2.iconImg("services.png");
-        mnSeccion2.textoSeccion("Servicios");
-
-        //Seccion Categorias
-        mnSeccion3.iconImg("cliTrabajadores.png");
-        mnSeccion3.textoSeccion("Ofertas");
-        
-        
     }
     
     public void ImageUsuario(){
@@ -66,12 +49,11 @@ public class frmMenuCliente extends javax.swing.JFrame {
         cstmButon1 = new guiRecursos.cstmButon();
         content = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        mnSeccion1 = new guiRecursos.GuimenuBoton();
-        mnSeccion2 = new guiRecursos.GuimenuBoton();
-        volverPanel = new javax.swing.JPanel();
-        volverIcon = new javax.swing.JLabel();
-        txtSeccion = new javax.swing.JLabel();
-        mnSeccion3 = new guiRecursos.GuimenuBoton();
+        btnOfertas = new guiRecursos.cstmButon();
+        btnInicio = new guiRecursos.cstmButon();
+        btnServicios = new guiRecursos.cstmButon();
+        btnServicios1 = new guiRecursos.cstmButon();
+        btnEspecialidades1 = new guiRecursos.cstmButon();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -127,69 +109,101 @@ public class frmMenuCliente extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(43, 45, 49));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        mnSeccion1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mnSeccion1MouseClicked(evt);
+        btnOfertas.setForeground(new java.awt.Color(255, 255, 255));
+        btnOfertas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/iconOfertas.png"))); // NOI18N
+        btnOfertas.setText("Ofertas");
+        btnOfertas.setBorderColor(null);
+        btnOfertas.setColor(new java.awt.Color(65, 67, 73));
+        btnOfertas.setColorClick(new java.awt.Color(114, 119, 130));
+        btnOfertas.setColorOver(new java.awt.Color(87, 91, 99));
+        btnOfertas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnOfertas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnOfertas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnOfertas.setIconTextGap(15);
+        btnOfertas.setMargin(new java.awt.Insets(0, 10, 0, 0));
+        btnOfertas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOfertasActionPerformed(evt);
             }
         });
-        jPanel2.add(mnSeccion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel2.add(btnOfertas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 210, 60));
 
-        mnSeccion2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mnSeccion2MouseClicked(evt);
+        btnInicio.setForeground(new java.awt.Color(255, 255, 255));
+        btnInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/iconInicio.png"))); // NOI18N
+        btnInicio.setText("Inicio");
+        btnInicio.setBorderColor(null);
+        btnInicio.setColor(new java.awt.Color(65, 67, 73));
+        btnInicio.setColorClick(new java.awt.Color(114, 119, 130));
+        btnInicio.setColorOver(new java.awt.Color(87, 91, 99));
+        btnInicio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnInicio.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnInicio.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnInicio.setIconTextGap(15);
+        btnInicio.setMargin(new java.awt.Insets(0, 10, 0, 0));
+        btnInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicioActionPerformed(evt);
             }
         });
-        jPanel2.add(mnSeccion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, -1, -1));
+        jPanel2.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 60));
 
-        volverPanel.setBackground(new java.awt.Color(43, 45, 49));
-        volverPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        volverPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                volverPanelformMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                volverPanelformMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                volverPanelMousePressed(evt);
-            }
-        });
-
-        volverIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-        txtSeccion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtSeccion.setForeground(new java.awt.Color(255, 255, 255));
-        txtSeccion.setText("Volver");
-
-        javax.swing.GroupLayout volverPanelLayout = new javax.swing.GroupLayout(volverPanel);
-        volverPanel.setLayout(volverPanelLayout);
-        volverPanelLayout.setHorizontalGroup(
-            volverPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(volverPanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(volverIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        volverPanelLayout.setVerticalGroup(
-            volverPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(volverPanelLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(volverPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(volverIcon, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                    .addComponent(txtSeccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        jPanel2.add(volverPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, -1, 50));
-
-        mnSeccion3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mnSeccion3MouseClicked(evt);
+        btnServicios.setForeground(new java.awt.Color(255, 255, 255));
+        btnServicios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/iconVolver.png"))); // NOI18N
+        btnServicios.setText("Volver");
+        btnServicios.setBorderColor(null);
+        btnServicios.setColor(new java.awt.Color(43, 45, 49));
+        btnServicios.setColorClick(new java.awt.Color(205, 97, 85));
+        btnServicios.setColorOver(new java.awt.Color(192, 57, 43));
+        btnServicios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnServicios.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnServicios.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnServicios.setIconTextGap(15);
+        btnServicios.setMargin(new java.awt.Insets(0, 10, 0, 0));
+        btnServicios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnServiciosActionPerformed(evt);
             }
         });
-        jPanel2.add(mnSeccion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, -1, -1));
+        jPanel2.add(btnServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 210, 60));
+
+        btnServicios1.setForeground(new java.awt.Color(255, 255, 255));
+        btnServicios1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/iconListar.png"))); // NOI18N
+        btnServicios1.setText("Negociaciones");
+        btnServicios1.setBorderColor(null);
+        btnServicios1.setColor(new java.awt.Color(65, 67, 73));
+        btnServicios1.setColorClick(new java.awt.Color(114, 119, 130));
+        btnServicios1.setColorOver(new java.awt.Color(87, 91, 99));
+        btnServicios1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnServicios1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnServicios1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnServicios1.setIconTextGap(15);
+        btnServicios1.setMargin(new java.awt.Insets(0, 10, 0, 0));
+        btnServicios1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnServicios1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnServicios1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 210, 60));
+
+        btnEspecialidades1.setForeground(new java.awt.Color(255, 255, 255));
+        btnEspecialidades1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/iconServicios.png"))); // NOI18N
+        btnEspecialidades1.setText("Especialidades");
+        btnEspecialidades1.setBorderColor(null);
+        btnEspecialidades1.setBorderPainted(false);
+        btnEspecialidades1.setColor(new java.awt.Color(65, 67, 73));
+        btnEspecialidades1.setColorClick(new java.awt.Color(114, 119, 130));
+        btnEspecialidades1.setColorOver(new java.awt.Color(87, 91, 99));
+        btnEspecialidades1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnEspecialidades1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnEspecialidades1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnEspecialidades1.setIconTextGap(15);
+        btnEspecialidades1.setMargin(new java.awt.Insets(0, 10, 0, 0));
+        btnEspecialidades1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEspecialidades1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnEspecialidades1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 210, 60));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 210, 490));
 
@@ -211,32 +225,32 @@ public class frmMenuCliente extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void btnOfertasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOfertasActionPerformed
+        Usuario user = new Usuario();
+        user.setCodiUsua("cliente");
+        user.setPassUsua("cliente");
+        user.setTipoUsua("cliente");
+        MostrarPanel(new clienteOfertas(user));
+    }//GEN-LAST:event_btnOfertasActionPerformed
 
-    private void volverPanelformMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverPanelformMouseEntered
-        volverPanel.setBackground(new Color(203, 64, 64));
-    }//GEN-LAST:event_volverPanelformMouseEntered
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+        MostrarPanel(new clienteInicio());
+    }//GEN-LAST:event_btnInicioActionPerformed
 
-    private void volverPanelformMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverPanelformMouseExited
-        volverPanel.setBackground(new Color(43,45,49));
-    }//GEN-LAST:event_volverPanelformMouseExited
-
-    private void volverPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverPanelMousePressed
+    private void btnServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServiciosActionPerformed
         frmLogin login = new frmLogin();
         login.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_volverPanelMousePressed
-    
-    private void mnSeccion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnSeccion1MouseClicked
-        MostrarPanel(new clienteInicio());
-    }//GEN-LAST:event_mnSeccion1MouseClicked
+    }//GEN-LAST:event_btnServiciosActionPerformed
 
-    private void mnSeccion2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnSeccion2MouseClicked
+    private void btnServicios1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServicios1ActionPerformed
         MostrarPanel(new clienteServicios());
-    }//GEN-LAST:event_mnSeccion2MouseClicked
+    }//GEN-LAST:event_btnServicios1ActionPerformed
 
-    private void mnSeccion3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnSeccion3MouseClicked
-        MostrarPanel(new clienteOfertas());
-    }//GEN-LAST:event_mnSeccion3MouseClicked
+    private void btnEspecialidades1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEspecialidades1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEspecialidades1ActionPerformed
 
     public void MostrarPanel(JPanel panel){
         panel.setSize(content.getWidth(),content.getHeight());
@@ -293,9 +307,14 @@ public class frmMenuCliente extends javax.swing.JFrame {
             System.out.println("No se encontro");
         }
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private guiRecursos.GuiBarraVentana barraVentana1;
+    private guiRecursos.cstmButon btnEspecialidades1;
+    private guiRecursos.cstmButon btnInicio;
+    private guiRecursos.cstmButon btnOfertas;
+    private guiRecursos.cstmButon btnServicios;
+    private guiRecursos.cstmButon btnServicios1;
     private javax.swing.JPanel content;
     private guiRecursos.cstmButon cstmButon1;
     private javax.swing.JLabel jLabel2;
@@ -303,12 +322,6 @@ public class frmMenuCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private guiRecursos.GuimenuBoton mnSeccion1;
-    private guiRecursos.GuimenuBoton mnSeccion2;
-    private guiRecursos.GuimenuBoton mnSeccion3;
-    private javax.swing.JLabel txtSeccion;
     private javax.swing.JLabel userImage;
-    private javax.swing.JLabel volverIcon;
-    private javax.swing.JPanel volverPanel;
     // End of variables declaration//GEN-END:variables
 }

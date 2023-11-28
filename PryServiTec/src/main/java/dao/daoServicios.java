@@ -8,11 +8,11 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.DetalleTrabajador;
 import modelo.Servicios;
-import util.MySQLConexion;
+import util.MySQLConexionOriginal;
 
 /* 🚀 Developed by NelsonJGP */
 public class daoServicios {
-    Connection con = MySQLConexion.getConexion();
+    Connection con = MySQLConexionOriginal.getConexion();
     public List<Servicios> obtenerServicios() {
         List<Servicios> servicios = new ArrayList<>();
 
@@ -153,7 +153,7 @@ public class daoServicios {
 
     
     public void iniciartabla(DefaultTableModel model) {
-        Connection con = MySQLConexion.getConexion(); 
+        Connection con = MySQLConexionOriginal.getConexion(); 
         try {
             String sql = "SELECT * FROM servicios"; 
             PreparedStatement ps = con.prepareStatement(sql);
@@ -180,7 +180,7 @@ public class daoServicios {
         }
     }
     public int verid() {
-            Connection con = MySQLConexion.getConexion(); 
+            Connection con = MySQLConexionOriginal.getConexion(); 
 
         try {
             String sql = "SELECT MAX(id) FROM servicios";
@@ -207,7 +207,7 @@ public class daoServicios {
         return 0;
     }
         public boolean validarservicio(String servicio){
-            Connection con = MySQLConexion.getConexion(); 
+            Connection con = MySQLConexionOriginal.getConexion(); 
 
             try {
                 String sql="Select nombre_servicio FROM servicios where nombre_servicio=?";
@@ -229,7 +229,7 @@ public class daoServicios {
         }
         }
     public void actualizarservicio(int id,String servicio, String descripcion) {
-           Connection con = MySQLConexion.getConexion(); 
+           Connection con = MySQLConexionOriginal.getConexion(); 
         String sql = "UPDATE servicios SET nombre_servicio=?, descripcion=? WHERE id=?";
             try {
                 PreparedStatement ps=con.prepareStatement(sql);
@@ -252,7 +252,7 @@ public class daoServicios {
         }
         }
     public void eliminarservicio(int id){
-        Connection con=MySQLConexion.getConexion();
+        Connection con=MySQLConexionOriginal.getConexion();
         try {
             String sql="DELETE from servicios WHERE id=?";
             PreparedStatement ps=con.prepareStatement(sql);
