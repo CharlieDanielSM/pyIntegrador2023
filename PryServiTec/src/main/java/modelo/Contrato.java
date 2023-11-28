@@ -1,6 +1,8 @@
 
 package modelo;
 
+package dao;
+
 import java.sql.Date;
 
 /* 🚀 Developed by NelsonJGP */
