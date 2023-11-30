@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class generaPDF {
+public class generaPDFespecialidades {
 
     public static Font fuenteNormal() {
         return loadFont("/fonts/Lato-Regular.ttf", 12f);
@@ -35,7 +35,7 @@ public class generaPDF {
         }
     }
 
-    public static void generarPDF(DefaultTableModel modeloTabla, EmpleadorDto emp) {
+    public static void generarPDF(DefaultTableModel modeloTabla) {
        JFileChooser chooser = new JFileChooser();
        chooser.setDialogTitle("Guardar archivo PDF");
        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -62,7 +62,7 @@ public class generaPDF {
 
                 // Agregar la imagen a la izquierda
                 Image imagen = Image.getInstance("src/main/resources/images/logoDoc.png");
-                imagen.scaleToFit(220, 100);
+                imagen.scaleToFit(250, 100);
                 PdfPCell imagenCell = new PdfPCell(imagen);
                 imagenCell.setBorder(Rectangle.NO_BORDER);
                 contenedor.addCell(imagenCell);
@@ -86,22 +86,13 @@ public class generaPDF {
                 // Agregar el contenedor al documento
                 document.add(contenedor);
 
-                // Agregar código, nombre, email antes de la tabla
-                Font fontDatos = new Font(Font.FontFamily.HELVETICA, 12);
-                Chunk chunckInfo = new Chunk("Factura para:", loadFont("/fonts/Lato-Bold.ttf", 14f));
-                Paragraph datos = new Paragraph();
-                datos.add(chunckInfo);
-                datos.add("\nCódigo: "+emp.getCodiEmpl()+""
-                        + "\nNombre: "+emp.getNombEmpl()
-                        + "\nDni/Ruc: "+emp.getDniRucEmpl()
-                        + "\nEmail: "+emp.getEmailEmpl()
-                        + "\nTelefono: "+emp.getTeleEmp());
-                datos.setAlignment(Element.ALIGN_LEFT);
-                datos.setSpacingAfter(20);  // Espaciado después del párrafo
-                document.add(datos);
-
                  // Agregar contenido de la tabla
                 agregarContenidoTabla(document, modeloTabla);
+
+                // Ejemplo de texto en negrita y subrayado
+                Font fontEjemplo = fuenteNueva;
+                Paragraph ejemplo = new Paragraph("Ejemplo de texto en negrita y subrayado.", fontEjemplo);
+                document.add(ejemplo);
 
                 JOptionPane.showMessageDialog(null, "COMPROBANTE GENERADO");
                 document.close();

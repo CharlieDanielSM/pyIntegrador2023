@@ -28,6 +28,7 @@ guiRecursos\GuiBoton.class
 vista\frmLogin$2.class
 vista\adminUsuarios$10.class
 vista\frmRegTrabajador$10.class
+recursos\GenerarFacturaPDF$HeaderFooterPageEvent.class
 vista\adminServicios3$9.class
 vista\PruebasBorrar$2.class
 vista\AdminTrabajador$6.class
@@ -37,6 +38,7 @@ dao\daoEmpleador.class
 guiRecursos\GuiBarraVentana$4.class
 modelo\Autenticacion1.class
 dao\daoUsuario.class
+recursos\GenerarFacturaPDF.class
 vista\frmLogin$3.class
 vista\adminUsuarios$1.class
 vista\clienteTablaEsp.class
@@ -49,6 +51,7 @@ vista\frmRegCliente$6.class
 modelo\Trabajador.class
 vista\frmRegTrabajador.class
 vista\frmRegCliente$12.class
+modelo\generaPDForiginal.class
 dao\daoServicios.class
 modelo\Servicios.class
 vista\frmElegirTipo$1.class
@@ -151,6 +154,7 @@ vista\adminUsuarios$6.class
 vista\clienteNegociacion$2.class
 modelo\Trabajador2.class
 vista\AdminTrabajador$5.class
+vista\Cobranza$4.class
 vista\frmMenuCliente$4.class
 vista\clienteVerServicio$1.class
 guiRecursos\GuimenuBoton.class
@@ -158,6 +162,7 @@ vista\Cobranza$1.class
 vista\frmRegTrabajador$14.class
 vista\frmRegTrabajador$4.class
 guiRecursos\GuiBarraVentana$2.class
+modelo\generaPDFespecialidades.class
 vista\frmRegCliente.class
 vista\frmMenuCliente.class
 util\MySQLConexion.class
