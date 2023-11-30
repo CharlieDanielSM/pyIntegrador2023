@@ -13,9 +13,6 @@ public class empleador {
 
     public empleador() {
     }
-
-    
-    
     
     public empleador(String codiEmpl, String dniRucEmpl, String nombEmpl, String teleEmpl, String emailEmpl, String fk_codiTipoEmpl, String fk_codiUsua) {
         this.codiEmpl = codiEmpl;
