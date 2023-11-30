@@ -5,29 +5,16 @@
 package vista;
 
 import com.formdev.flatlaf.FlatLightLaf;
-import dao.daoServicios;
-import dao.daoTrabajador2;
 import dao.daoUsuario;
 import java.awt.Color;
 import java.io.IOException;
-import java.util.Date;
-import java.util.List;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JRadioButton;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
-import javax.swing.event.RowSorterEvent;
-import javax.swing.event.RowSorterListener;
-import modelo.Servicios;
-import modelo.Trabajador2;
 import modelo.Usuario;
-import modelo.Usuario2;
 import modelo.empleador;
 
 /**

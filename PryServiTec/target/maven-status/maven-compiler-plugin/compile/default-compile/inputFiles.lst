@@ -39,7 +39,6 @@ Z:\Programming\ServiTec\pyIntegrador2023\PryServiTec\src\main\java\vista\cliente
 Z:\Programming\ServiTec\pyIntegrador2023\PryServiTec\src\main\java\vista\frmMenuTrabajador.java
 Z:\Programming\ServiTec\pyIntegrador2023\PryServiTec\src\main\java\modelo\Trabajador.java
 Z:\Programming\ServiTec\pyIntegrador2023\PryServiTec\src\main\java\modelo\empleador.java
-Z:\Programming\ServiTec\pyIntegrador2023\PryServiTec\src\main\java\dao\daoTrabajador2.java
 Z:\Programming\ServiTec\pyIntegrador2023\PryServiTec\src\main\java\guiRecursos\GuiJScrollPane.java
 Z:\Programming\ServiTec\pyIntegrador2023\PryServiTec\src\main\java\guiRecursos\GuibotonPanel.java
 Z:\Programming\ServiTec\pyIntegrador2023\PryServiTec\src\main\java\modelo\Trabajador2.java
@@ -52,13 +51,10 @@ Z:\Programming\ServiTec\pyIntegrador2023\PryServiTec\src\main\java\modelo\Especi
 Z:\Programming\ServiTec\pyIntegrador2023\PryServiTec\src\main\java\vista\clienteTablaEsp.java
 Z:\Programming\ServiTec\pyIntegrador2023\PryServiTec\src\main\java\util\MySQLConexion.java
 Z:\Programming\ServiTec\pyIntegrador2023\PryServiTec\src\main\java\vista\Cobranza.java
-Z:\Programming\ServiTec\pyIntegrador2023\PryServiTec\src\main\java\guiRecursos\varUI.java
-Z:\Programming\ServiTec\pyIntegrador2023\PryServiTec\src\main\java\guiRecursos\prueba.java
 Z:\Programming\ServiTec\pyIntegrador2023\PryServiTec\src\main\java\vista\frmLogin.java
 Z:\Programming\ServiTec\pyIntegrador2023\PryServiTec\src\main\java\guiRecursos\CustomFont.java
 Z:\Programming\ServiTec\pyIntegrador2023\PryServiTec\src\main\java\util\prueba1.java
 Z:\Programming\ServiTec\pyIntegrador2023\PryServiTec\src\main\java\guiRecursos\GuiBoton.java
-Z:\Programming\ServiTec\pyIntegrador2023\PryServiTec\src\main\java\vista\clienteOfertas2.java
 Z:\Programming\ServiTec\pyIntegrador2023\PryServiTec\src\main\java\vista\clienteNegociacion.java
 Z:\Programming\ServiTec\pyIntegrador2023\PryServiTec\src\main\java\util\MySQLConexionOriginal.java
 Z:\Programming\ServiTec\pyIntegrador2023\PryServiTec\src\main\java\dao\daoServicios.java
