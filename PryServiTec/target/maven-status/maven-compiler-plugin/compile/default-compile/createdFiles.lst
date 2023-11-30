@@ -14,7 +14,6 @@ vista\frmLogin.class
 vista\clienteEspecialidad$1.class
 vista\frmMenuAdmin$1.class
 modelo\Usuario2.class
-vista\clienteOfertas2$1.class
 vista\frmRegTrabajador$11.class
 vista\frmLogin$1.class
 vista\clienteTablaEsp$1.class
@@ -34,14 +33,12 @@ vista\PruebasBorrar$2.class
 vista\AdminTrabajador$6.class
 vista\clienteVerServicio.class
 guiRecursos\ScrollBarWin11UI.class
-vista\clienteOfertas2$DropShadowPanel.class
 dao\daoEmpleador.class
 guiRecursos\GuiBarraVentana$4.class
 modelo\Autenticacion1.class
 dao\daoUsuario.class
 vista\frmLogin$3.class
 vista\adminUsuarios$1.class
-vista\clienteOfertas2$2.class
 vista\clienteTablaEsp.class
 vista\adminServicios3$8.class
 vista\adminUsuarios$4.class
@@ -51,12 +48,10 @@ vista\frmRegTrabajador$7.class
 vista\frmRegCliente$6.class
 modelo\Trabajador.class
 vista\frmRegTrabajador.class
-guiRecursos\prueba$1.class
 vista\frmRegCliente$12.class
 dao\daoServicios.class
 modelo\Servicios.class
 vista\frmElegirTipo$1.class
-guiRecursos\prueba.class
 vista\adminCobranza.class
 vista\frmElegirTipo$4.class
 vista\AdminTrabajador$8.class
@@ -81,7 +76,6 @@ guiRecursos\ScrollBarWin11UI$ScrollButton.class
 vista\clienteEspecialidad$2.class
 vista\clienteNegociacion.class
 vista\PruebasBorrar.class
-vista\clienteOfertas2.class
 modelo\ContratoDto.class
 modelo\Autenticacion.class
 vista\frmRegTrabajador$9.class
@@ -133,9 +127,7 @@ vista\frmRegCliente$1.class
 guiRecursos\GuimenuBoton$1.class
 vista\frmRegCliente$7.class
 guiRecursos\PolygonCorner.class
-vista\clienteOfertas2$3.class
 guiRecursos\ScrollBarWin11UI$ScrollButton$1.class
-dao\daoTrabajador2.class
 vista\adminUsuarios$11.class
 vista\clienteTablaTrab$1.class
 vista\frmRegTrabajador$1.class
@@ -148,7 +140,6 @@ vista\clienteTablaEsp$2.class
 vista\frmRegTrabajador$12.class
 vista\Cobranza.class
 vista\clienteServicios.class
-guiRecursos\varUI.class
 guiRecursos\GuiBarraVentana$3.class
 vista\frmMenuAdmin$3.class
 vista\adminUsuarios.class
