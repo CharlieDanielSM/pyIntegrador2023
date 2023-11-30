@@ -32,7 +32,7 @@ public class EmpleadorDao
                 empleador.setCodiEmpl(resultSet.getString("codiEmpl"));
                 empleador.setDniRucEmpl(resultSet.getString("dniRucEmpl"));
                 empleador.setNombEmpl(resultSet.getString("nombEmpl"));
-                empleador.setTeleEmp(resultSet.getString("teleEmp"));
+                empleador.setTeleEmp(resultSet.getString("teleEmpl"));
                 empleador.setEmailEmpl(resultSet.getString("emailEmpl"));
 
                 // Establece otros atributos del empleador si los hay

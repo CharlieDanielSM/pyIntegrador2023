@@ -10,13 +10,13 @@ public class Cobranza extends javax.swing.JInternalFrame {
 
     
     public void actualizarTabla() {
-        ContratoDao contratoDao = new ContratoDao();
-        List<ContratoDto> listaContra = contratoDao.listarContrato();
+        EmpleadorDao Empleadao = new EmpleadorDao();
+        List<EmpleadorDto> listaEmple = Empleadao.listarEmpleadores();
         DefaultTableModel modeloTabla = (DefaultTableModel) jTable1.getModel();
         modeloTabla.setRowCount(0);
 
-        for (ContratoDto contra : listaContra) {
-                Object[] fila = {contra.getCodiCont(), contra.getFechCont(), contra.getEstCont(), contra.getFechFincont()};
+        for (EmpleadorDto Emple : listaEmple) {
+                Object[] fila = {Emple.getCodiEmpl(), Emple.getNombEmpl(), Emple.getEmailEmpl()};
                 modeloTabla.addRow(fila);
 
         }
@@ -34,19 +34,10 @@ public class Cobranza extends javax.swing.JInternalFrame {
             EmpleadorDto empleador = empleadorDao.obtenerEmpleadorPorID(contra.getCodiEmpl());
             Negociacion negociacion= negociadao.obtenerNegociacion(contra.getCodiNego());
             
-            /*if (empleador != null) {
+            if (empleador != null) {
                 Object[] fila = {contra.getCodiCont(), contra.getFechCont(), empleador.getNombEmpl(),negociacion.getMontNego()};
                 modeloTabla.addRow(fila);
-                
-            }*/
-           
-            System.out.println("Codi: "+contra.getCodiCont());
-            System.out.println("CodiEMPL: "+contra.getCodiEmpl());
-            System.out.println("fecha: "+ contra.getFechCont());
-            System.out.println("Nego: "+ empleador);
-
-            System.out.println("nomb: "+empleador.getNombEmpl());
-            System.out.println("monto: "+negociacion.getMontNego());
+            }
         }
     }
     
@@ -57,8 +48,6 @@ public class Cobranza extends javax.swing.JInternalFrame {
         }
         return true;
     }
-    
-    
     
     
     public Cobranza() {
@@ -90,17 +79,17 @@ public class Cobranza extends javax.swing.JInternalFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Codigo", "Fecha", "Estado", "Fecha Final", "Cliente"
+                "Codigo", "Nombre", "Email", "Contratos"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -187,7 +176,7 @@ public class Cobranza extends javax.swing.JInternalFrame {
         String codigo;
         
         int pos=jTable1.getSelectedRow();
-        codigo = jTable1.getValueAt(pos, 1).toString();
+        codigo = jTable1.getValueAt(pos, 0).toString();
         listaContratoCliente(codigo);
        
        clickCount[0] = 0; 
@@ -200,9 +189,13 @@ public class Cobranza extends javax.swing.JInternalFrame {
 
     private void btnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturarActionPerformed
 
+        generaPDF pdf =new generaPDF();
+        DefaultTableModel modeloTabla = (DefaultTableModel) jTable2.getModel();
         int pos=jTable2.getSelectedRow();
         if(pos !=1)
         {
+           pdf.generarPDF("PRUEBA.pdf",modeloTabla );            
+            
         }
         else
         {

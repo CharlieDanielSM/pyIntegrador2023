@@ -45,7 +45,7 @@ public class daoNegociacion {
     public Negociacion obtenerNegociacion(String codiNego) {
         Negociacion negociacion = null;
 
-        String sql = "SELECT  FROM negociacion WHERE codiNego = ?";
+        String sql = "SELECT * FROM negociacion WHERE codiNego = ?";
 
         try (Connection con = MySQLConexion.getConexion();
              PreparedStatement st = con.prepareStatement(sql)) {
@@ -58,9 +58,9 @@ public class daoNegociacion {
                     double montNego = rs.getDouble("montNego");
                     String descNego = rs.getString("descNego");
                     String fk_codiTrab = rs.getString("fk_codiTrab");
-                    String fk_codiCliente = rs.getString("fk_codiCliente");
+                    String fk_codiEmpl = rs.getString("fk_codiEmpl");
 
-                    negociacion = new Negociacion(codiNego, fechNego, estaNego, montNego, descNego, fk_codiTrab, fk_codiCliente);
+                    negociacion = new Negociacion(codiNego, fechNego, estaNego, montNego, descNego, fk_codiTrab, fk_codiEmpl);
                 }
             }
         } catch (SQLException e) {

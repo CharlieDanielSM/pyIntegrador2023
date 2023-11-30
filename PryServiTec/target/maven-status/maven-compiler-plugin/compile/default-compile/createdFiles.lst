@@ -94,6 +94,7 @@ vista\adminUsuarios$5.class
 vista\clienteServicios$DropShadowPanel.class
 vista\clienteContrato.class
 vista\adminServicios3$1.class
+modelo\generaPDF.class
 vista\frmElegirTipo$3.class
 vista\frmRegTrabajador$13.class
 vista\adminUsuarios$12.class
