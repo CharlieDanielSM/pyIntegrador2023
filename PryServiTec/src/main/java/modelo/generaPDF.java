@@ -6,10 +6,14 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import javax.swing.table.DefaultTableModel;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 
 public class generaPDF 
 {
@@ -32,27 +36,39 @@ public class generaPDF
 
             // Agregar contenido de la tabla
             agregarContenidoTabla(document, modeloTabla);
-
+            JOptionPane.showMessageDialog(null,"COMPROBANTE GENERADO");
             document.close();
+            
         } catch (DocumentException | IOException e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null,"ERROR AL GENERAR PDF");           
         }
-        
     }
-    
 
 
     private static void agregarContenidoTabla(Document document, DefaultTableModel modeloTabla) throws DocumentException {
+        
+
+        PdfPTable tabla = new PdfPTable(modeloTabla.getColumnCount());
+        tabla.setWidthPercentage(100);
+
+        // Agregar encabezados de columna
+        for (int columna = 0; columna < modeloTabla.getColumnCount(); columna++) {
+            tabla.addCell(new PdfPCell(new Phrase(modeloTabla.getColumnName(columna))));
+        }
+
+        // Agregar contenido de la tabla
         for (int fila = 0; fila < modeloTabla.getRowCount(); fila++) {
             for (int columna = 0; columna < modeloTabla.getColumnCount(); columna++) {
-                document.add(new Paragraph(modeloTabla.getValueAt(fila, columna).toString()));
+                tabla.addCell(new PdfPCell(new Phrase(modeloTabla.getValueAt(fila, columna).toString())));
             }
-            // Agregar nueva línea después de cada fila
-            document.add(new Paragraph("\n"));
         }
+
+        // Agregar la tabla al documento
+        document.add(tabla);
     }
     
-    
+ 
     
     
     
