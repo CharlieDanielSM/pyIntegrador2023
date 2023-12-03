@@ -91,4 +91,74 @@ public class ContratoDao {
 
         return nuevoCodigo;
     }
+    
+    // Método para crear un nuevo contrato
+    public boolean nuevo(ContratoDto contrato) {
+        String sql = "INSERT INTO contrato (codiCont, fechCont, fechInicCont, fechFinCont, estaCont, descCont, fk_codiNego, fk_codiEmpl, fk_codiTrab) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try {
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setString(1, contrato.getCodiCont());
+            st.setString(2, contrato.getFechCont());
+            st.setString(3, contrato.getFechInicCont());
+            st.setString(4, contrato.getFechFincont());
+            st.setString(5, contrato.getEstCont());
+            st.setString(6, contrato.getDescCont());
+            st.setString(7, contrato.getCodiNego());
+            st.setString(8, contrato.getCodiEmpl());
+            st.setString(9, contrato.getCodiTrab());
+
+            int rowsAffected = st.executeUpdate();
+
+            return rowsAffected > 0; // Retorna true si se insertó correctamente
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false; // Retorna false en caso de error
+    }
+    
+        // Método para actualizar un contrato existente
+    public boolean editar(ContratoDto contrato) {
+        String sql = "UPDATE contrato SET fechCont = ?, fechInicCont = ?, fechFinCont = ?, estaCont = ?, descCont = ?, fk_codiNego = ?, fk_codiEmpl = ?, fk_codiTrab = ? WHERE codiCont = ?";
+
+        try {
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setString(1, contrato.getFechCont());
+            st.setString(2, contrato.getFechInicCont());
+            st.setString(3, contrato.getFechFincont());
+            st.setString(4, contrato.getEstCont());
+            st.setString(5, contrato.getDescCont());
+            st.setString(6, contrato.getCodiNego());
+            st.setString(7, contrato.getCodiEmpl());
+            st.setString(8, contrato.getCodiTrab());
+            st.setString(9, contrato.getCodiCont());
+
+            int rowsAffected = st.executeUpdate();
+
+            return rowsAffected > 0; // Retorna true si se actualizó correctamente
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false; // Retorna false en caso de error
+    }
+
+    // Método para eliminar un contrato existente por su código
+    public boolean eliminar(String codiCont) {
+        String sql = "DELETE FROM contrato WHERE codiCont = ?";
+
+        try {
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setString(1, codiCont);
+
+            int rowsAffected = st.executeUpdate();
+
+            return rowsAffected > 0; // Retorna true si se eliminó correctamente
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false; // Retorna false en caso de error
+    }
 }

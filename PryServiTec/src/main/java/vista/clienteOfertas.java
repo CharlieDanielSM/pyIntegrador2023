@@ -1,6 +1,7 @@
 package vista;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import dao.ContratoDao;
 import dao.daoEspecialidad;
 import dao.daoTrabajador;
 import java.awt.BorderLayout;
@@ -29,11 +30,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
-import javax.swing.table.DefaultTableModel;
 import modelo.Especialidad;
 import modelo.Trabajador;
 import modelo.Usuario;
-import recursos.ExportarExcel;
 
 /**
  *
@@ -43,6 +42,7 @@ public class clienteOfertas extends javax.swing.JPanel{
     
     daoTrabajador daoTrab = new daoTrabajador();
     daoEspecialidad daoEsp = new daoEspecialidad();
+    ContratoDao daoCont = new ContratoDao();
     Usuario user;
     List<Trabajador> trabajadores;
     /**
@@ -181,7 +181,8 @@ public class clienteOfertas extends javax.swing.JPanel{
 
                     if (opcion == JOptionPane.YES_OPTION) {
                         System.out.println("Sí");
-                        MostrarPanel(new clienteNegociacion(trabajador, user));
+                        //MostrarPanel(new clienteNegociacion(trabajador, user));
+                        
                     } else {
                         System.out.println("No");
                     }
