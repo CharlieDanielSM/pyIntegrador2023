@@ -20,9 +20,8 @@ public class frmMenuCliente extends javax.swing.JFrame {
     public frmMenuCliente(Usuario user) {
         initComponents();
         MostrarPanel(new clienteInicio());
-        
-        this.user = user;
-        
+        if (user==null) this.user = new Usuario("cliente", "cliente", "cliente"); else this.user = user;
+        System.out.println("user: "+this.user.getCodiUsua()+",pass:"+this.user.getPassUsua()+",tipo:"+this.user.getTipoUsua());
         ImageUsuario();
     }
     
@@ -49,9 +48,10 @@ public class frmMenuCliente extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         btnOfertas = new guiRecursos.cstmButon();
         btnInicio = new guiRecursos.cstmButon();
-        btnServicios = new guiRecursos.cstmButon();
+        btnVolver = new guiRecursos.cstmButon();
         btnServicios1 = new guiRecursos.cstmButon();
         btnEspecialidades1 = new guiRecursos.cstmButon();
+        btnOfertas1 = new guiRecursos.cstmButon();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -145,24 +145,24 @@ public class frmMenuCliente extends javax.swing.JFrame {
         });
         jPanel2.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 60));
 
-        btnServicios.setForeground(new java.awt.Color(255, 255, 255));
-        btnServicios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/iconVolver.png"))); // NOI18N
-        btnServicios.setText("Volver");
-        btnServicios.setBorderColor(null);
-        btnServicios.setColor(new java.awt.Color(43, 45, 49));
-        btnServicios.setColorClick(new java.awt.Color(205, 97, 85));
-        btnServicios.setColorOver(new java.awt.Color(192, 57, 43));
-        btnServicios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnServicios.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnServicios.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnServicios.setIconTextGap(15);
-        btnServicios.setMargin(new java.awt.Insets(0, 10, 0, 0));
-        btnServicios.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/iconVolver.png"))); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.setBorderColor(null);
+        btnVolver.setColor(new java.awt.Color(43, 45, 49));
+        btnVolver.setColorClick(new java.awt.Color(205, 97, 85));
+        btnVolver.setColorOver(new java.awt.Color(192, 57, 43));
+        btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnVolver.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnVolver.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnVolver.setIconTextGap(15);
+        btnVolver.setMargin(new java.awt.Insets(0, 10, 0, 0));
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnServiciosActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
-        jPanel2.add(btnServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 210, 60));
+        jPanel2.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 210, 60));
 
         btnServicios1.setForeground(new java.awt.Color(255, 255, 255));
         btnServicios1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/iconListar.png"))); // NOI18N
@@ -181,7 +181,7 @@ public class frmMenuCliente extends javax.swing.JFrame {
                 btnServicios1ActionPerformed(evt);
             }
         });
-        jPanel2.add(btnServicios1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 210, 60));
+        jPanel2.add(btnServicios1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 210, 60));
 
         btnEspecialidades1.setForeground(new java.awt.Color(255, 255, 255));
         btnEspecialidades1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/iconServicios.png"))); // NOI18N
@@ -202,6 +202,25 @@ public class frmMenuCliente extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnEspecialidades1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 210, 60));
+
+        btnOfertas1.setForeground(new java.awt.Color(255, 255, 255));
+        btnOfertas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/iconHistory.png"))); // NOI18N
+        btnOfertas1.setText("Historial");
+        btnOfertas1.setBorderColor(null);
+        btnOfertas1.setColor(new java.awt.Color(65, 67, 73));
+        btnOfertas1.setColorClick(new java.awt.Color(114, 119, 130));
+        btnOfertas1.setColorOver(new java.awt.Color(87, 91, 99));
+        btnOfertas1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnOfertas1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnOfertas1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnOfertas1.setIconTextGap(15);
+        btnOfertas1.setMargin(new java.awt.Insets(0, 10, 0, 0));
+        btnOfertas1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOfertas1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnOfertas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 210, 60));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 210, 490));
 
@@ -236,11 +255,11 @@ public class frmMenuCliente extends javax.swing.JFrame {
         MostrarPanel(new clienteInicio());
     }//GEN-LAST:event_btnInicioActionPerformed
 
-    private void btnServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServiciosActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         frmLogin login = new frmLogin();
         login.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btnServiciosActionPerformed
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnServicios1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServicios1ActionPerformed
         
@@ -249,6 +268,10 @@ public class frmMenuCliente extends javax.swing.JFrame {
     private void btnEspecialidades1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEspecialidades1ActionPerformed
         MostrarPanel(new clienteEspecialidad());
     }//GEN-LAST:event_btnEspecialidades1ActionPerformed
+
+    private void btnOfertas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOfertas1ActionPerformed
+        MostrarPanel(new clienteHistorial(user));
+    }//GEN-LAST:event_btnOfertas1ActionPerformed
 
     public void MostrarPanel(JPanel panel){
         panel.setSize(content.getWidth(),content.getHeight());
@@ -311,8 +334,9 @@ public class frmMenuCliente extends javax.swing.JFrame {
     private guiRecursos.cstmButon btnEspecialidades1;
     private guiRecursos.cstmButon btnInicio;
     private guiRecursos.cstmButon btnOfertas;
-    private guiRecursos.cstmButon btnServicios;
+    private guiRecursos.cstmButon btnOfertas1;
     private guiRecursos.cstmButon btnServicios1;
+    private guiRecursos.cstmButon btnVolver;
     private javax.swing.JPanel content;
     private guiRecursos.cstmButon cstmButon1;
     private javax.swing.JLabel jLabel2;

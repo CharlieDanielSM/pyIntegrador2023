@@ -125,6 +125,7 @@ vista\adminServicios3$11.class
 dao\daoTrabajador.class
 vista\adminServicios3$2.class
 vista\clienteTablaTrab$2.class
+vista\clienteHistorial.class
 vista\frmMenuCliente$2.class
 vista\frmRegCliente$1.class
 guiRecursos\GuimenuBoton$1.class
@@ -149,6 +150,7 @@ vista\adminUsuarios.class
 vista\clienteTablaTrab.class
 vista\adminUsuarios$9.class
 vista\frmRegCliente$9.class
+vista\frmMenuCliente$7.class
 dao\daoEspecialidad.class
 vista\adminUsuarios$6.class
 vista\clienteNegociacion$2.class

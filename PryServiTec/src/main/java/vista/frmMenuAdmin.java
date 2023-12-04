@@ -23,7 +23,6 @@ public class frmMenuAdmin extends javax.swing.JFrame {
         FlatLightLaf.setup();
         initComponents();
         this.user = user;
-        
         ImageUsuario();
     }
     

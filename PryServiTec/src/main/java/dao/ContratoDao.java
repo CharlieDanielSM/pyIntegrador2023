@@ -25,9 +25,9 @@ public class ContratoDao {
             while (resultSet.next()) {
                 ContratoDto contrato = new ContratoDto();
                 contrato.setCodiCont(resultSet.getString("codiCont"));
-                contrato.setFechCont(resultSet.getString("fechCont"));
-                contrato.setFechInicCont(resultSet.getString("fechInicCont"));
-                contrato.setFechFincont(resultSet.getString("fechFinCont"));
+                contrato.setFechCont(resultSet.getDate("fechCont"));
+                contrato.setFechInicCont(resultSet.getDate("fechInicCont"));
+                contrato.setFechFincont(resultSet.getDate("fechFinCont"));
                 contrato.setEstCont(resultSet.getString("estaCont"));
                 contrato.setDescCont(resultSet.getString("descCont"));
                 contrato.setCodiEmpl(resultSet.getString("fk_codiEmpl"));
@@ -55,9 +55,9 @@ public class ContratoDao {
             while (resultSet.next()) {
                 ContratoDto contrato = new ContratoDto();
                 contrato.setCodiCont(resultSet.getString("codiCont"));
-                contrato.setFechCont(resultSet.getString("fechCont"));
-                contrato.setFechInicCont(resultSet.getString("fechInicCont"));
-                contrato.setFechFincont(resultSet.getString("fechFinCont"));
+                contrato.setFechCont(resultSet.getDate("fechCont"));
+                contrato.setFechInicCont(resultSet.getDate("fechInicCont"));
+                contrato.setFechFincont(resultSet.getDate("fechFinCont"));
                 contrato.setEstCont(resultSet.getString("estaCont"));
                 contrato.setDescCont(resultSet.getString("descCont"));
                 contrato.setCodiEmpl(resultSet.getString("fk_codiEmpl"));
@@ -94,19 +94,18 @@ public class ContratoDao {
     
     // Método para crear un nuevo contrato
     public boolean nuevo(ContratoDto contrato) {
-        String sql = "INSERT INTO contrato (codiCont, fechCont, fechInicCont, fechFinCont, estaCont, descCont, fk_codiNego, fk_codiEmpl, fk_codiTrab) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO contrato (codiCont, fechCont, fechInicCont, fechFinCont, estaCont, descCont, fk_codiEmpl, fk_codiTrab) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement st = conn.prepareStatement(sql);
             st.setString(1, contrato.getCodiCont());
-            st.setString(2, contrato.getFechCont());
-            st.setString(3, contrato.getFechInicCont());
-            st.setString(4, contrato.getFechFincont());
+            st.setDate(2, contrato.getFechCont());
+            st.setDate(3, contrato.getFechInicCont());
+            st.setDate(4, contrato.getFechFincont());
             st.setString(5, contrato.getEstCont());
             st.setString(6, contrato.getDescCont());
-            st.setString(7, contrato.getCodiNego());
-            st.setString(8, contrato.getCodiEmpl());
-            st.setString(9, contrato.getCodiTrab());
+            st.setString(7, contrato.getCodiEmpl());
+            st.setString(8, contrato.getCodiTrab());
 
             int rowsAffected = st.executeUpdate();
 
@@ -124,9 +123,9 @@ public class ContratoDao {
 
         try {
             PreparedStatement st = conn.prepareStatement(sql);
-            st.setString(1, contrato.getFechCont());
-            st.setString(2, contrato.getFechInicCont());
-            st.setString(3, contrato.getFechFincont());
+            st.setDate(1, contrato.getFechCont());
+            st.setDate(2, contrato.getFechInicCont());
+            st.setDate(3, contrato.getFechFincont());
             st.setString(4, contrato.getEstCont());
             st.setString(5, contrato.getDescCont());
             st.setString(6, contrato.getCodiNego());

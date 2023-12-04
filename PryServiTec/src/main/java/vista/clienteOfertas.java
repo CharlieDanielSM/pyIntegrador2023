@@ -18,8 +18,8 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -30,6 +30,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+import modelo.ContratoDto;
 import modelo.Especialidad;
 import modelo.Trabajador;
 import modelo.Usuario;
@@ -43,7 +44,7 @@ public class clienteOfertas extends javax.swing.JPanel{
     daoTrabajador daoTrab = new daoTrabajador();
     daoEspecialidad daoEsp = new daoEspecialidad();
     ContratoDao daoCont = new ContratoDao();
-    Usuario user;
+    Usuario us;
     List<Trabajador> trabajadores;
     /**
      * Creates new form clienteServicios
@@ -51,7 +52,7 @@ public class clienteOfertas extends javax.swing.JPanel{
     public clienteOfertas(Usuario user) {
         FlatLightLaf.setup();
         initComponents();
-        this.user = user;
+        this.us = user;
         mostrarTrabajadoresEnScrollPanel("General");
         comboServiciosListar();
     }
@@ -109,7 +110,7 @@ public class clienteOfertas extends javax.swing.JPanel{
         int vgap = 20; // Espaciado vertical
         contentServ.setLayout(new GridLayout(0, numColumnas, hgap, vgap));
         
-        for (Trabajador trabajador : trabajadores) {
+        for (Trabajador t : trabajadores) {
             DropShadowPanel trabPanel = new DropShadowPanel(5); // Cambia el valor según el tamaño de sombra que desees
             trabPanel.setLayout(new BorderLayout());
             trabPanel.setPreferredSize(new Dimension(200, 320));
@@ -125,7 +126,7 @@ public class clienteOfertas extends javax.swing.JPanel{
             contenidoPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
             // Mostrar el título del trabajador (nombre)
-            JLabel nameLabel = new JLabel(trabajador.getNombTrab());
+            JLabel nameLabel = new JLabel(t.getNombTrab());
             nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
             nameLabel.setFont(new Font("SansSerif", Font.BOLD, 16));
             contenidoPanel.add(nameLabel);
@@ -133,7 +134,7 @@ public class clienteOfertas extends javax.swing.JPanel{
             contenidoPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
             // Mostrar la imagen del trabajador
-            String imagePath = "/images/user/trabajadores/" + trabajador.getCodiUsua()+ ".png";
+            String imagePath = "/images/user/trabajadores/" + t.getCodiUsua()+ ".png";
             URL imageURL = getClass().getResource(imagePath);
             ImageIcon icon;
 
@@ -156,13 +157,13 @@ public class clienteOfertas extends javax.swing.JPanel{
 
         // Mostrar el ID del servicio y la fecha de creación de la cuenta del trabajador
 
-        infoPanel.add(new JLabel("Especialidad: " + daoEsp.obtener(trabajador.getCodiEspe()).getNombEspe()));
-        infoPanel.add(new JLabel("E-mail: " + trabajador.getEmailTrab()));
+        infoPanel.add(new JLabel("Especialidad: " + daoEsp.obtener(t.getCodiEspe()).getNombEspe()));
+        infoPanel.add(new JLabel("E-mail: " + t.getEmailTrab()));
 
         infoPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
         // Mostrar la calificación y el botón "Contactar" y "Más Detalles"
-        double promedioCalificaciones = daoTrab.obtenerPromedioCalificaciones(trabajador.getCodiTrab());
+        double promedioCalificaciones = daoTrab.obtenerPromedioCalificaciones(t.getCodiTrab());
         infoPanel.add(new JLabel("Calificación Promedio: " + promedioCalificaciones));
 
         contenidoPanel.add(infoPanel);
@@ -177,15 +178,33 @@ public class clienteOfertas extends javax.swing.JPanel{
             contactarButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    ContratoDto c = new ContratoDto();
+                    c.setCodiCont(daoCont.obtenerNuevoCodigoContrato());
+                    c.setCodiEmpl(us.getCodiUsua());
+                    c.setCodiNego(null);
+                    c.setCodiTrab(t.getCodiTrab());
+                    c.setDescCont("Contrato pendiente para: "+t.getNombTrab());
+                    c.setEstCont("Pendiente");
+                    c.setFechCont(new Date(System.currentTimeMillis()));
+                    new ventanaContactar(c).setVisible(true);
+                    /*
                     int opcion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas contactar a este trabajador?", "Decide", JOptionPane.YES_NO_OPTION);
-
                     if (opcion == JOptionPane.YES_OPTION) {
                         System.out.println("Sí");
-                        //MostrarPanel(new clienteNegociacion(trabajador, user));
+                        ContratoDto c = new ContratoDto();
+                        c.setCodiCont(daoCont.obtenerNuevoCodigoContrato());
+                        c.setCodiEmpl(us.getCodiUsua());
+                        c.setCodiNego(null);
+                        c.setCodiTrab(t.getCodiTrab());
+                        c.setDescCont("Contrato pendiente para: "+t.getNombTrab());
+                        c.setEstCont("Pendiente");
+                        c.setFechCont(new Date(System.currentTimeMillis()));
+                        daoCont.nuevo(c);
                         
                     } else {
                         System.out.println("No");
-                    }
+                    }*/
+                    
                 }
             });
 
