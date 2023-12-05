@@ -118,6 +118,7 @@ vista\frmMenuAdmin$5.class
 modelo\EmpleadorDto.class
 vista\clienteNegociacion$1.class
 util\prueba1.class
+modelo\comunicacionPHP.class
 vista\adminServicios3$11.class
 dao\daoTrabajador.class
 vista\adminServicios3$2.class
