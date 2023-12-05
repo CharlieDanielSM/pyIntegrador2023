@@ -2,7 +2,7 @@
 package modelo;
 
 /* 🚀 Developed by NelsonJGP */
-public class Empleador {
+public class empleador {
     private String codiEmpl;
     private String dniRucEmpl;
     private String nombEmpl;
@@ -11,10 +11,11 @@ public class Empleador {
     private String fk_codiTipoEmpl;
     private String fk_codiUsua;
 
-    public Empleador() {
+    
+    public empleador() {
     }
 
-    public Empleador(String codiEmpl, String dniRucEmpl, String nombEmpl, String teleEmpl, String emailEmpl, String fk_codiTipoEmpl, String fk_codiUsua) {
+    public empleador(String codiEmpl, String dniRucEmpl, String nombEmpl, String teleEmpl, String emailEmpl, String fk_codiTipoEmpl, String fk_codiUsua) {
         this.codiEmpl = codiEmpl;
         this.dniRucEmpl = dniRucEmpl;
         this.nombEmpl = nombEmpl;

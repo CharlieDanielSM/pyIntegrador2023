@@ -177,12 +177,16 @@ public class Cobranza extends javax.swing.JInternalFrame {
     int pos;
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
 
+
     final int[] clickCount = {0};
     if (evt.getClickCount() >= 2) {
+
+        int pos=jTable1.getSelectedRow();
         
         String codigo;
         
         pos=jTable1.getSelectedRow();
+
         codigo = jTable1.getValueAt(pos, 0).toString();
         listaContratoCliente(codigo);
        
