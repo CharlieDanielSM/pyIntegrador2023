@@ -288,6 +288,12 @@ public class frmMenuCliente extends javax.swing.JFrame {
         ConfiguracionCliente X = new ConfiguracionCliente(empleadorObtenido);
         X.setVisible(true);
         this.dispose();
+        
+        
+        
+        
+        
+        
     } else {
         System.out.println("No se encontró un empleador para el usuario.");
     }
