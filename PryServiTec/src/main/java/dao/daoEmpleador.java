@@ -61,6 +61,13 @@ public class daoEmpleador {
                 String codiEmpl = rs.getString("codiEmpl");
 
                 empleador = new empleador(codiEmpl, dniRucEmpl, nombEmpl, teleEmpl, emailEmpl, fk_codiTipoEmpl, fk_codiUsua);
+                
+            
+            
+            
+            
+            
+            
             }
         }
     } catch (SQLException e) {
