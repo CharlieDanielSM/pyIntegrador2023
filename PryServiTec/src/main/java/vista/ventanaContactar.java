@@ -1,6 +1,10 @@
 package vista;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import dao.ContratoDao;
+import java.awt.Color;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import modelo.ContratoDto;
 
 /**
@@ -8,15 +12,21 @@ import modelo.ContratoDto;
  * @author Nelson
  */
 public class ventanaContactar extends javax.swing.JFrame {
-
-    /**
-     * Creates new form ventanaContactar
-     */
+    ContratoDto c;
+    ContratoDao daoC = new ContratoDao();
+    
     public ventanaContactar(ContratoDto c) {
         FlatLightLaf.setup();
         initComponents();
+        this.c=c;
+        actualizarDescripcion();
     }
 
+    public void actualizarDescripcion(){
+        descripcion.setText(c.getDescCont());
+        descripcionKeyReleased(null);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,23 +36,189 @@ public class ventanaContactar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        labelInicio = new javax.swing.JLabel();
+        dateInicio = new com.toedter.calendar.JDateChooser();
+        labelFinal = new javax.swing.JLabel();
+        dateFinal = new com.toedter.calendar.JDateChooser();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        descripcion = new javax.swing.JTextArea();
+        txtCaracteres = new javax.swing.JLabel();
+        btnCancelar = new javax.swing.JButton();
+        btnEnviar = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Contactar");
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        labelInicio.setText("Fecha inicio de contrato");
+        jPanel1.add(labelInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 140, 20));
+        jPanel1.add(dateInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 110, -1));
+
+        labelFinal.setText("Fecha final de contrato");
+        jPanel1.add(labelFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 130, 20));
+        jPanel1.add(dateFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 110, -1));
+
+        jLabel1.setText("Descripcion (Click para editar)");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 180, 20));
+
+        descripcion.setEditable(false);
+        descripcion.setBackground(new java.awt.Color(204, 204, 204));
+        descripcion.setColumns(20);
+        descripcion.setLineWrap(true);
+        descripcion.setRows(5);
+        descripcion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                descripcionMousePressed(evt);
+            }
+        });
+        descripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                descripcionKeyReleased(evt);
+            }
+        });
+        jScrollPane1.setViewportView(descripcion);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 520, 50));
+
+        txtCaracteres.setText("0/255");
+        jPanel1.add(txtCaracteres, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 40, -1));
+
+        btnCancelar.setText("Canelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 90, -1));
+
+        btnEnviar.setText("Enviar");
+        btnEnviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 90, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 557, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 222, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void descripcionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descripcionKeyReleased
+        int tamaño = descripcion.getText().length();
+        int maximo = 255;
+
+        if (tamaño == maximo) {
+            txtCaracteres.setText(tamaño + "/" + 255);
+            txtCaracteres.setForeground(new Color(0, 128, 0)); // Verde oscuro
+        } else if (tamaño > maximo) {
+            descripcion.setText(descripcion.getText().substring(0, maximo)); // Truncar al tamaño máximo
+            txtCaracteres.setText(maximo + "/" + 255);
+            txtCaracteres.setForeground(Color.RED); // Verde oscuro
+        } else {
+            txtCaracteres.setText(tamaño + "/" + 255);
+            txtCaracteres.setForeground(new Color(0, 128, 0)); // Rojo
+        }
+    }//GEN-LAST:event_descripcionKeyReleased
+
+    private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
+        if (!validarFechas(dateInicio.getDate(), dateFinal.getDate())) {
+            return;
+        }
+        
+        if (dateInicio.getDate()==null || dateFinal.getDate()==null) {
+            JOptionPane.showMessageDialog(null, "Faltan datos de fechas", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (descripcion.getText().length()==0) {
+            JOptionPane.showMessageDialog(null, "Faltan datos en descripcion", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            c.setFechInicCont(new java.sql.Date(dateInicio.getDate().getTime()));
+            c.setFechFincont(new java.sql.Date(dateFinal.getDate().getTime()));
+            c.setDescCont(descripcion.getText());
+            //c.setCodiNego("N016");
+            daoC.nuevo(c);
+            JOptionPane.showMessageDialog(null, "La operación se realizó con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+            //mostrar();
+        }
+    }//GEN-LAST:event_btnEnviarActionPerformed
+
+    public static boolean validarFechas(Date fechaInicio, Date fechaFinal) {
+        // Obtener la fecha actual
+        Date fechaActual = new Date();
+
+        // Validar que las fechas no sean nulas
+        if (fechaInicio == null || fechaFinal == null) {
+            mostrarError("Las fechas no pueden ser nulas");
+            return false;
+        }
+
+        // Validar que las fechas no sean menores a la fecha actual
+        if (fechaInicio.before(fechaActual)) {
+            mostrarError("La fecha de inicio no puede ser menor a la fecha actual");
+            return false;
+        }
+
+        if (fechaFinal.before(fechaActual)) {
+            mostrarError("La fecha final no puede ser menor a la fecha actual");
+            return false;
+        }
+
+        // Validar que la fecha final no sea menor que la fecha de inicio
+        if (fechaFinal.before(fechaInicio)) {
+            mostrarError("La fecha final no puede ser menor que la fecha de inicio");
+            return false;
+        }
+
+        return true;  // Todas las validaciones pasaron
+    }
+    
+    public static void mostrarError(String mensaje) {
+        JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void mostrar(){
+        System.out.println("getCodiCont:"+c.getCodiCont()+"\n"
+                + "getCodiEmpl:"+c.getCodiEmpl()+"\n"
+                + "getCodiNego:"+c.getCodiNego()+"\n"
+                + "getCodiTrab:"+c.getCodiTrab()+"\n"
+                + "getDescCont:"+c.getDescCont()+"\n"
+                + "getEstCont:"+c.getEstCont()+"\n"
+                + "getFechCont:"+c.getFechCont()+"\n"
+                + "getFechFincont:"+c.getFechFincont()+"\n"
+                + "getFechInicCont:"+c.getFechInicCont()+"\n");
+    }
+    
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void descripcionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descripcionMousePressed
+        if (!descripcion.isEditable()) {
+            boolean editar = mostrarConfirmacion("¿Quiere editar la descripción?");
+            if (editar){
+                descripcion.setEditable(true);
+                descripcion.setBackground(new Color(255,255,255));
+            }
+        }
+    }//GEN-LAST:event_descripcionMousePressed
+
+    public static boolean mostrarConfirmacion(String mensaje) {
+        return JOptionPane.showConfirmDialog(null, mensaje, "Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -79,5 +255,16 @@ public class ventanaContactar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEnviar;
+    private com.toedter.calendar.JDateChooser dateFinal;
+    private com.toedter.calendar.JDateChooser dateInicio;
+    private javax.swing.JTextArea descripcion;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelFinal;
+    private javax.swing.JLabel labelInicio;
+    private javax.swing.JLabel txtCaracteres;
     // End of variables declaration//GEN-END:variables
 }

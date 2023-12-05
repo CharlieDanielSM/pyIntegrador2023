@@ -45,31 +45,49 @@ public class EmpleadorDao
     }
 
     public EmpleadorDto obtenerEmpleadorPorID(String idEmpleador) {
-    EmpleadorDto empleador = null;
-    try {
-        
-        String query = "SELECT * FROM Empleador WHERE codiEmpl = ?";
-        preparedStatement = conn.prepareStatement(query);
-        preparedStatement.setString(1, idEmpleador);
-        resultSet = preparedStatement.executeQuery();
+        EmpleadorDto empleador = null;
+        try {
 
-        if (resultSet.next()) {
-            empleador = new EmpleadorDto();
-            empleador.setCodiEmpl(resultSet.getString("codiEmpl"));
-            empleador.setDniRucEmpl(resultSet.getString("dniRucEmpl"));
-            empleador.setNombEmpl(resultSet.getString("nombEmpl"));
-            empleador.setTeleEmp(resultSet.getString("teleEmpl"));
-            empleador.setEmailEmpl(resultSet.getString("emailEmpl"));
+            String query = "SELECT * FROM Empleador WHERE codiEmpl = ?";
+            preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setString(1, idEmpleador);
+            resultSet = preparedStatement.executeQuery();
 
-        }
-    } catch (SQLException e) {
-        e.printStackTrace();
-    } 
-    return empleador;
-}
+            if (resultSet.next()) {
+                empleador = new EmpleadorDto();
+                empleador.setCodiEmpl(resultSet.getString("codiEmpl"));
+                empleador.setDniRucEmpl(resultSet.getString("dniRucEmpl"));
+                empleador.setNombEmpl(resultSet.getString("nombEmpl"));
+                empleador.setTeleEmp(resultSet.getString("teleEmpl"));
+                empleador.setEmailEmpl(resultSet.getString("emailEmpl"));
 
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+        return empleador;
+    }
 
+    public EmpleadorDto obtenerEmpleadorPorIDUsuario(String fk_codiUsua) {
+        EmpleadorDto empleador = null;
+        try {
 
+            String query = "SELECT * FROM Empleador WHERE fk_codiUsua = ?";
+            preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setString(1, fk_codiUsua);
+            resultSet = preparedStatement.executeQuery();
 
-    
+            if (resultSet.next()) {
+                empleador = new EmpleadorDto();
+                empleador.setCodiEmpl(resultSet.getString("codiEmpl"));
+                empleador.setDniRucEmpl(resultSet.getString("dniRucEmpl"));
+                empleador.setNombEmpl(resultSet.getString("nombEmpl"));
+                empleador.setTeleEmp(resultSet.getString("teleEmpl"));
+                empleador.setEmailEmpl(resultSet.getString("emailEmpl"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+        return empleador;
+    }
 }

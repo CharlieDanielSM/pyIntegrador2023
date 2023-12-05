@@ -15,7 +15,7 @@ public class ContratoDao {
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;    
     
-     public List<ContratoDto> listarContrato() {
+    public List<ContratoDto> listarContrato() {
         List<ContratoDto> contratos = new ArrayList<>();
         try {
             String query = "SELECT * FROM Contrato";
@@ -72,10 +72,39 @@ public class ContratoDao {
         return contratos;
     }
     
+    public List<ContratoDto> listarContXTrabajador(String trabajador) {
+        List<ContratoDto> contratos = new ArrayList<>();
+        try {
+            // Utiliza una cláusula WHERE para filtrar por el ID del trabajador
+            String query = "SELECT * FROM Contrato WHERE fk_codiTrab = ?";
+            preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setString(1, trabajador);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                ContratoDto contrato = new ContratoDto();
+                contrato.setCodiCont(resultSet.getString("codiCont"));
+                contrato.setFechCont(resultSet.getDate("fechCont"));
+                contrato.setFechInicCont(resultSet.getDate("fechInicCont"));
+                contrato.setFechFincont(resultSet.getDate("fechFinCont"));
+                contrato.setEstCont(resultSet.getString("estaCont"));
+                contrato.setDescCont(resultSet.getString("descCont"));
+                contrato.setCodiEmpl(resultSet.getString("fk_codiEmpl"));
+                contrato.setCodiTrab(resultSet.getString("fk_codiTrab"));
+                contrato.setCodiNego(resultSet.getString("fk_codiNego"));
+
+                contratos.add(contrato);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return contratos;
+    }
+    
     public String obtenerNuevoCodigoContrato() {
         String nuevoCodigo = null;
 
-        String obtenerUltimoCodigoSQL = "SELECT CONCAT('C', LPAD(COALESCE(MAX(SUBSTRING(codiCont, 2)), 0) + 1, 4, '0')) AS nuevoCodigo FROM contrato";
+        String obtenerUltimoCodigoSQL = "SELECT CONCAT('C', LPAD(COALESCE(MAX(SUBSTRING(codiCont, 2)), 0) + 1, 3, '0')) AS nuevoCodigo FROM contrato";
 
         try (Connection con = MySQLConexion.getConexion();
              PreparedStatement st = con.prepareStatement(obtenerUltimoCodigoSQL);

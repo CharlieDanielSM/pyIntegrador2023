@@ -1,6 +1,7 @@
 package vista;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import dao.EmpleadorDao;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import modelo.Usuario;
@@ -10,13 +11,13 @@ import modelo.Usuario;
  * @author Nelson
  */
 public class clienteHistorial extends javax.swing.JPanel{
+    EmpleadorDao daoEmp = new EmpleadorDao();
     
-    /**
-     * Creates new form clienteServicios
-     */
     public clienteHistorial(Usuario user) {
         FlatLightLaf.setup();
         initComponents();
+        String codEmp = daoEmp.obtenerEmpleadorPorIDUsuario(user.getCodiUsua()).getCodiEmpl();
+        
     }
 
     public void MostrarPanel(JPanel panel){
@@ -39,6 +40,8 @@ public class clienteHistorial extends javax.swing.JPanel{
         Panel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        scroll = new guiRecursos.GuiJScrollPane();
+        panelContratos = new javax.swing.JPanel();
 
         Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -48,6 +51,21 @@ public class clienteHistorial extends javax.swing.JPanel{
 
         jLabel2.setText("Aquí, el cliente puede ver un historial de todas las contrataciones pasadas, asi como las negociaciones");
         Panel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 840, 20));
+
+        javax.swing.GroupLayout panelContratosLayout = new javax.swing.GroupLayout(panelContratos);
+        panelContratos.setLayout(panelContratosLayout);
+        panelContratosLayout.setHorizontalGroup(
+            panelContratosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 908, Short.MAX_VALUE)
+        );
+        panelContratosLayout.setVerticalGroup(
+            panelContratosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 178, Short.MAX_VALUE)
+        );
+
+        scroll.setViewportView(panelContratos);
+
+        Panel.add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 910, 180));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -66,5 +84,7 @@ public class clienteHistorial extends javax.swing.JPanel{
     private javax.swing.JPanel Panel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel panelContratos;
+    private guiRecursos.GuiJScrollPane scroll;
     // End of variables declaration//GEN-END:variables
 }
