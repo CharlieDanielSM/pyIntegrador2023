@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 import java.sql.SQLIntegrityConstraintViolationException ;
 import util.MySQLConexionOriginal;
 import java.sql.*;
-import java.util.Date;
+import javax.swing.ButtonGroup;
 
 /**
  *
@@ -28,28 +28,57 @@ public class frmRegTrabajador extends javax.swing.JFrame {
                   int campointento=0;
                   int campointento2=0;
                   int validacion=1;
+                   ButtonGroup tipoSexogroup = new ButtonGroup();
+              String sexo="";
+
     /**
      * Creates new form frmRegistro
      */
     public frmRegTrabajador() {
         FlatLightLaf.setup();
         initComponents();
+                 funcionbotones();
+
         campoCon.setText("*****");
         campoCon2.setText("*****");
-        txtnumeroayuda.setText("");
-
+        lnumero.setText("");
+        ldni.setText("");
+        lcorreo.setText("");
         comboServiciosListar();
         imageIconCambiar(frmLogin.class.getResource("/images/con_ocultar_dark.png"), passicon, 20);
         imageIconCambiar(frmLogin.class.getResource("/images/con_ocultar_dark.png"), passicon1, 20);
     }
     
     public void comboServiciosListar(){
-        List<Servicios> listaServicios = daoServ.obtenerServicios();
-        for (Servicios servicio : listaServicios) {
+        List<Servicioadmin> listaServicios = daoServ.obtenerServicios2();
+        for (Servicioadmin servicio : listaServicios) {
             cmbServicios.addItem(servicio.getNombre_servicio());
         }
     }
+    public void funcionbotones(){
 
+        tipoSexogroup.add(btnhombre);
+        tipoSexogroup.add(btnmujer);
+         btnhombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                // Manejar la selección del JRadioButton "Trabajador"
+                if (btnhombre.isSelected()) {
+                    sexo="H";
+                }
+            }
+        });
+                  btnmujer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                // Manejar la selección del JRadioButton "Trabajador"
+                if (btnmujer.isSelected()) {
+                    sexo="M";
+                }
+            }
+        });
+
+ 
+
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,8 +96,7 @@ public class frmRegTrabajador extends javax.swing.JFrame {
         Separator1 = new javax.swing.JSeparator();
         lblNombre = new javax.swing.JLabel();
         lblApellido = new javax.swing.JLabel();
-        txtApellido = new javax.swing.JTextField();
-        Separator2 = new javax.swing.JSeparator();
+        txtdni = new javax.swing.JTextField();
         lblApellido1 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         Separator3 = new javax.swing.JSeparator();
@@ -92,20 +120,26 @@ public class frmRegTrabajador extends javax.swing.JFrame {
         Contraseña2 = new javax.swing.JLabel();
         txtcodigo = new javax.swing.JTextField();
         txtnum = new javax.swing.JTextField();
-        txtnumeroayuda = new javax.swing.JLabel();
+        lnumero = new javax.swing.JLabel();
+        lblNombre1 = new javax.swing.JLabel();
+        txtapellido = new javax.swing.JTextField();
+        ldni = new javax.swing.JLabel();
+        lcorreo = new javax.swing.JLabel();
+        btnmujer = new javax.swing.JRadioButton();
+        btnhombre = new javax.swing.JRadioButton();
         guiBarraVentana1 = new guiRecursos.GuiBarraVentana();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 240, -1));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 240, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("REGISTRO TRABAJADOR");
         jLabel6.setToolTipText("");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 290, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, -10, 290, -1));
 
         jButton1.setText("Registrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -125,17 +159,22 @@ public class frmRegTrabajador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 420, 110, 20));
-        jPanel1.add(Separator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 190, 10));
+        jPanel1.add(Separator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 87, 190, -1));
 
         lblNombre.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        lblNombre.setText("Nombre");
-        jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 80, 20));
+        lblNombre.setText("Apellido");
+        jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 80, 20));
 
         lblApellido.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        lblApellido.setText("Apellido");
-        jPanel1.add(lblApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 80, 20));
-        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 240, -1));
-        jPanel1.add(Separator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 190, 10));
+        lblApellido.setText("DNI");
+        jPanel1.add(lblApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 80, 20));
+
+        txtdni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtdniKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtdni, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 240, -1));
 
         lblApellido1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lblApellido1.setText("Usuario");
@@ -152,6 +191,12 @@ public class frmRegTrabajador extends javax.swing.JFrame {
         lblApellido2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lblApellido2.setText("Correo");
         jPanel1.add(lblApellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 80, 20));
+
+        txtCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCorreoKeyReleased(evt);
+            }
+        });
         jPanel1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 240, -1));
         jPanel1.add(Separator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 190, 10));
         jPanel1.add(Separator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 180, 10));
@@ -165,7 +210,7 @@ public class frmRegTrabajador extends javax.swing.JFrame {
                 cmbServiciosActionPerformed(evt);
             }
         });
-        jPanel1.add(cmbServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 180, 20));
+        jPanel1.add(cmbServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 180, 20));
 
         Contraseña.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Contraseña.setText("Contraseña");
@@ -252,8 +297,25 @@ public class frmRegTrabajador extends javax.swing.JFrame {
         });
         jPanel1.add(txtnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 120, -1));
 
-        txtnumeroayuda.setText("NUMERO");
-        jPanel1.add(txtnumeroayuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, 110, -1));
+        lnumero.setText("NUMERO");
+        jPanel1.add(lnumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, 110, -1));
+
+        lblNombre1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblNombre1.setText("Nombre");
+        jPanel1.add(lblNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 80, 20));
+        jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 230, -1));
+
+        ldni.setText("DNI");
+        jPanel1.add(ldni, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 220, -1));
+
+        lcorreo.setText("CORREO");
+        jPanel1.add(lcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 230, -1));
+
+        btnmujer.setText("MUJER");
+        jPanel1.add(btnmujer, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, -1, -1));
+
+        btnhombre.setText("HOMBRE");
+        jPanel1.add(btnhombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -267,7 +329,8 @@ public class frmRegTrabajador extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(guiBarraVentana1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -307,15 +370,15 @@ public class frmRegTrabajador extends javax.swing.JFrame {
         }
         imageIconCambiar(resource, passicon1, 20);
     }//GEN-LAST:event_passicon1MouseClicked
-private int idservicio(String nombreServicio) {
+private String idservicio(String nombreServicio) {
     try {
-        String sql = "SELECT id FROM servicios WHERE nombre_servicio=?";
+        String sql = "SELECT codiEspe FROM especialidad WHERE nombEspe=?";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, nombreServicio);
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
             
-            int id = rs.getInt("id");
+            String id = rs.getString("codiEspe");
             return id;
         }
     } catch (Exception e) {
@@ -323,54 +386,66 @@ private int idservicio(String nombreServicio) {
     }
     
    
-    return -1;
+       return null;
 }
     private void limpiar(){
         txtNombre.setText("");
-        txtApellido.setText("");
+        txtdni.setText("");
+        txtapellido.setText("");
         txtUsuario.setText("");
         txtCorreo.setText("");
         txtnum.setText("");
         campoCon.setText("");
-        txtnumeroayuda.setText("");
+        lnumero.setText("");
         campoCon2.setText("");
         juser.setText("");
         jred.setText("");
-    }
+      btnhombre.setSelected(false);
+      btnmujer.setSelected(false);
+   }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String nombre,apellido,usuario,correo,servicio,contra,contra2;
+        String nombre,dni,usuario,correo,servicio,contra,contra2;
         nombre=txtNombre.getText();
-        apellido=txtApellido.getText();
+        dni=txtdni.getText();
         usuario=txtUsuario.getText();
         contra=campoCon.getText();
         contra2=campoCon2.getText();
         correo=txtCorreo.getText();
         servicio=cmbServicios.getSelectedItem().toString();
-        Date fechaCreacion = new Date();
-        
+        String apellido=txtapellido.getText();
         String numero=txtnum.getText();
         String numeroString = "51" +numero;
 
 
         System.out.println("Servicio:"+servicio);
         
-      
-                  if (!nombre.isEmpty() && !apellido.isEmpty() && !usuario.isEmpty() &&
+      if(!sexo.equals("")){
+                          if (!nombre.isEmpty() && !dni.isEmpty() && !usuario.isEmpty() &&
             !contra.isEmpty() && !contra2.isEmpty() && !correo.isEmpty() && 
             !numero.isEmpty()) {
-                    if(validarletra(nombre)==true && validarletra(apellido)==true){
+                    if(validarletra(nombre)==true && validarletra(apellido) ){
                             if(contra.equals(contra2)){
                                if(validacion==1){
                                    if(numeroString.length() == 11){
                                        if(esNumeroEntero(numero)){
-                                                                                   Usuario2 y=new Usuario2(2, nombre, apellido, usuario, contra, correo,numeroString);
-                                       daoUsuario2 x=new daoUsuario2();
-                                        x.crearUsuario(y); 
-                                       int idservicio= idservicio(servicio);
-                                               java.sql.Date sqlDate = new java.sql.Date(fechaCreacion.getTime());
 
-                                       Trabajador2 z=new Trabajador2(nombre, idservicio, sqlDate, usuario);
-                                        x.crearTrabajador(z);
+                                               Usuario u=new Usuario();
+                                              Trabajador t=new Trabajador();
+                                           daoTrabajador X=new daoTrabajador();
+                                           
+                                                u.setCodiUsua(usuario);
+                                                u.setPassUsua(contra);
+                                                u.setTipoUsua("cliente");
+                                                t.setCodiTrab(X.generarCodigoEspecialidad() );
+                                                t.setDniTrab(dni);
+                                                t.setNombTrab(nombre);                                               
+                                                t.setApelTrab(apellido);
+                                                t.setEmailTrab(correo);
+                                                t.setSexoTrab(sexo);
+                                                t.setCodiEspe(idservicio(servicio));
+                                                t.setTeleTrab(numeroString);
+                                                t.setCodiUsua(usuario);
+                                           X.crearUsuario(u, t);
                                       JOptionPane.showMessageDialog(null, "TRABAJADOR REGISTRADO");  
                                                                               limpiar();
                                        }else{
@@ -384,7 +459,7 @@ private int idservicio(String nombreServicio) {
      
 
                                }   else{
-                                JOptionPane.showMessageDialog(null, "USUARIO YA EXISTENTE");
+                                JOptionPane.showMessageDialog(null, "DATOS YA EXISTENTES");
  
                                }
 
@@ -396,7 +471,11 @@ private int idservicio(String nombreServicio) {
                     }
         } else {
             JOptionPane.showMessageDialog(null,"Todos los campos deben estar completos");
-        } 
+        }   
+      }else{
+        JOptionPane.showMessageDialog(null,"SELECCIONAR SEXO");  
+      }
+
   
     
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -435,7 +514,18 @@ private int idservicio(String nombreServicio) {
 
        
     }//GEN-LAST:event_campoConKeyReleased
-
+  public boolean usuarioverificar(String usuario){
+        try {
+          String sql="SELECT codiUsua FROM usuario Where codiUsua=?";
+          PreparedStatement ps=con.prepareStatement(sql);
+          ps.setString(1, usuario);
+          ResultSet rs=ps.executeQuery();
+          boolean validar=rs.next();
+          return validar;
+        } catch (Exception e) {
+            return false;
+        }
+    }
     private void txtUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyReleased
                       String nombreuser= txtUsuario.getText();
 
@@ -443,7 +533,7 @@ private int idservicio(String nombreServicio) {
                       juser.setText("");
 
       }else{
-        if(daousuUser.usuarioverificar(nombreuser)==true){
+        if(usuarioverificar(nombreuser)==true){
             juser.setText("NOMBRE USUARIO YA EXISTE");
             juser.setForeground(Color.RED);
             validacion=2;
@@ -491,22 +581,22 @@ private int idservicio(String nombreServicio) {
     private void txtnumKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnumKeyReleased
          int X=txtnum.getText().length();
         if(X==9){
-            txtnumeroayuda.setText("NUMERO VALIDO");
+            lnumero.setText("NUMERO VALIDO");
             Color verdeOscuro = new Color(0, 128, 0);
-            txtnumeroayuda.setForeground(verdeOscuro);
+            lnumero.setForeground(verdeOscuro);
 
         }else{
-            txtnumeroayuda.setForeground(Color.red);
-            txtnumeroayuda.setText("NUMERO NO VALIDO");
-            txtnumeroayuda.setForeground(Color.RED);
+            lnumero.setForeground(Color.red);
+            lnumero.setText("NUMERO NO VALIDO");
+            lnumero.setForeground(Color.RED);
 
         }        // TODO add your handling code here:
         
                 if(X>9){
              txtnum.setText(txtnum.getText().substring(0, 9));
-            txtnumeroayuda.setText("NUMERO VALIDO");
+            lnumero.setText("NUMERO VALIDO");
             Color verdeOscuro = new Color(0, 128, 0);
-            txtnumeroayuda.setForeground(verdeOscuro);
+            lnumero.setForeground(verdeOscuro);
 
         }
         
@@ -532,6 +622,52 @@ private int idservicio(String nombreServicio) {
               validarNumeroEntero();
 
     }//GEN-LAST:event_txtnumFocusLost
+
+    private void txtdniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdniKeyReleased
+        // TODO add your handling code here:
+                              String dni= txtdni.getText();
+                              daoTrabajador X=new daoTrabajador();
+        if(dni.equals("")){
+          ldni.setText("");
+
+      }else{
+        if(X.dniverificar(dni)==true){
+            ldni.setText("DNI  YA EXISTE");
+            ldni.setForeground(Color.RED);
+            validacion=2;
+
+        }else{
+            ldni.setText("DNI  VALIDO");
+            Color verdeOscuro = new Color(0, 128, 0);
+            ldni.setForeground(verdeOscuro);
+            validacion=1;
+
+        }  
+      }
+    }//GEN-LAST:event_txtdniKeyReleased
+
+    private void txtCorreoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoKeyReleased
+        // TODO add your handling code here:
+                                      String correo= txtCorreo.getText();
+                              daoTrabajador X=new daoTrabajador();
+        if(correo.equals("")){
+          ldni.setText("");
+
+      }else{
+        if(X.correoverificar(correo)==true){
+            lcorreo.setText("CORREO  YA EXISTE");
+            lcorreo.setForeground(Color.RED);
+            validacion=2;
+
+        }else{
+            lcorreo.setText("CORREO  VALIDO");
+            Color verdeOscuro = new Color(0, 128, 0);
+            lcorreo.setForeground(verdeOscuro);
+            validacion=1;
+
+        }  
+      }
+    }//GEN-LAST:event_txtCorreoKeyReleased
     public boolean validarletra(String letra){
     return letra.matches("^[a-zA-Z\\s]+$");
     }
@@ -587,11 +723,12 @@ private int idservicio(String nombreServicio) {
     private javax.swing.JLabel Contraseña1;
     private javax.swing.JLabel Contraseña2;
     private javax.swing.JSeparator Separator1;
-    private javax.swing.JSeparator Separator2;
     private javax.swing.JSeparator Separator3;
     private javax.swing.JSeparator Separator4;
     private javax.swing.JSeparator Separator6;
     private javax.swing.JSeparator Separator8;
+    private javax.swing.JRadioButton btnhombre;
+    private javax.swing.JRadioButton btnmujer;
     private javax.swing.JPasswordField campoCon;
     private javax.swing.JPasswordField campoCon2;
     private javax.swing.JComboBox<String> cmbServicios;
@@ -609,14 +746,18 @@ private int idservicio(String nombreServicio) {
     private javax.swing.JLabel lblApellido2;
     private javax.swing.JLabel lblApellido5;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNombre1;
+    private javax.swing.JLabel lcorreo;
+    private javax.swing.JLabel ldni;
+    private javax.swing.JLabel lnumero;
     private javax.swing.JLabel passicon;
     private javax.swing.JLabel passicon1;
-    private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtUsuario;
+    private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtcodigo;
+    private javax.swing.JTextField txtdni;
     private javax.swing.JTextField txtnum;
-    private javax.swing.JLabel txtnumeroayuda;
     // End of variables declaration//GEN-END:variables
 }
