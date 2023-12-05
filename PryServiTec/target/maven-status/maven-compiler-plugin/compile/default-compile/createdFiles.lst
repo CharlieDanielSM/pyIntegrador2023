@@ -42,6 +42,8 @@ guiRecursos\GuiBarraVentana$4.class
 modelo\Autenticacion1.class
 dao\daoUsuario.class
 vista\ventanaContactar$2.class
+vista\adminServicios3$5.class
+vista\adminServicios3$10.class
 recursos\GenerarFacturaPDF.class
 vista\frmLogin$3.class
 vista\adminUsuarios$1.class
@@ -51,6 +53,7 @@ vista\adminServicios3$8.class
 vista\adminUsuarios$4.class
 dao\daoNegociacion.class
 modelo\Calificacion.class
+vista\frmMenuAdmin.class
 vista\frmRegTrabajador$7.class
 vista\frmRegCliente$6.class
 vista\frmRegTrabajador$17.class
@@ -92,11 +95,7 @@ modelo\Autenticacion.class
 vista\frmRegTrabajador$9.class
 vista\frmRegCliente$10.class
 vista\clienteOfertas$DropShadowPanel.class
-<<<<<<< HEAD
 vista\ventanaContactar$4.class
-=======
-vista\frmRegTrabajador$19.class
->>>>>>> fd21a9aa029302465e61b2bd42932f3e4a85c1a9
 dao\ContratoDao.class
 vista\Cobranza$2.class
 modelo\Negociacion.class
@@ -180,8 +179,10 @@ guiRecursos\GuimenuBoton.class
 vista\Cobranza$1.class
 vista\frmRegTrabajador$14.class
 vista\frmRegTrabajador$4.class
+vista\clienteOfertas.class
 guiRecursos\GuiBarraVentana$2.class
 modelo\generaPDFespecialidades.class
+vista\clienteOfertas$3.class
 vista\frmRegCliente.class
 vista\frmMenuCliente.class
 util\MySQLConexion.class
@@ -200,6 +201,8 @@ guiRecursos\GuiBarraVentana$1.class
 vista\clienteOfertas$4.class
 guiRecursos\GuibotonPanel$1.class
 vista\clienteTablaEsp$3.class
+vista\frmMenuAdmin$2.class
+vista\adminServicios3.class
 vista\frmMenuTrabajador$2.class
 modelo\empleador.class
 vista\AdminTrabajador$3.class

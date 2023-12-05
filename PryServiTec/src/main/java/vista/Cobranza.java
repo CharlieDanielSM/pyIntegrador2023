@@ -1,4 +1,3 @@
-
 package vista;
 import dao.*;
 import modelo.*;
@@ -7,12 +6,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Cobranza extends javax.swing.JInternalFrame {
-<<<<<<< HEAD
-
-    private String  codigo="";
-=======
     EmpleadorDao Empleadao = new EmpleadorDao();
->>>>>>> aff239189c77a83bc690662a94718e59d3e91470
     
     public void actualizarTabla() {
         
@@ -60,7 +54,6 @@ public class Cobranza extends javax.swing.JInternalFrame {
         initComponents();
         actualizarTabla();
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -184,15 +177,13 @@ public class Cobranza extends javax.swing.JInternalFrame {
 
     final int[] clickCount = {0};
     if (evt.getClickCount() >= 2) {
-<<<<<<< HEAD
-  
+
         int pos=jTable1.getSelectedRow();
-=======
         
         String codigo;
         
         pos=jTable1.getSelectedRow();
->>>>>>> aff239189c77a83bc690662a94718e59d3e91470
+
         codigo = jTable1.getValueAt(pos, 0).toString();
         listaContratoCliente(codigo);
        
@@ -207,30 +198,21 @@ public class Cobranza extends javax.swing.JInternalFrame {
     private void btnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturarActionPerformed
 
         generaPDF pdf =new generaPDF();
-<<<<<<< HEAD
-        EmpleadorDao emp=new EmpleadorDao();
+        EmpleadorDao Empleadao=new EmpleadorDao();
         comunicacionPHP php=new comunicacionPHP();
-=======
         EmpleadorDto emp = new EmpleadorDto();
+        
+        
         String codigo;
         codigo = jTable1.getValueAt(pos, 0).toString();
         emp = Empleadao.obtenerEmpleadorPorID(codigo);
->>>>>>> aff239189c77a83bc690662a94718e59d3e91470
         DefaultTableModel modeloTabla = (DefaultTableModel) jTable2.getModel();
         int pos=jTable2.getSelectedRow();
         if(pos !=1)
         {
-<<<<<<< HEAD
-           emp.obtenerEmpleadorPorID(codigo); 
-           EmpleadorDto Empleador = emp.obtenerEmpleadorPorID(codigo);
-          
-           pdf.generarPDF(Empleador.getNombEmpl()+".pdf",modeloTabla );
-           
-           php.llamarScriptPHP(Empleador.getEmailEmpl(),Empleador.getNombEmpl()+".pdf");
-=======
-           pdf.generarPDF(modeloTabla, emp);            
-            
->>>>>>> aff239189c77a83bc690662a94718e59d3e91470
+           pdf.generarPDF(modeloTabla, emp);    
+           php.llamarScriptPHP(emp.getEmailEmpl(),emp.getNombEmpl()+".pdf");
+ 
         }
         else
         {
