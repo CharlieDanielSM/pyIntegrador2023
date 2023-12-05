@@ -1,4 +1,5 @@
 package modelo;
+<<<<<<< HEAD
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -9,6 +10,8 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
+=======
+>>>>>>> 7255e10a2323ccd73fe6cf07cc192fb8da5a9465
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;
@@ -24,6 +27,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+<<<<<<< HEAD
 import com.itextpdf.text.pdf.PdfPCell;
 
 import com.itextpdf.text.pdf.PdfPCell;
@@ -33,6 +37,8 @@ public class generaPDF
     
     public static void generarPDF(String nombreArchivo, DefaultTableModel modeloTabla) {
         Document document = new Document(PageSize.A4);
+=======
+>>>>>>> 7255e10a2323ccd73fe6cf07cc192fb8da5a9465
 public class generaPDF {
 
     public static Font fuenteNormal() {
@@ -44,6 +50,7 @@ public class generaPDF {
 
     private static Font loadFont(String fontPath, float size) {
         try {
+<<<<<<< HEAD
             PdfWriter.getInstance(document, new FileOutputStream(nombreArchivo));
             document.open();
 
@@ -65,6 +72,8 @@ public class generaPDF {
             document.close();
             
         } catch (DocumentException | IOException e) {
+=======
+>>>>>>> 7255e10a2323ccd73fe6cf07cc192fb8da5a9465
             // Cargar la fuente personalizada desde el archivo TTF
             InputStream fontStream = CustomFont.class.getResourceAsStream(fontPath);
             BaseFont baseFont = BaseFont.createFont(fontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
@@ -74,6 +83,7 @@ public class generaPDF {
             return null;
         }
     }
+<<<<<<< HEAD
     private static void agregarContenidoTabla(Document document, DefaultTableModel modeloTabla) throws DocumentException {
        int numColumnas = modeloTabla.getColumnCount() + 3;  // Añadir 3 columnas adicionales
 
@@ -188,6 +198,9 @@ public class generaPDF {
 //    }
 
 }
+=======
+
+>>>>>>> 7255e10a2323ccd73fe6cf07cc192fb8da5a9465
     public static void generarPDF(DefaultTableModel modeloTabla, EmpleadorDto emp) {
        JFileChooser chooser = new JFileChooser();
        chooser.setDialogTitle("Guardar archivo PDF");
@@ -303,4 +316,8 @@ public class generaPDF {
         // Agregar la tabla al documento
         document.add(tabla);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 7255e10a2323ccd73fe6cf07cc192fb8da5a9465
