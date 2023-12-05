@@ -46,6 +46,7 @@ public class frmMenuAdmin extends javax.swing.JFrame {
         btnOfertas2 = new guiRecursos.cstmButon();
         btnVolver = new guiRecursos.cstmButon();
         btnOfertas = new guiRecursos.cstmButon();
+        btnOfertas3 = new guiRecursos.cstmButon();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -166,7 +167,26 @@ public class frmMenuAdmin extends javax.swing.JFrame {
                 btnOfertasActionPerformed(evt);
             }
         });
-        jPanel2.add(btnOfertas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 210, 60));
+        jPanel2.add(btnOfertas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 210, 60));
+
+        btnOfertas3.setForeground(new java.awt.Color(255, 255, 255));
+        btnOfertas3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/iconServicios.png"))); // NOI18N
+        btnOfertas3.setText("Especialidades");
+        btnOfertas3.setBorderColor(null);
+        btnOfertas3.setColor(new java.awt.Color(65, 67, 73));
+        btnOfertas3.setColorClick(new java.awt.Color(114, 119, 130));
+        btnOfertas3.setColorOver(new java.awt.Color(87, 91, 99));
+        btnOfertas3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnOfertas3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnOfertas3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnOfertas3.setIconTextGap(15);
+        btnOfertas3.setMargin(new java.awt.Insets(0, 10, 0, 0));
+        btnOfertas3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOfertas3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnOfertas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 210, 60));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 210, 490));
 
@@ -206,6 +226,10 @@ public class frmMenuAdmin extends javax.swing.JFrame {
         login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnOfertas3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOfertas3ActionPerformed
+        MostrarPanel(new AdminTrabajador());
+    }//GEN-LAST:event_btnOfertas3ActionPerformed
 
     public void MostrarPanel(JPanel panel){
         panel.setSize(content.getWidth(),content.getHeight());
@@ -270,6 +294,7 @@ public class frmMenuAdmin extends javax.swing.JFrame {
     private guiRecursos.cstmButon btnOfertas;
     private guiRecursos.cstmButon btnOfertas1;
     private guiRecursos.cstmButon btnOfertas2;
+    private guiRecursos.cstmButon btnOfertas3;
     private guiRecursos.cstmButon btnVolver;
     private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel2;

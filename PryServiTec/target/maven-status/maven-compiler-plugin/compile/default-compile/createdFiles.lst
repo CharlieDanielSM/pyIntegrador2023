@@ -32,6 +32,7 @@ vista\frmRegTrabajador$10.class
 recursos\GenerarFacturaPDF$HeaderFooterPageEvent.class
 vista\frmRegTrabajador$15.class
 vista\adminServicios3$9.class
+vista\frmMenuAdmin$6.class
 vista\PruebasBorrar$2.class
 vista\AdminTrabajador$6.class
 vista\ventanaContactar$1.class
@@ -92,11 +93,7 @@ modelo\Autenticacion.class
 vista\frmRegTrabajador$9.class
 vista\frmRegCliente$10.class
 vista\clienteOfertas$DropShadowPanel.class
-<<<<<<< HEAD
 vista\ventanaContactar$4.class
-=======
-vista\frmRegTrabajador$19.class
->>>>>>> fd21a9aa029302465e61b2bd42932f3e4a85c1a9
 dao\ContratoDao.class
 vista\Cobranza$2.class
 modelo\Negociacion.class
@@ -184,6 +181,7 @@ modelo\generaPDFespecialidades.class
 vista\frmRegCliente.class
 vista\frmMenuCliente.class
 util\MySQLConexion.class
+vista\adminEspecialidades.class
 util\MySQLConexionOriginal.class
 vista\frmMenuTrabajador.class
 vista\adminUsuarios$7.class
