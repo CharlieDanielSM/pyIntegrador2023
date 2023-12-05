@@ -100,6 +100,7 @@ public class generaPDF {
                 datos.setSpacingAfter(20);  // Espaciado después del párrafo
                 document.add(datos);
 
+                
                  // Agregar contenido de la tabla
                 agregarContenidoTabla(document, modeloTabla);
 

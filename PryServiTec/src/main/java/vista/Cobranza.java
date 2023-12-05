@@ -192,7 +192,6 @@ public class Cobranza extends javax.swing.JInternalFrame {
         clickCount[0]++;
     }
         
-        
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void btnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturarActionPerformed
@@ -201,7 +200,6 @@ public class Cobranza extends javax.swing.JInternalFrame {
         EmpleadorDao Empleadao=new EmpleadorDao();
         comunicacionPHP php=new comunicacionPHP();
         EmpleadorDto emp = new EmpleadorDto();
-        
         
         String codigo;
         codigo = jTable1.getValueAt(pos, 0).toString();
