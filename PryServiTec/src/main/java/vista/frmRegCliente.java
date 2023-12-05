@@ -2,6 +2,7 @@ package vista;
 
 
 import com.formdev.flatlaf.FlatLightLaf;
+import dao.daoUsuario;
 import dao.daoUsuario2;
 import java.awt.Color;
 import java.awt.Image;
@@ -13,10 +14,13 @@ import javax.swing.JOptionPane;
 import modelo.Usuario2;
 import util.MySQLConexionOriginal;
 import java.sql.*;
+import javax.swing.ButtonGroup;
+import modelo.Usuario;
+import modelo.empleador;
 
 /**
  *
- * @author Nelson
+ 
  */
 public class frmRegCliente extends javax.swing.JFrame {
 
@@ -26,7 +30,8 @@ public class frmRegCliente extends javax.swing.JFrame {
                   int campointento=0;
                   int campointento2=0;
                   int validacion=1;
-                  
+      ButtonGroup tipocuenta = new ButtonGroup();
+                   String tipo="";
     public frmRegCliente() {
         FlatLightLaf.setup();
         initComponents();
@@ -35,8 +40,37 @@ public class frmRegCliente extends javax.swing.JFrame {
         campoCon2.setText("*****");
         imageIconCambiar(frmLogin.class.getResource("/images/con_ocultar_dark.png"), passicon, 20);
         imageIconCambiar(frmLogin.class.getResource("/images/con_ocultar_dark.png"), passicon1, 20);
-    }
+                 funcionbotones();
 
+    }
+    public void funcionbotones(){
+
+        tipocuenta.add(btnempresa);
+        tipocuenta.add(btnpersona);
+         btnpersona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                // Manejar la selección del JRadioButton "Trabajador"
+                if (btnpersona.isSelected()) {
+                    tipo="PERSONA";
+                    lblNombre2.setText("DNI");
+                    
+                }
+            }
+        });
+                  btnempresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                // Manejar la selección del JRadioButton "Trabajador"
+                if (btnempresa.isSelected()) {
+                    tipo="EMPRESA";
+                  lblNombre2.setText("RUC");
+
+                }
+            }
+        });
+                      
+
+
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,14 +81,12 @@ public class frmRegCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        txtNombre = new javax.swing.JTextField();
+        txtdni = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         Separator1 = new javax.swing.JSeparator();
-        lblNombre = new javax.swing.JLabel();
-        lblApellido = new javax.swing.JLabel();
-        txtApellido = new javax.swing.JTextField();
+        lbltipo = new javax.swing.JLabel();
         Separator2 = new javax.swing.JSeparator();
         lblApellido1 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
@@ -78,13 +110,18 @@ public class frmRegCliente extends javax.swing.JFrame {
         txtcodigo = new javax.swing.JTextField();
         txtnum = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        lblNombre1 = new javax.swing.JLabel();
+        txtNombre1 = new javax.swing.JTextField();
+        btnpersona = new javax.swing.JRadioButton();
+        btnempresa = new javax.swing.JRadioButton();
+        lblNombre2 = new javax.swing.JLabel();
         guiBarraVentana1 = new guiRecursos.GuiBarraVentana();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 240, -1));
+        jPanel1.add(txtdni, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 240, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -98,7 +135,7 @@ public class frmRegCliente extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 180, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 180, -1));
 
         jLabel7.setForeground(new java.awt.Color(115, 128, 190));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -109,41 +146,36 @@ public class frmRegCliente extends javax.swing.JFrame {
                 jLabel7MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 110, 20));
-        jPanel1.add(Separator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 240, 10));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 110, 20));
+        jPanel1.add(Separator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 240, 10));
 
-        lblNombre.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        lblNombre.setText("Nombre");
-        jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 80, 20));
-
-        lblApellido.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        lblApellido.setText("Apellido");
-        jPanel1.add(lblApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 80, 20));
-        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 240, -1));
-        jPanel1.add(Separator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 240, 10));
+        lbltipo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lbltipo.setText("TIPO");
+        jPanel1.add(lbltipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 80, 20));
+        jPanel1.add(Separator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 240, 10));
 
         lblApellido1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lblApellido1.setText("Usuario");
-        jPanel1.add(lblApellido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 80, 20));
+        jPanel1.add(lblApellido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 80, 20));
 
         txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtUsuarioKeyReleased(evt);
             }
         });
-        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 240, -1));
-        jPanel1.add(Separator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 240, 10));
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 240, -1));
+        jPanel1.add(Separator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 240, 10));
 
         lblApellido2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lblApellido2.setText("Correo");
-        jPanel1.add(lblApellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 80, 20));
-        jPanel1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 240, -1));
-        jPanel1.add(Separator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 240, 10));
-        jPanel1.add(Separator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 180, 10));
+        jPanel1.add(lblApellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 80, 20));
+        jPanel1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 240, -1));
+        jPanel1.add(Separator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 240, 10));
+        jPanel1.add(Separator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 180, 10));
 
         Contraseña.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Contraseña.setText("Contraseña");
-        jPanel1.add(Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 130, 20));
+        jPanel1.add(Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 130, 20));
         jPanel1.add(errorCon, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 20, 20));
 
         passicon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -164,12 +196,12 @@ public class frmRegCliente extends javax.swing.JFrame {
                 campoConKeyReleased(evt);
             }
         });
-        jPanel1.add(campoCon, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 180, -1));
-        jPanel1.add(Separator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 180, 10));
+        jPanel1.add(campoCon, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 180, -1));
+        jPanel1.add(Separator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 180, 10));
 
         Contraseña1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Contraseña1.setText("Numero");
-        jPanel1.add(Contraseña1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 150, 20));
+        jPanel1.add(Contraseña1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 150, 20));
         jPanel1.add(errorCon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, 20, 20));
 
         passicon1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -179,14 +211,14 @@ public class frmRegCliente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(passicon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, 20, 20));
-        jPanel1.add(juser, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 190, 10));
+        jPanel1.add(juser, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 190, 10));
 
         jred.setForeground(new java.awt.Color(153, 0, 0));
-        jPanel1.add(jred, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 180, 20));
+        jPanel1.add(jred, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 180, 20));
 
         Contraseña2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Contraseña2.setText("Repetir Contraseña");
-        jPanel1.add(Contraseña2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 150, 20));
+        jPanel1.add(Contraseña2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 150, 20));
 
         campoCon2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -198,15 +230,18 @@ public class frmRegCliente extends javax.swing.JFrame {
                 campoCon2KeyReleased(evt);
             }
         });
-        jPanel1.add(campoCon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 180, -1));
+        jPanel1.add(campoCon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 180, -1));
 
         txtcodigo.setEditable(false);
         txtcodigo.setText("+51");
-        jPanel1.add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 40, -1));
+        jPanel1.add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 40, -1));
 
         txtnum.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtnumFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtnumFocusLost(evt);
             }
         });
         txtnum.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -214,25 +249,40 @@ public class frmRegCliente extends javax.swing.JFrame {
                 txtnumKeyReleased(evt);
             }
         });
-        jPanel1.add(txtnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 120, -1));
+        jPanel1.add(txtnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 120, -1));
 
         jLabel1.setText("NUMER");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 110, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 110, -1));
+
+        lblNombre1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblNombre1.setText("Nombre");
+        jPanel1.add(lblNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 90, 20));
+        jPanel1.add(txtNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 240, -1));
+
+        btnpersona.setText("PERSONA NORMAL");
+        jPanel1.add(btnpersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, -1));
+
+        btnempresa.setText("EMPRESA");
+        jPanel1.add(btnempresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, -1, -1));
+
+        lblNombre2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblNombre2.setText("DNI");
+        jPanel1.add(lblNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 80, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
-            .addComponent(guiBarraVentana1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(guiBarraVentana1, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(guiBarraVentana1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -282,8 +332,10 @@ public class frmRegCliente extends javax.swing.JFrame {
 
     }//GEN-LAST:event_campoConFocusGained
     private void limpiar(){
-        txtNombre.setText("");
-        txtApellido.setText("");
+        btnempresa.setSelected(false);
+        btnpersona.setSelected(false);
+        
+        txtdni.setText("");
         txtUsuario.setText("");
         txtCorreo.setText("");
         txtnum.setText("");
@@ -296,57 +348,76 @@ public class frmRegCliente extends javax.swing.JFrame {
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        String nombre,apellido,usuario,correo,contra,contra2;
-        nombre=txtNombre.getText();
-        apellido=txtApellido.getText();
+        nombre=txtdni.getText();
         usuario=txtUsuario.getText();
         contra=campoCon.getText();
         contra2=campoCon2.getText();
         correo=txtCorreo.getText();
       String numero=txtnum.getText();
         String numeroString = "51" +numero;
+        String dni=txtdni.getText();         
+                                            daoUsuario X=new daoUsuario();
+                                              Usuario u=new Usuario();
+                                              empleador e=new empleador();
+                 if(!tipo.equals("")){
+                     if (!nombre.isEmpty() && !dni.isEmpty() && !usuario.isEmpty() &&
+                        !contra.isEmpty() && !correo.isEmpty() && 
+                        !numero.isEmpty()) {
+                        
+                                   if(validacion==1){
+                                   if(numeroString.length() == 11){
+                                       if(esNumeroEntero(numero)){
 
-            
-                  if (!nombre.isEmpty() && !apellido.isEmpty() && !usuario.isEmpty() &&
-            !contra.isEmpty() && !contra2.isEmpty() && !correo.isEmpty()) {
-                    if(validarletra(nombre)==true && validarletra(apellido)==true){
-                            if(contra.equals(contra2)){
-                                    if(validacion==1){
-                                                if (numeroString.length() == 11 ) {
-                                                    if(esNumeroEntero(numero)){
-                                                         Usuario2 y=new Usuario2(3, nombre, apellido, usuario, contra, correo,numeroString);
-                                                         daoUsuario2 x=new daoUsuario2();
-                                                          x.crearUsuario(y); 
-                                                          JOptionPane.showMessageDialog(null, "CLIENTE REGISTRADO");
-                                                          limpiar();
+                                            if(tipo.equals("Persona")){
+                                                e.setFk_codiTipoEmpl("20");
+                                                e.setNombEmpl(nombre);
+                                            }else{
+                                            if(validarletra(nombre)==true ){
+                                                e.setFk_codiTipoEmpl("10");
+                                                e.setNombEmpl(nombre);
 
-                                                    }else{
-                                                     JOptionPane.showMessageDialog(null, "SOLO SE DEBE INGRESAR NUMEROS");
-                                                     txtnum.setText("");   
-                                                    }
+                                            }else{
+                                                System.out.println("INGRESAR SOLO LETRAS PARA EL NOMBRE"); 
+                                            }  
+                                           }                                               
+                                                u.setCodiUsua(usuario);
+                                                u.setPassUsua(contra);
+                                                u.setTipoUsua("cliente");
+                                                e.setCodiEmpl(X.generarCodigoEspecialidad() );
+                                                e.setDniRucEmpl(dni);
+                                                e.setEmailEmpl(correo);
+                                                e.setFk_codiUsua(usuario);
+                                                e.setTeleEmpl(numeroString);
 
-                                                     } else {
-                                                     JOptionPane.showMessageDialog(null, "NUMERO DEBE SER NUEVO DIGITOS");
+                                                X.crearUsuario(u, e);
+                                      
+                                                                              limpiar();
 
 
-                                                      }
+                                       }else{
+                                      JOptionPane.showMessageDialog(null, "NUMERO DEBE SER NUMERS");
+  
+                                       }
+                                   }else{
+                                       JOptionPane.showMessageDialog(null, "NUMERO DEBE SER NUEVO DIGITOS");
 
+                                   }
+     
 
-                                    }else{
-                                       JOptionPane.showMessageDialog(null, "NOMBRE DE USUARIO YA EXISTENTE");
-
-                                    }
-
-                            } else{
-                            JOptionPane.showMessageDialog(null, "CONTRASEÑA NO IGUALES");
-                            }
+                               }   else{
+                                JOptionPane.showMessageDialog(null, "USUARIO YA EXISTENTE");
+ 
+                               }
+                            
                     }else{
-                        JOptionPane.showMessageDialog(null, "SOLO SE DEBE INGRESAR LETRAS");
-                    }
-        } else {
-            JOptionPane.showMessageDialog(null,"Todos los campos deben estar completos");
-        }   
-        
-        
+                   JOptionPane.showMessageDialog(null,"Todos los campos deben estar completos");
+
+                    } 
+                 }else{
+                                               JOptionPane.showMessageDialog(null,"SELECCIONE UN TIPO DE CUENTA");
+   
+                 }                          
+                               
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyReleased
@@ -434,8 +505,12 @@ public class frmRegCliente extends javax.swing.JFrame {
 
     private void txtnumFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtnumFocusGained
         // TODO add your handling code here:
-        validarNumeroEntero();
     }//GEN-LAST:event_txtnumFocusGained
+
+    private void txtnumFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtnumFocusLost
+        validarNumeroEntero();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnumFocusLost
     private boolean esNumeroEntero(String cadena) {
         try {
             Integer.parseInt(cadena);
@@ -453,7 +528,7 @@ public class frmRegCliente extends javax.swing.JFrame {
         }
     }    public boolean usuarioverificar(String usuario){
         try {
-          String sql="SELECT usuario FROM usuario Where usuario=?";
+          String sql="SELECT codiUsua FROM usuario Where codiUsua=?";
           PreparedStatement ps=con.prepareStatement(sql);
           ps.setString(1, usuario);
           ResultSet rs=ps.executeQuery();
@@ -520,6 +595,8 @@ public class frmRegCliente extends javax.swing.JFrame {
     private javax.swing.JSeparator Separator4;
     private javax.swing.JSeparator Separator6;
     private javax.swing.JSeparator Separator8;
+    private javax.swing.JRadioButton btnempresa;
+    private javax.swing.JRadioButton btnpersona;
     private javax.swing.JPasswordField campoCon;
     private javax.swing.JPasswordField campoCon2;
     private javax.swing.JLabel errorCon;
@@ -532,17 +609,18 @@ public class frmRegCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jred;
     private javax.swing.JLabel juser;
-    private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblApellido1;
     private javax.swing.JLabel lblApellido2;
-    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNombre1;
+    private javax.swing.JLabel lblNombre2;
+    private javax.swing.JLabel lbltipo;
     private javax.swing.JLabel passicon;
     private javax.swing.JLabel passicon1;
-    private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCorreo;
-    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNombre1;
     private javax.swing.JTextField txtUsuario;
     private javax.swing.JTextField txtcodigo;
+    private javax.swing.JTextField txtdni;
     private javax.swing.JTextField txtnum;
     // End of variables declaration//GEN-END:variables
 }

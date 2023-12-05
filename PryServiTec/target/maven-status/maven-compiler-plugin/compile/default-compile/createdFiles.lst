@@ -1,6 +1,7 @@
 vista\frmMenuCliente$6.class
 vista\frmRegCliente$11.class
 vista\frmRegCliente$5.class
+vista\frmRegTrabajador$16.class
 guiRecursos\GuiJScrollPane$ScrollLayout.class
 vista\clienteEspecialidad.class
 vista\AdminTrabajador$10.class
@@ -29,9 +30,11 @@ vista\frmLogin$2.class
 vista\adminUsuarios$10.class
 vista\frmRegTrabajador$10.class
 recursos\GenerarFacturaPDF$HeaderFooterPageEvent.class
+vista\frmRegTrabajador$15.class
 vista\adminServicios3$9.class
 vista\PruebasBorrar$2.class
 vista\AdminTrabajador$6.class
+vista\ventanaContactar$1.class
 vista\clienteVerServicio.class
 guiRecursos\ScrollBarWin11UI.class
 dao\daoEmpleador.class
@@ -48,6 +51,7 @@ dao\daoNegociacion.class
 modelo\Calificacion.class
 vista\frmRegTrabajador$7.class
 vista\frmRegCliente$6.class
+vista\frmRegTrabajador$17.class
 modelo\Trabajador.class
 vista\frmRegTrabajador.class
 vista\frmRegCliente$12.class
@@ -67,6 +71,7 @@ modelo\Especialidad.class
 vista\frmElegirTipo$2.class
 vista\adminServicios3$6.class
 recursos\ExportarExcel.class
+vista\frmRegTrabajador$18.class
 vista\clienteContrato$1.class
 guiRecursos\GuiBarraVentana.class
 vista\frmRegCliente$3.class
@@ -77,6 +82,7 @@ vista\adminUsuarios$2.class
 guiRecursos\GuibotonPanel.class
 guiRecursos\ScrollBarWin11UI$ScrollButton.class
 vista\clienteEspecialidad$2.class
+vista\ventanaContactar.class
 vista\clienteNegociacion.class
 vista\PruebasBorrar.class
 modelo\ContratoDto.class
@@ -84,6 +90,7 @@ modelo\Autenticacion.class
 vista\frmRegTrabajador$9.class
 vista\frmRegCliente$10.class
 vista\clienteOfertas$DropShadowPanel.class
+vista\frmRegTrabajador$19.class
 dao\ContratoDao.class
 vista\Cobranza$2.class
 modelo\Negociacion.class
@@ -99,6 +106,7 @@ vista\frmMenuCliente$3.class
 vista\AdminTrabajador$9.class
 guiRecursos\ScrollBarWin11UI$2.class
 vista\clienteEspecialidad$DropShadowPanel.class
+vista\frmRegCliente$14.class
 vista\frmRegTrabajador$8.class
 vista\frmRegCliente$8.class
 vista\clienteOfertas$2.class
@@ -131,6 +139,7 @@ vista\frmRegCliente$1.class
 guiRecursos\GuimenuBoton$1.class
 vista\frmRegCliente$7.class
 guiRecursos\PolygonCorner.class
+vista\frmRegCliente$13.class
 guiRecursos\ScrollBarWin11UI$ScrollButton$1.class
 vista\adminUsuarios$11.class
 vista\clienteTablaTrab$1.class

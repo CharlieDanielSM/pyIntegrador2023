@@ -25,9 +25,9 @@ public class daoServicios {
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
-                String id = rs.getString("id");
-                String nombreServicio = rs.getString("nombre_servicio");
-                String descripcion = rs.getString("descripcion");
+                String id = rs.getString("codiEspe");
+                String nombreServicio = rs.getString("nombEspe");
+                String descripcion = rs.getString("descEspe");
                 Servicios sv = new Servicios(nombreServicio, descripcion);
                 sv.setId(Integer.parseInt(id));
                 
