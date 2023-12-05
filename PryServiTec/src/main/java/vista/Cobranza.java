@@ -177,7 +177,6 @@ public class Cobranza extends javax.swing.JInternalFrame {
     int pos;
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
 
-
     final int[] clickCount = {0};
     if (evt.getClickCount() >= 2) {
 
@@ -200,23 +199,28 @@ public class Cobranza extends javax.swing.JInternalFrame {
 
     private void btnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturarActionPerformed
 
-        generaPDF pdf =new generaPDF();
+         generaPDF pdf =new generaPDF();
+
+        EmpleadorDao Empleadao=new EmpleadorDao();
+
+        comunicacionPHP php=new comunicacionPHP();
         EmpleadorDto emp = new EmpleadorDto();
+        
         String codigo;
         codigo = jTable1.getValueAt(pos, 0).toString();
+        
         emp = Empleadao.obtenerEmpleadorPorID(codigo);
         DefaultTableModel modeloTabla = (DefaultTableModel) jTable2.getModel();
         int pos=jTable2.getSelectedRow();
         if(pos !=1)
         {
-           pdf.generarPDF(modeloTabla, emp);            
-            
+           pdf.generarPDF(modeloTabla, emp);    
+           php.llamarScriptPHP(emp.getEmailEmpl(),emp.getNombEmpl()+".pdf");
         }
         else
         {
            JOptionPane.showMessageDialog(null,"No hay registros por facturar");
         }
-
         
     }//GEN-LAST:event_btnFacturarActionPerformed
 
