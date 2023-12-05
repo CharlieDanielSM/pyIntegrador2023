@@ -215,7 +215,6 @@ public class Cobranza extends javax.swing.JInternalFrame {
         if(pos !=1)
         {
            pdf.generarPDF(modeloTabla, emp);    
-           php.llamarScriptPHP(emp.getEmailEmpl(),emp.getNombEmpl()+".pdf");
         }
         else
         {

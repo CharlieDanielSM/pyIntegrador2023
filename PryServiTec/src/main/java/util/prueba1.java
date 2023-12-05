@@ -9,7 +9,7 @@ public class prueba1 {
 
         comunicacionPHP php=new comunicacionPHP();
         
-        php.llamarScriptPHP("u21203752@utp.edu.pe","PRUEBA.pdf");    
+        php.notificaEmpleado("charliedanielsm@gmail.com","CHARLIE","CHARLIEEMAGIL","954191372");
        
 
        

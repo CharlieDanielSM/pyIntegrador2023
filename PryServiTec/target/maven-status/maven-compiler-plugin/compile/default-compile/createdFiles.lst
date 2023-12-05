@@ -204,6 +204,7 @@ vista\frmRegTrabajador$3.class
 vista\AdminTrabajador$13.class
 vista\AdminTrabajador$4.class
 vista\Cobranza$3.class
+modelo\notificaEmpleado.class
 vista\frmRegTrabajador$2.class
 vista\frmMenuCliente$5.class
 util\SQLConexion.class

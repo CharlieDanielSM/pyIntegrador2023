@@ -2,15 +2,16 @@ package vista;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import dao.ContratoDao;
+import dao.EmpleadorDao;
+import dao.daoTrabajador;
 import java.awt.Color;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import modelo.ContratoDto;
+import modelo.EmpleadorDto;
+import modelo.Trabajador;
+import modelo.comunicacionPHP;
 
-/**
- *
- * @author Nelson
- */
 public class ventanaContactar extends javax.swing.JFrame {
     ContratoDto c;
     ContratoDao daoC = new ContratoDao();
@@ -150,6 +151,26 @@ public class ventanaContactar extends javax.swing.JFrame {
             c.setDescCont(descripcion.getText());
             //c.setCodiNego("N016");
             //daoC.nuevo(c);
+            
+            c.getCodiEmpl();
+            c.getCodiTrab();
+            
+            EmpleadorDao  EmpleadorDao=new EmpleadorDao();
+            daoTrabajador trabajadorDao=new daoTrabajador();
+            
+            Trabajador trabajadordao= trabajadorDao.obtener(c.getCodiTrab());
+            String correo= trabajadordao.getEmailTrab();
+            
+            EmpleadorDto EmpleadorDto =EmpleadorDao.obtenerEmpleadorPorID(c.getCodiEmpl()); 
+            String nombEmpl= EmpleadorDto.getNombEmpl();
+            String correoEmpl= EmpleadorDto.getEmailEmpl();
+            String teleEmpl=EmpleadorDto.getTeleEmp();
+
+            comunicacionPHP php=new comunicacionPHP();
+            
+            php.notificaEmpleado(correo,nombEmpl, correoEmpl, teleEmpl);
+            
+            
             JOptionPane.showMessageDialog(null, "La operación se realizó con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
             mostrar();
