@@ -1,10 +1,7 @@
 package vista;
 
-<<<<<<< HEAD
 import dao.daoEmpleador;
-=======
 import java.awt.BorderLayout;
->>>>>>> c0e8717a57072df4bc6c9dfd6f1338352a4f5017
 import java.awt.Color;
 import java.awt.Image;
 import java.net.URL;
@@ -198,7 +195,6 @@ public class frmMenuTrabajador extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
-<<<<<<< HEAD
     private void cstmButon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cstmButon1ActionPerformed
         daoEmpleador Y = new daoEmpleador();
         empleador empleadorObtenido = Y.obtener(this.user.getCodiUsua());
@@ -212,7 +208,6 @@ public class frmMenuTrabajador extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cstmButon1ActionPerformed
 
-=======
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
         MostrarPanel(new trabajadorInicio());
     }//GEN-LAST:event_btnInicioActionPerformed
@@ -230,7 +225,6 @@ public class frmMenuTrabajador extends javax.swing.JFrame {
         content.repaint();
     }
     
->>>>>>> c0e8717a57072df4bc6c9dfd6f1338352a4f5017
     /**
      * @param args the command line arguments
      */

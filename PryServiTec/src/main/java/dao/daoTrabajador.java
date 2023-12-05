@@ -544,7 +544,6 @@ public class daoTrabajador {
             }
         }
     }
-<<<<<<< HEAD
   public void ACTUALIZATRABA(String nomTrab,String apeTrab, String teleTrab, String emailTrab, String fk_codiUsua,String fk_codiEsp, String nuevousuario) {
     String sql2 ="UPDATE usuario SET codiUsua = ? WHERE codiUsua = ?";
 
