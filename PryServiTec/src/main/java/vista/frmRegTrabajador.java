@@ -127,7 +127,6 @@ public class frmRegTrabajador extends javax.swing.JFrame {
         lcorreo = new javax.swing.JLabel();
         btnmujer = new javax.swing.JRadioButton();
         btnhombre = new javax.swing.JRadioButton();
-        jButton2 = new javax.swing.JButton();
         guiBarraVentana1 = new guiRecursos.GuiBarraVentana();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -317,14 +316,6 @@ public class frmRegTrabajador extends javax.swing.JFrame {
 
         btnhombre.setText("HOMBRE");
         jPanel1.add(btnhombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
-
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -677,12 +668,6 @@ private String idservicio(String nombreServicio) {
         }  
       }
     }//GEN-LAST:event_txtCorreoKeyReleased
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-             String   servicio=cmbServicios.getSelectedItem().toString();
-// TODO add your handling code here:
-       String x= idservicio(servicio);
-    }//GEN-LAST:event_jButton2ActionPerformed
     public boolean validarletra(String letra){
     return letra.matches("^[a-zA-Z\\s]+$");
     }
@@ -751,7 +736,6 @@ private String idservicio(String nombreServicio) {
     private javax.swing.JLabel errorCon1;
     private guiRecursos.GuiBarraVentana guiBarraVentana1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
