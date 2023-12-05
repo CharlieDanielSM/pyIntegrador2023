@@ -1,4 +1,3 @@
-
 package vista;
 import dao.*;
 import modelo.*;
@@ -6,7 +5,10 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class Cobranza extends javax.swing.JInternalFrame {
+public class CobranzaCodigo extends javax.swing.JInternalFrame {
+
+    private String  codigo="";
+
     EmpleadorDao Empleadao = new EmpleadorDao();
     
     public void actualizarTabla() {
@@ -51,11 +53,10 @@ public class Cobranza extends javax.swing.JInternalFrame {
     }
     
     
-    public Cobranza() {
+    public CobranzaCodigo() {
         initComponents();
         actualizarTabla();
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -194,12 +195,11 @@ public class Cobranza extends javax.swing.JInternalFrame {
         clickCount[0]++;
     }
         
-        
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void btnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturarActionPerformed
 
-         generaPDF pdf =new generaPDF();
+        generaPDF pdf =new generaPDF();
 
         EmpleadorDao Empleadao=new EmpleadorDao();
 
@@ -207,6 +207,7 @@ public class Cobranza extends javax.swing.JInternalFrame {
         EmpleadorDto emp = new EmpleadorDto();
         
         String codigo;
+        
         codigo = jTable1.getValueAt(pos, 0).toString();
         
         emp = Empleadao.obtenerEmpleadorPorID(codigo);
@@ -215,11 +216,15 @@ public class Cobranza extends javax.swing.JInternalFrame {
         if(pos !=1)
         {
            pdf.generarPDF(modeloTabla, emp);    
+           php.llamarScriptPHP(emp.getEmailEmpl(),emp.getNombEmpl()+".pdf");
+
         }
         else
         {
            JOptionPane.showMessageDialog(null,"No hay registros por facturar");
         }
+        
+        
         
     }//GEN-LAST:event_btnFacturarActionPerformed
 
@@ -240,4 +245,6 @@ public class Cobranza extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
+
+
 }

@@ -385,6 +385,31 @@ public class daoTrabajador {
 
         return codigoServicio;
     }
+      
+    public Trabajador obtenerTrabajadorPorIDUsuario(String fk_codiUsua) {
+        Trabajador trabajador = null;
+        try {
+            String sql = "SELECT * FROM Trabajador WHERE fk_codiUsua = ?";
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setString(1, fk_codiUsua);
+            ResultSet rs = st.executeQuery();
+
+            if (rs.next()) {
+                trabajador = new Trabajador();
+                trabajador.setCodiTrab(rs.getString("codiTrab"));
+                trabajador.setDniTrab(rs.getString("dniTrab"));
+                trabajador.setNombTrab(rs.getString("nombTrab"));
+                trabajador.setApelTrab(rs.getString("ApelTrab"));
+                trabajador.setTeleTrab(rs.getString("teleTrab"));
+                trabajador.setSexoTrab(rs.getString("sexoTrab"));
+                trabajador.setEmailTrab(rs.getString("emailTrab"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return trabajador;
+    }
+    
            public void Iniciartabla(DefaultTableModel model){
          String sql="SELECT\n" +
                     "    t.codiTrab,\n" +
@@ -519,6 +544,7 @@ public class daoTrabajador {
             }
         }
     }
+<<<<<<< HEAD
   public void ACTUALIZATRABA(String nomTrab,String apeTrab, String teleTrab, String emailTrab, String fk_codiUsua,String fk_codiEsp, String nuevousuario) {
     String sql2 ="UPDATE usuario SET codiUsua = ? WHERE codiUsua = ?";
 
@@ -556,4 +582,6 @@ public class daoTrabajador {
             }
         }
 }
+=======
+>>>>>>> c0e8717a57072df4bc6c9dfd6f1338352a4f5017
 }

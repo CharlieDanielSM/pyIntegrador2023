@@ -3,6 +3,7 @@ vista\frmRegCliente$11.class
 vista\frmRegCliente$5.class
 vista\frmRegTrabajador$16.class
 guiRecursos\GuiJScrollPane$ScrollLayout.class
+vista\CobranzaCodigo$1.class
 vista\clienteEspecialidad.class
 vista\AdminTrabajador$10.class
 vista\frmRegTrabajador$5.class
@@ -18,6 +19,7 @@ vista\frmLogin.class
 vista\clienteEspecialidad$1.class
 vista\frmMenuAdmin$1.class
 modelo\Usuario2.class
+vista\frmMenuTrabajador$4.class
 vista\frmRegTrabajador$11.class
 vista\ConfiguracionTrabajador$4.class
 vista\frmLogin$1.class
@@ -31,6 +33,7 @@ modelo\Servicioadmin.class
 vista\frmMenuCliente$1.class
 vista\frmRegTrabajador$6.class
 guiRecursos\GuiBoton.class
+vista\CobranzaCodigo$2.class
 vista\frmLogin$2.class
 vista\adminUsuarios$10.class
 vista\frmRegTrabajador$10.class
@@ -38,19 +41,29 @@ recursos\GenerarFacturaPDF$HeaderFooterPageEvent.class
 vista\ConfiguracionTrabajador$5.class
 vista\frmRegTrabajador$15.class
 vista\adminServicios3$9.class
+vista\frmMenuAdmin$6.class
 vista\PruebasBorrar$2.class
 vista\AdminTrabajador$6.class
 vista\ventanaContactar$1.class
 vista\clienteVerServicio.class
 guiRecursos\ScrollBarWin11UI.class
+vista\trabajadorInicio.class
 dao\daoEmpleador.class
 guiRecursos\GuiBarraVentana$4.class
 modelo\Autenticacion1.class
 dao\daoUsuario.class
+<<<<<<< HEAD
 vista\ConfiguracionTrabajador$6.class
+=======
+vista\ventanaContactar$2.class
+vista\CobranzaCodigo.class
+vista\adminServicios3$5.class
+vista\adminServicios3$10.class
+>>>>>>> c0e8717a57072df4bc6c9dfd6f1338352a4f5017
 recursos\GenerarFacturaPDF.class
 vista\frmLogin$3.class
 vista\adminUsuarios$1.class
+vista\ventanaContactar$5.class
 vista\clienteTablaEsp.class
 vista\adminServicios3$8.class
 vista\frm_cambiarcontra$1.class
@@ -58,7 +71,11 @@ vista\adminUsuarios$4.class
 vista\frm_ConfiguracionCliente$2.class
 dao\daoNegociacion.class
 modelo\Calificacion.class
+<<<<<<< HEAD
 vista\ConfiguracionCliente$8.class
+=======
+vista\frmMenuAdmin.class
+>>>>>>> c0e8717a57072df4bc6c9dfd6f1338352a4f5017
 vista\frmRegTrabajador$7.class
 vista\frmRegCliente$6.class
 vista\frmRegTrabajador$17.class
@@ -103,9 +120,14 @@ modelo\Autenticacion.class
 vista\frmRegTrabajador$9.class
 vista\frmRegCliente$10.class
 vista\clienteOfertas$DropShadowPanel.class
+<<<<<<< HEAD
 vista\ConfiguracionTrabajador$9.class
 vista\ConfiguracionCliente$7.class
+=======
+vista\ventanaContactar$4.class
+>>>>>>> c0e8717a57072df4bc6c9dfd6f1338352a4f5017
 dao\ContratoDao.class
+vista\CobranzaCodigo$4.class
 vista\Cobranza$2.class
 vista\frm_ConfiguracionCliente$1.class
 modelo\Negociacion.class
@@ -127,6 +149,7 @@ vista\frmRegCliente$14.class
 vista\frmRegTrabajador$8.class
 vista\frmRegCliente$8.class
 vista\clienteOfertas$2.class
+vista\ventanaContactar$3.class
 vista\clienteInicio.class
 vista\frmMenuAdmin$4.class
 vista\frmMenuTrabajador$1.class
@@ -149,8 +172,13 @@ modelo\EmpleadorDto.class
 vista\frmMenuCliente$8.class
 vista\clienteNegociacion$1.class
 util\prueba1.class
+modelo\comunicacionPHP.class
 vista\adminServicios3$11.class
+<<<<<<< HEAD
 vista\ConfiguracionCliente$1.class
+=======
+vista\trabajadorSolicitudes.class
+>>>>>>> c0e8717a57072df4bc6c9dfd6f1338352a4f5017
 dao\daoTrabajador.class
 vista\adminServicios3$2.class
 vista\clienteTablaTrab$2.class
@@ -197,14 +225,21 @@ vista\clienteVerServicio$1.class
 vista\ConfiguracionTrabajador$1.class
 guiRecursos\GuimenuBoton.class
 vista\Cobranza$1.class
+vista\CobranzaCodigo$3.class
 vista\frmRegTrabajador$14.class
 vista\frmRegTrabajador$4.class
+vista\clienteOfertas.class
 guiRecursos\GuiBarraVentana$2.class
 modelo\generaPDFespecialidades.class
+vista\clienteOfertas$3.class
 vista\frmRegCliente.class
 vista\frmMenuCliente.class
 util\MySQLConexion.class
+<<<<<<< HEAD
 vista\ConfiguracionCliente$5.class
+=======
+vista\adminEspecialidades.class
+>>>>>>> c0e8717a57072df4bc6c9dfd6f1338352a4f5017
 util\MySQLConexionOriginal.class
 vista\frm_ConfiguracionCliente$6.class
 vista\frm_ConfiguracionCliente.class
@@ -214,6 +249,7 @@ vista\frmRegTrabajador$3.class
 vista\AdminTrabajador$13.class
 vista\AdminTrabajador$4.class
 vista\Cobranza$3.class
+modelo\notificaEmpleado.class
 vista\frmRegTrabajador$2.class
 vista\frmMenuCliente$5.class
 vista\frm_ConfiguracionCliente$7.class
@@ -224,6 +260,8 @@ vista\clienteOfertas$4.class
 vista\ConfiguracionTrabajador$3.class
 guiRecursos\GuibotonPanel$1.class
 vista\clienteTablaEsp$3.class
+vista\frmMenuAdmin$2.class
+vista\adminServicios3.class
 vista\frmMenuTrabajador$2.class
 modelo\empleador.class
 vista\AdminTrabajador$3.class

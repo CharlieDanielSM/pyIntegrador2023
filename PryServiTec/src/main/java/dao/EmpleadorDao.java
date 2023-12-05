@@ -47,22 +47,15 @@ public class EmpleadorDao
     }
 
     public EmpleadorDto obtenerEmpleadorPorID(String idEmpleador) {
-    EmpleadorDto empleador = null;
-    try {
-        
-        String query = "SELECT * FROM Empleador WHERE codiEmpl = ?";
-        preparedStatement = conn.prepareStatement(query);
-        preparedStatement.setString(1, idEmpleador);
-        resultSet = preparedStatement.executeQuery();
+        EmpleadorDto empleador = null;
+        try {
 
-        if (resultSet.next()) {
-            empleador = new EmpleadorDto();
-            empleador.setCodiEmpl(resultSet.getString("codiEmpl"));
-            empleador.setDniRucEmpl(resultSet.getString("dniRucEmpl"));
-            empleador.setNombEmpl(resultSet.getString("nombEmpl"));
-            empleador.setTeleEmp(resultSet.getString("teleEmpl"));
-            empleador.setEmailEmpl(resultSet.getString("emailEmpl"));
+            String query = "SELECT * FROM Empleador WHERE codiEmpl = ?";
+            preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setString(1, idEmpleador);
+            resultSet = preparedStatement.executeQuery();
 
+<<<<<<< HEAD
         }
     } catch (SQLException e) {
         e.printStackTrace();
@@ -142,4 +135,43 @@ public void ACTUALIZARMPLEADO(String nomEmpl, String teleEmpl, String emailEmpl,
     } 
 }
     
+=======
+            if (resultSet.next()) {
+                empleador = new EmpleadorDto();
+                empleador.setCodiEmpl(resultSet.getString("codiEmpl"));
+                empleador.setDniRucEmpl(resultSet.getString("dniRucEmpl"));
+                empleador.setNombEmpl(resultSet.getString("nombEmpl"));
+                empleador.setTeleEmp(resultSet.getString("teleEmpl"));
+                empleador.setEmailEmpl(resultSet.getString("emailEmpl"));
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+        return empleador;
+    }
+
+    public EmpleadorDto obtenerEmpleadorPorIDUsuario(String fk_codiUsua) {
+        EmpleadorDto empleador = null;
+        try {
+
+            String query = "SELECT * FROM Empleador WHERE fk_codiUsua = ?";
+            preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setString(1, fk_codiUsua);
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                empleador = new EmpleadorDto();
+                empleador.setCodiEmpl(resultSet.getString("codiEmpl"));
+                empleador.setDniRucEmpl(resultSet.getString("dniRucEmpl"));
+                empleador.setNombEmpl(resultSet.getString("nombEmpl"));
+                empleador.setTeleEmp(resultSet.getString("teleEmpl"));
+                empleador.setEmailEmpl(resultSet.getString("emailEmpl"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+        return empleador;
+    }
+>>>>>>> c0e8717a57072df4bc6c9dfd6f1338352a4f5017
 }

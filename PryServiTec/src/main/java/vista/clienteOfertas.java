@@ -2,6 +2,7 @@ package vista;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import dao.ContratoDao;
+import dao.EmpleadorDao;
 import dao.daoEspecialidad;
 import dao.daoTrabajador;
 import java.awt.BorderLayout;
@@ -27,7 +28,6 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import modelo.ContratoDto;
@@ -43,6 +43,7 @@ public class clienteOfertas extends javax.swing.JPanel{
     
     daoTrabajador daoTrab = new daoTrabajador();
     daoEspecialidad daoEsp = new daoEspecialidad();
+    EmpleadorDao daoEmp = new EmpleadorDao();
     ContratoDao daoCont = new ContratoDao();
     Usuario us;
     List<Trabajador> trabajadores;
@@ -179,32 +180,15 @@ public class clienteOfertas extends javax.swing.JPanel{
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     ContratoDto c = new ContratoDto();
+                    String descripcion = "Solicito servicio de "+daoEsp.obtener(t.getCodiEspe()).getNombEspe()+", para "+t.getNombTrab();
+                    c.setDescCont(descripcion);
                     c.setCodiCont(daoCont.obtenerNuevoCodigoContrato());
-                    c.setCodiEmpl(us.getCodiUsua());
+                    c.setCodiEmpl(daoEmp.obtenerEmpleadorPorIDUsuario(us.getCodiUsua()).getCodiEmpl());
                     c.setCodiNego(null);
                     c.setCodiTrab(t.getCodiTrab());
-                    c.setDescCont("Contrato pendiente para: "+t.getNombTrab());
                     c.setEstCont("Pendiente");
                     c.setFechCont(new Date(System.currentTimeMillis()));
                     new ventanaContactar(c).setVisible(true);
-                    /*
-                    int opcion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas contactar a este trabajador?", "Decide", JOptionPane.YES_NO_OPTION);
-                    if (opcion == JOptionPane.YES_OPTION) {
-                        System.out.println("Sí");
-                        ContratoDto c = new ContratoDto();
-                        c.setCodiCont(daoCont.obtenerNuevoCodigoContrato());
-                        c.setCodiEmpl(us.getCodiUsua());
-                        c.setCodiNego(null);
-                        c.setCodiTrab(t.getCodiTrab());
-                        c.setDescCont("Contrato pendiente para: "+t.getNombTrab());
-                        c.setEstCont("Pendiente");
-                        c.setFechCont(new Date(System.currentTimeMillis()));
-                        daoCont.nuevo(c);
-                        
-                    } else {
-                        System.out.println("No");
-                    }*/
-                    
                 }
             });
 

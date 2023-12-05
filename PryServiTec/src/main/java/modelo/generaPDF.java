@@ -47,7 +47,7 @@ public class generaPDF {
            if (!nombreArchivo.toLowerCase().endsWith(".pdf")) {
                nombreArchivo += ".pdf";
            }
-
+           
            Document document = new Document(PageSize.A4);
 
            try {
@@ -106,6 +106,10 @@ public class generaPDF {
                 JOptionPane.showMessageDialog(null, "COMPROBANTE GENERADO");
                 document.close();
 
+                comunicacionPHP php=new comunicacionPHP();
+                
+                php.llamarScriptPHP(emp.getEmailEmpl(), nombreArchivo);
+                
            } catch (DocumentException | IOException e) {
                e.printStackTrace();
                JOptionPane.showMessageDialog(null, "ERROR AL GENERAR PDF");
