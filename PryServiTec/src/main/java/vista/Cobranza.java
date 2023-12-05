@@ -216,8 +216,7 @@ public class Cobranza extends javax.swing.JInternalFrame {
         {
            JOptionPane.showMessageDialog(null,"No hay registros por facturar");
         }
-        
-        
+
         
     }//GEN-LAST:event_btnFacturarActionPerformed
 

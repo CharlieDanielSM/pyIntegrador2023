@@ -10,7 +10,6 @@ public class empleador {
     private String emailEmpl;
     private String fk_codiTipoEmpl;
     private String fk_codiUsua;
-
     
     public empleador() {
     }
