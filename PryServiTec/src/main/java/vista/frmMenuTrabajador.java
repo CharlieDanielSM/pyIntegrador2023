@@ -1,10 +1,12 @@
 package vista;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import modelo.Usuario;
 
 /**
@@ -19,17 +21,8 @@ public class frmMenuTrabajador extends javax.swing.JFrame {
     public frmMenuTrabajador(Usuario user) {
         initComponents();
         this.user = user;
-        imageIconCambiar(getClass().getClassLoader().getResource("images/icon/volver.png"), volverIcon, 40);
         
         ImageUsuario();
-        crearSecciones();
-    }
-    public void crearSecciones(){
-        //Seccion Categorias
-        mnSeccion1.iconImg("categorias.png");
-        mnSeccion1.textoSeccion("Categorias");
-        
-        
     }
     
     public void ImageUsuario(){
@@ -52,10 +45,9 @@ public class frmMenuTrabajador extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        mnSeccion1 = new guiRecursos.GuimenuBoton();
-        volverPanel = new javax.swing.JPanel();
-        volverIcon = new javax.swing.JLabel();
-        txtSeccion = new javax.swing.JLabel();
+        btnVolver = new guiRecursos.cstmButon();
+        btnInicio = new guiRecursos.cstmButon();
+        btnOfertas1 = new guiRecursos.cstmButon();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -101,50 +93,63 @@ public class frmMenuTrabajador extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(43, 45, 49));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel2.add(mnSeccion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        volverPanel.setBackground(new java.awt.Color(43, 45, 49));
-        volverPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        volverPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                volverPanelformMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                volverPanelformMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                volverPanelMousePressed(evt);
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/iconVolver.png"))); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.setBorderColor(null);
+        btnVolver.setColor(new java.awt.Color(43, 45, 49));
+        btnVolver.setColorClick(new java.awt.Color(205, 97, 85));
+        btnVolver.setColorOver(new java.awt.Color(192, 57, 43));
+        btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnVolver.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnVolver.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnVolver.setIconTextGap(15);
+        btnVolver.setMargin(new java.awt.Insets(0, 10, 0, 0));
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
             }
         });
+        jPanel2.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 210, 60));
 
-        volverIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnInicio.setForeground(new java.awt.Color(255, 255, 255));
+        btnInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/iconInicio.png"))); // NOI18N
+        btnInicio.setText("Inicio");
+        btnInicio.setBorderColor(null);
+        btnInicio.setColor(new java.awt.Color(65, 67, 73));
+        btnInicio.setColorClick(new java.awt.Color(114, 119, 130));
+        btnInicio.setColorOver(new java.awt.Color(87, 91, 99));
+        btnInicio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnInicio.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnInicio.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnInicio.setIconTextGap(15);
+        btnInicio.setMargin(new java.awt.Insets(0, 10, 0, 0));
+        btnInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicioActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 60));
 
-        txtSeccion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtSeccion.setForeground(new java.awt.Color(255, 255, 255));
-        txtSeccion.setText("Volver");
-
-        javax.swing.GroupLayout volverPanelLayout = new javax.swing.GroupLayout(volverPanel);
-        volverPanel.setLayout(volverPanelLayout);
-        volverPanelLayout.setHorizontalGroup(
-            volverPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(volverPanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(volverIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        volverPanelLayout.setVerticalGroup(
-            volverPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(volverPanelLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(volverPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(volverIcon, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                    .addComponent(txtSeccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        jPanel2.add(volverPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, -1, 50));
+        btnOfertas1.setForeground(new java.awt.Color(255, 255, 255));
+        btnOfertas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/iconHistory.png"))); // NOI18N
+        btnOfertas1.setText("Solicitudes");
+        btnOfertas1.setBorderColor(null);
+        btnOfertas1.setColor(new java.awt.Color(65, 67, 73));
+        btnOfertas1.setColorClick(new java.awt.Color(114, 119, 130));
+        btnOfertas1.setColorOver(new java.awt.Color(87, 91, 99));
+        btnOfertas1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnOfertas1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnOfertas1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnOfertas1.setIconTextGap(15);
+        btnOfertas1.setMargin(new java.awt.Insets(0, 10, 0, 0));
+        btnOfertas1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOfertas1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnOfertas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 210, 60));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 210, 490));
 
@@ -167,20 +172,29 @@ public class frmMenuTrabajador extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void volverPanelformMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverPanelformMouseEntered
-        volverPanel.setBackground(new Color(203, 64, 64));
-    }//GEN-LAST:event_volverPanelformMouseEntered
-
-    private void volverPanelformMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverPanelformMouseExited
-        volverPanel.setBackground(new Color(43,45,49));
-    }//GEN-LAST:event_volverPanelformMouseExited
-
-    private void volverPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverPanelMousePressed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         frmLogin login = new frmLogin();
         login.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_volverPanelMousePressed
+    }//GEN-LAST:event_btnVolverActionPerformed
 
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+        MostrarPanel(new trabajadorInicio());
+    }//GEN-LAST:event_btnInicioActionPerformed
+
+    private void btnOfertas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOfertas1ActionPerformed
+        MostrarPanel(new trabajadorSolicitudes(user));
+    }//GEN-LAST:event_btnOfertas1ActionPerformed
+
+    public void MostrarPanel(JPanel panel){
+        panel.setSize(content.getWidth(),content.getHeight());
+        panel.setLocation(0,0);
+        content.removeAll();
+        content.add(panel, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -237,16 +251,15 @@ public class frmMenuTrabajador extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private guiRecursos.GuiBarraVentana barraVentana1;
+    private guiRecursos.cstmButon btnInicio;
+    private guiRecursos.cstmButon btnOfertas1;
+    private guiRecursos.cstmButon btnVolver;
     private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private guiRecursos.GuimenuBoton mnSeccion1;
-    private javax.swing.JLabel txtSeccion;
     private javax.swing.JLabel userImage;
-    private javax.swing.JLabel volverIcon;
-    private javax.swing.JPanel volverPanel;
     // End of variables declaration//GEN-END:variables
 }

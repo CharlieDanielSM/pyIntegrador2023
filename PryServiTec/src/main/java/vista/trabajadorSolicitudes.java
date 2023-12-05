@@ -4,12 +4,10 @@ import com.formdev.flatlaf.FlatLightLaf;
 import dao.ContratoDao;
 import dao.EmpleadorDao;
 import dao.daoTrabajador;
-import java.awt.BorderLayout;
 import java.util.List;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import modelo.ContratoDto;
+import modelo.EmpleadorDto;
 import modelo.Trabajador;
 import modelo.Usuario;
 
@@ -17,43 +15,39 @@ import modelo.Usuario;
  *
  * @author Nelson
  */
-public class clienteHistorial extends javax.swing.JPanel{
+public class trabajadorSolicitudes extends javax.swing.JPanel {
     EmpleadorDao daoEmp = new EmpleadorDao();
     ContratoDao daoCont = new ContratoDao();
     daoTrabajador daoTrab = new daoTrabajador();
-    
-    public clienteHistorial(Usuario user) {
+    /**
+     * Creates new form trabajadorSolicitudes
+     */
+    public trabajadorSolicitudes(Usuario user) {
         FlatLightLaf.setup();
+        
+        String CodiTrab = daoTrab.obtenerTrabajadorPorIDUsuario(user.getCodiUsua()).getCodiTrab();
         initComponents();
-        String codEmp = daoEmp.obtenerEmpleadorPorIDUsuario(user.getCodiUsua()).getCodiEmpl();
-        generarTabla(codEmp);
+        generarTabla(CodiTrab);
     }
 
-    public void generarTabla(String codEmp){
-        List<ContratoDto> contratos = daoCont.listarContXEmpleador(codEmp);
+    public void generarTabla(String CodiTrab){
+        List<ContratoDto> contratos = daoCont.listarContXTrabajador(CodiTrab);
         // Mostrar la lista de contratos en el JTable
         DefaultTableModel model = (DefaultTableModel) tablaContratos.getModel();
         model.setRowCount(0);
         for (ContratoDto contrato : contratos) {
-            Trabajador t= daoTrab.obtener(contrato.getCodiTrab());
+            EmpleadorDto e= daoEmp.obtenerEmpleadorPorID(contrato.getCodiEmpl());
             model.addRow(new Object[]{
                 contrato.getCodiCont(),
-                t.getNombTrab()+" "+t.getApelTrab(),
+                e.getNombEmpl(),
+                e.getTeleEmp(),
                 contrato.getEstCont(),
-                contrato.getFechCont()
+                contrato.getFechCont(),
+                contrato.getFechInicCont(),
+                contrato.getFechFincont()
             });
         }
     }
-    
-    public void MostrarPanel(JPanel panel){
-        panel.setSize(this.getWidth(),this.getHeight());
-        panel.setLocation(0,0);
-        this.removeAll();
-        this.add(panel, BorderLayout.CENTER);
-        this.revalidate();
-        this.repaint();
-    }
-    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,13 +75,13 @@ public class clienteHistorial extends javax.swing.JPanel{
 
         tablaContratos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Codigo", "Nombres y Apellidos", "Estado", "Fecha Contrato"
+                "Codigo", "Nombre", "Telefono", "Estado", "Fecha Contrato", "Fecha Inicio", "Fecha Final"
             }
         ));
         jScrollPane1.setViewportView(tablaContratos);
