@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
+import modelo.empleador;
 
 
 
@@ -67,9 +69,77 @@ public class EmpleadorDao
     } 
     return empleador;
 }
+   public boolean correoverificar (String correo){
+         try {
+           String sql="SELECT * FROM trabajador WHERE emailTrab = ?";
+         PreparedStatement ps = conn.prepareStatement(sql);
+         ps.setString(1, correo);
+         ResultSet rs = ps.executeQuery();
+         boolean dniverificar = rs.next();
+        rs.close();
+        ps.close();
 
+        return dniverificar;
+        } catch (Exception e) {
+        e.printStackTrace();
+        return false;
+        }
+    }
+public void ACTUALIZARMPLEADO(String nomEmpl, String teleEmpl, String emailEmpl, String fk_codiUsua, String nuevousuario) {
+    String sql2 ="UPDATE usuario SET codiUsua = ? WHERE codiUsua = ?";
 
+    String sql = "UPDATE empleador SET nombEmpl=?, teleEmpl=?, emailEmpl=? WHERE fk_codiUsua=?";
 
+    try {
+        try (PreparedStatement ps = conn.prepareStatement(sql2)) {
+            ps.setString(1, nuevousuario);
+            ps.setString(2, fk_codiUsua);
+            ps.executeUpdate();
+        }
 
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, nomEmpl);
+            ps.setString(2, teleEmpl);
+            ps.setString(3, emailEmpl);
+            ps.setString(4, nuevousuario);
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "USUARIO ACTUALIZADO");
+        }
+
+    } catch (SQLException e) {
+        // Manejar la excepción adecuadamente
+        System.out.println("Error: " + e.getMessage());
+        e.printStackTrace();
+          } finally {
+            try {
+                if (conn != null) {
+                    conn.close(); // Cierra la conexión en el bloque finally
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+}
+
+ public void eliminarUsuario(String id) {
+    try {
+        String sql = "DELETE FROM usuario WHERE codiUsua = ?";
+        String sql2="Delete from empleador where fk_codiUsua=?";
+        try(PreparedStatement ps = conn.prepareStatement(sql2)){
+        ps.setString(1, id);
+        ps.executeUpdate();
+        }
+        try(PreparedStatement ps = conn.prepareStatement(sql)){
+        ps.setString(1, id);
+        ps.executeUpdate();
+        JOptionPane.showMessageDialog(null, "USUARIO ELIMINADO");
+            ps.close();}
+        
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+
+    } 
+}
     
 }

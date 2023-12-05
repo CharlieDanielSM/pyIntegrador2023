@@ -1,5 +1,6 @@
 package vista;
 
+import dao.daoEmpleador;
 import java.awt.BorderLayout;
 import java.awt.Image;
 import java.net.URL;
@@ -7,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import modelo.Usuario;
+import modelo.empleador;
 
 /**
  *
@@ -20,7 +22,7 @@ public class frmMenuCliente extends javax.swing.JFrame {
     public frmMenuCliente(Usuario user) {
         initComponents();
         MostrarPanel(new clienteInicio());
-        if (user==null) this.user = new Usuario("cliente", "cliente", "cliente"); else this.user = user;
+        if (user==null) this.user = new Usuario("TILIN", "TILIN", "cliente"); else this.user = user;
         System.out.println("user: "+this.user.getCodiUsua()+",pass:"+this.user.getPassUsua()+",tipo:"+this.user.getTipoUsua());
         ImageUsuario();
     }
@@ -85,6 +87,11 @@ public class frmMenuCliente extends javax.swing.JFrame {
         cstmButon1.setColor(new java.awt.Color(0, 102, 102));
         cstmButon1.setColorClick(new java.awt.Color(0, 204, 204));
         cstmButon1.setColorOver(new java.awt.Color(0, 153, 153));
+        cstmButon1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cstmButon1ActionPerformed(evt);
+            }
+        });
         jPanel3.add(cstmButon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 100, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 120));
@@ -272,6 +279,20 @@ public class frmMenuCliente extends javax.swing.JFrame {
     private void btnOfertas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOfertas1ActionPerformed
         MostrarPanel(new clienteHistorial(user));
     }//GEN-LAST:event_btnOfertas1ActionPerformed
+
+    private void cstmButon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cstmButon1ActionPerformed
+    daoEmpleador Y = new daoEmpleador();
+    empleador empleadorObtenido = Y.obtener(this.user.getCodiUsua());
+
+    if (empleadorObtenido != null) {
+        ConfiguracionCliente X = new ConfiguracionCliente(empleadorObtenido);
+        X.setVisible(true);
+        this.dispose();
+    } else {
+        System.out.println("No se encontró un empleador para el usuario.");
+    }
+
+    }//GEN-LAST:event_cstmButon1ActionPerformed
 
     public void MostrarPanel(JPanel panel){
         panel.setSize(content.getWidth(),content.getHeight());

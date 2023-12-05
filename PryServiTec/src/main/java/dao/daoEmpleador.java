@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import modelo.EmpleadorDto;
 import modelo.empleador;
 import util.MySQLConexion;
 
@@ -41,33 +42,34 @@ public class daoEmpleador {
     }
 
     // Método para obtener un solo empleador por su código
-    public empleador obtener(String codiEmpl) {
-        empleador empleador = null;
+ public empleador obtener(String fk_codiUsua) {
+    empleador empleador = null;
 
-        String sql = "SELECT dniRucEmpl, nombEmpl, teleEmpl, emailEmpl, fk_codiTipoEmpl, fk_codiUsua FROM empleador WHERE codiEmpl = ?";
+    String sql = "SELECT dniRucEmpl, nombEmpl, teleEmpl, emailEmpl, fk_codiTipoEmpl, codiEmpl FROM empleador WHERE fk_codiUsua = ?";
 
-        try (Connection con = MySQLConexion.getConexion();
-             PreparedStatement st = con.prepareStatement(sql)) {
+    try (Connection con = MySQLConexion.getConexion();
+         PreparedStatement st = con.prepareStatement(sql)) {
 
-            st.setString(1, codiEmpl);
-            try (ResultSet rs = st.executeQuery()) {
-                if (rs.next()) {
-                    String dniRucEmpl = rs.getString("dniRucEmpl");
-                    String nombEmpl = rs.getString("nombEmpl");
-                    String teleEmpl = rs.getString("teleEmpl");
-                    String emailEmpl = rs.getString("emailEmpl");
-                    String fk_codiTipoEmpl = rs.getString("fk_codiTipoEmpl");
-                    String fk_codiUsua = rs.getString("fk_codiUsua");
+        st.setString(1, fk_codiUsua);
+        try (ResultSet rs = st.executeQuery()) {
+            if (rs.next()) {
+                String dniRucEmpl = rs.getString("dniRucEmpl");
+                String nombEmpl = rs.getString("nombEmpl");
+                String teleEmpl = rs.getString("teleEmpl");
+                String emailEmpl = rs.getString("emailEmpl");
+                String fk_codiTipoEmpl = rs.getString("fk_codiTipoEmpl");
+                String codiEmpl = rs.getString("codiEmpl");
 
-                    empleador = new empleador(codiEmpl, dniRucEmpl, nombEmpl, teleEmpl, emailEmpl, fk_codiTipoEmpl, fk_codiUsua);
-                }
+                empleador = new empleador(codiEmpl, dniRucEmpl, nombEmpl, teleEmpl, emailEmpl, fk_codiTipoEmpl, fk_codiUsua);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
-
-        return empleador;
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
+
+    return empleador;
+}
+
 
     // Método para crear un nuevo empleador
     public boolean crear(empleador empleador) {

@@ -651,7 +651,7 @@ private String idservicio(String nombreServicio) {
                                       String correo= txtCorreo.getText();
                               daoTrabajador X=new daoTrabajador();
         if(correo.equals("")){
-          ldni.setText("");
+          lcorreo.setText("");
 
       }else{
         if(X.correoverificar(correo)==true){

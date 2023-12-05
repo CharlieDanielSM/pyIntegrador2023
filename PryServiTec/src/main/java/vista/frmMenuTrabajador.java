@@ -1,11 +1,13 @@
 package vista;
 
+import dao.daoEmpleador;
 import java.awt.Color;
 import java.awt.Image;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import modelo.Usuario;
+import modelo.empleador;
 
 /**
  *
@@ -50,6 +52,7 @@ public class frmMenuTrabajador extends javax.swing.JFrame {
         userImage = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        cstmButon1 = new guiRecursos.cstmButon();
         content = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         mnSeccion1 = new guiRecursos.GuimenuBoton();
@@ -81,6 +84,20 @@ public class frmMenuTrabajador extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setText("Default");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 100, 20));
+
+        cstmButon1.setForeground(new java.awt.Color(255, 255, 255));
+        cstmButon1.setText("Configurar");
+        cstmButon1.setBorderColor(null);
+        cstmButon1.setBorderPainted(false);
+        cstmButon1.setColor(new java.awt.Color(0, 102, 102));
+        cstmButon1.setColorClick(new java.awt.Color(0, 204, 204));
+        cstmButon1.setColorOver(new java.awt.Color(0, 153, 153));
+        cstmButon1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cstmButon1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(cstmButon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 100, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 120));
 
@@ -181,6 +198,19 @@ public class frmMenuTrabajador extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_volverPanelMousePressed
 
+    private void cstmButon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cstmButon1ActionPerformed
+        daoEmpleador Y = new daoEmpleador();
+        empleador empleadorObtenido = Y.obtener(this.user.getCodiUsua());
+
+        if (empleadorObtenido != null) {
+            ConfiguracionTrabajador X = new ConfiguracionTrabajador(empleadorObtenido);
+            X.setVisible(true);
+            this.dispose();
+        } else {
+            System.out.println("No se encontró un empleador para el usuario.");
+        }
+    }//GEN-LAST:event_cstmButon1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -238,6 +268,7 @@ public class frmMenuTrabajador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private guiRecursos.GuiBarraVentana barraVentana1;
     private javax.swing.JPanel content;
+    private guiRecursos.cstmButon cstmButon1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;

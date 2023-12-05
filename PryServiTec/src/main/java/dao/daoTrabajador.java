@@ -519,5 +519,41 @@ public class daoTrabajador {
             }
         }
     }
-  
+  public void ACTUALIZATRABA(String nomTrab,String apeTrab, String teleTrab, String emailTrab, String fk_codiUsua,String fk_codiEsp, String nuevousuario) {
+    String sql2 ="UPDATE usuario SET codiUsua = ? WHERE codiUsua = ?";
+
+    String sql = "UPDATE trabajador SET nomTrab=?,apeTrab=? teleTrab=?, emailTrab=?,fk_codiEspe=? WHERE fk_codiUsua=?";
+
+    try {
+        try (PreparedStatement ps = con.prepareStatement(sql2)) {
+            ps.setString(1, nuevousuario);
+            ps.setString(2, fk_codiUsua);
+            ps.executeUpdate();
+        }
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, nomTrab);
+            ps.setString(2, apeTrab);
+            ps.setString(3, teleTrab);
+            ps.setString(4, emailTrab);
+            ps.setString(5, fk_codiEsp);
+            ps.setString(6, fk_codiUsua);
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "TRABAJADOR ACTUALIZADO");
+        }
+
+    } catch (SQLException e) {
+        // Manejar la excepción adecuadamente
+        System.out.println("Error: " + e.getMessage());
+        e.printStackTrace();
+          } finally {
+            try {
+                if (con != null) {
+                    con.close(); // Cierra la conexión en el bloque finally
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+}
 }

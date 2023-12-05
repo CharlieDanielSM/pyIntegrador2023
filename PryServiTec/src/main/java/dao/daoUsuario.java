@@ -389,5 +389,63 @@ public class daoUsuario {
             }
         }
     }
+public boolean verificarContra(String usuario, String contraActual) {
+    String sql = "SELECT passUsua FROM usuario WHERE codiUsua = ?";
+    try (PreparedStatement ps = con.prepareStatement(sql)) {
+        ps.setString(1, usuario);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            String passGuardada = rs.getString("passUsua");
+            if (passGuardada.equals(contraActual)) {
+                return true; // Contraseña válida
+            } else {
+                return false; // Contraseña no coincide
+            }
+        } else {
+            return false; // No se encontró el usuario
+        }
+    } catch (SQLException e) {
+        // Manejar la excepción adecuadamente
+        e.printStackTrace();
+        System.out.println("ERROR CONTRA");
+        return false;
+          } finally {
+            try {
+                if (con != null) {
+                    con.close(); // Cierra la conexión en el bloque finally
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+}
+
+      public void cambiar_contra(String usuario,String contranueva){
+String sql = "UPDATE usuario SET passUsua = ? WHERE codiUsua = ? AND tipoUsua = 'cliente'";
+                           try {
+                try(PreparedStatement ps=con.prepareStatement(sql)){
+                
+                  ps.setString(1, contranueva);
+                  ps.setString(2, usuario);
+ 
+                 ps.executeUpdate();
+                                                     JOptionPane.showMessageDialog(null, "CONTRASEÑA ACTUALIZADO");
+
+                }
+ 
+
+            } catch (Exception e) {
+                System.out.println("error"+e);
+          } finally {
+            try {
+                if (con != null) {
+                    con.close(); // Cierra la conexión en el bloque finally
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+  }
    
 }
