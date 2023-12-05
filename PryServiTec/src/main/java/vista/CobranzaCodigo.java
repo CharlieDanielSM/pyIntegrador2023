@@ -5,7 +5,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class Cobranza extends javax.swing.JInternalFrame {
+public class CobranzaCodigo extends javax.swing.JInternalFrame {
 
     private String  codigo="";
 
@@ -53,7 +53,7 @@ public class Cobranza extends javax.swing.JInternalFrame {
     }
     
     
-    public Cobranza() {
+    public CobranzaCodigo() {
         initComponents();
         actualizarTabla();
     }

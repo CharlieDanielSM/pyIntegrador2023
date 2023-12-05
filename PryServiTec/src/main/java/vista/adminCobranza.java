@@ -15,7 +15,7 @@ public class adminCobranza extends javax.swing.JPanel {
     }
 
     public void mostrarCobranza(){
-        Cobranza frmCate= new Cobranza();
+        CobranzaCodigo frmCate= new CobranzaCodigo();
         this.jDesktopPane1.add(frmCate);
         frmCate.setVisible(true);
     }
