@@ -144,14 +144,15 @@ public class ventanaContactar extends javax.swing.JFrame {
         } else if (descripcion.getText().length()==0) {
             JOptionPane.showMessageDialog(null, "Faltan datos en descripcion", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
+            
             c.setFechInicCont(new java.sql.Date(dateInicio.getDate().getTime()));
             c.setFechFincont(new java.sql.Date(dateFinal.getDate().getTime()));
             c.setDescCont(descripcion.getText());
             //c.setCodiNego("N016");
-            daoC.nuevo(c);
+            //daoC.nuevo(c);
             JOptionPane.showMessageDialog(null, "La operación se realizó con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
-            //mostrar();
+            mostrar();
         }
     }//GEN-LAST:event_btnEnviarActionPerformed
 

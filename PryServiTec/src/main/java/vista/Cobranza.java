@@ -6,6 +6,11 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Cobranza extends javax.swing.JInternalFrame {
+<<<<<<< HEAD
+
+    private String  codigo="";
+=======
+>>>>>>> 7255e10a2323ccd73fe6cf07cc192fb8da5a9465
     EmpleadorDao Empleadao = new EmpleadorDao();
     
     public void actualizarTabla() {
@@ -177,13 +182,20 @@ public class Cobranza extends javax.swing.JInternalFrame {
 
     final int[] clickCount = {0};
     if (evt.getClickCount() >= 2) {
+<<<<<<< HEAD
+  
+=======
 
+>>>>>>> 7255e10a2323ccd73fe6cf07cc192fb8da5a9465
         int pos=jTable1.getSelectedRow();
         
         String codigo;
         
         pos=jTable1.getSelectedRow();
+<<<<<<< HEAD
+=======
 
+>>>>>>> 7255e10a2323ccd73fe6cf07cc192fb8da5a9465
         codigo = jTable1.getValueAt(pos, 0).toString();
         listaContratoCliente(codigo);
        
@@ -197,7 +209,11 @@ public class Cobranza extends javax.swing.JInternalFrame {
     private void btnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturarActionPerformed
 
         generaPDF pdf =new generaPDF();
+<<<<<<< HEAD
+        EmpleadorDao emp=new EmpleadorDao();
+=======
         EmpleadorDao Empleadao=new EmpleadorDao();
+>>>>>>> 7255e10a2323ccd73fe6cf07cc192fb8da5a9465
         comunicacionPHP php=new comunicacionPHP();
         EmpleadorDto emp = new EmpleadorDto();
         
@@ -208,9 +224,20 @@ public class Cobranza extends javax.swing.JInternalFrame {
         int pos=jTable2.getSelectedRow();
         if(pos !=1)
         {
+<<<<<<< HEAD
+           emp.obtenerEmpleadorPorID(codigo); 
+           EmpleadorDto Empleador = emp.obtenerEmpleadorPorID(codigo);
+          
+           pdf.generarPDF(Empleador.getNombEmpl()+".pdf",modeloTabla );
+           
+           php.llamarScriptPHP(Empleador.getEmailEmpl(),Empleador.getNombEmpl()+".pdf");
+           pdf.generarPDF(modeloTabla, emp);            
+            
+=======
            pdf.generarPDF(modeloTabla, emp);    
            php.llamarScriptPHP(emp.getEmailEmpl(),emp.getNombEmpl()+".pdf");
  
+>>>>>>> 7255e10a2323ccd73fe6cf07cc192fb8da5a9465
         }
         else
         {
