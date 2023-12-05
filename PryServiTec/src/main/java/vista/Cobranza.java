@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Cobranza extends javax.swing.JInternalFrame {
+
+    private String  codigo="";
     EmpleadorDao Empleadao = new EmpleadorDao();
     
     public void actualizarTabla() {
@@ -179,6 +181,8 @@ public class Cobranza extends javax.swing.JInternalFrame {
 
     final int[] clickCount = {0};
     if (evt.getClickCount() >= 2) {
+  
+        int pos=jTable1.getSelectedRow();
         
         String codigo;
         
@@ -197,6 +201,8 @@ public class Cobranza extends javax.swing.JInternalFrame {
     private void btnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturarActionPerformed
 
         generaPDF pdf =new generaPDF();
+        EmpleadorDao emp=new EmpleadorDao();
+        comunicacionPHP php=new comunicacionPHP();
         EmpleadorDto emp = new EmpleadorDto();
         String codigo;
         codigo = jTable1.getValueAt(pos, 0).toString();
@@ -205,6 +211,12 @@ public class Cobranza extends javax.swing.JInternalFrame {
         int pos=jTable2.getSelectedRow();
         if(pos !=1)
         {
+           emp.obtenerEmpleadorPorID(codigo); 
+           EmpleadorDto Empleador = emp.obtenerEmpleadorPorID(codigo);
+          
+           pdf.generarPDF(Empleador.getNombEmpl()+".pdf",modeloTabla );
+           
+           php.llamarScriptPHP(Empleador.getEmailEmpl(),Empleador.getNombEmpl()+".pdf");
            pdf.generarPDF(modeloTabla, emp);            
             
         }
