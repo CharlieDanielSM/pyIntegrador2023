@@ -1,5 +1,6 @@
 package vista;
 
+import com.formdev.flatlaf.FlatLightLaf;
 import dao.daoTrabajador;
 import java.io.IOException;
 import java.util.List;
@@ -18,6 +19,7 @@ public class clienteTablaTrab extends javax.swing.JFrame {
      * Creates new form clienteTablaTrab
      */
     public clienteTablaTrab(List<Trabajador> lista) {
+            FlatLightLaf.setup();
         initComponents();
         this.lista = lista;
         actualizarTablaTrabajadores(lista);

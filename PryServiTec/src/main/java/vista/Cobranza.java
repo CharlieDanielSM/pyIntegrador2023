@@ -7,12 +7,17 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Cobranza extends javax.swing.JInternalFrame {
+<<<<<<< HEAD
 
     private String  codigo="";
+=======
+    EmpleadorDao Empleadao = new EmpleadorDao();
+>>>>>>> aff239189c77a83bc690662a94718e59d3e91470
     
     public void actualizarTabla() {
-        EmpleadorDao Empleadao = new EmpleadorDao();
+        
         List<EmpleadorDto> listaEmple = Empleadao.listarEmpleadores();
+        
         DefaultTableModel modeloTabla = (DefaultTableModel) jTable1.getModel();
         modeloTabla.setRowCount(0);
 
@@ -77,6 +82,11 @@ public class Cobranza extends javax.swing.JInternalFrame {
         jLabel1.setText("Cibranza Clientes");
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -133,6 +143,10 @@ public class Cobranza extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(192, 192, 192)
@@ -145,36 +159,40 @@ public class Cobranza extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnFacturar)))
                 .addContainerGap(292, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar)
                     .addComponent(btnFacturar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    int pos;
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
 
     final int[] clickCount = {0};
     if (evt.getClickCount() >= 2) {
+<<<<<<< HEAD
   
         int pos=jTable1.getSelectedRow();
+=======
+        
+        String codigo;
+        
+        pos=jTable1.getSelectedRow();
+>>>>>>> aff239189c77a83bc690662a94718e59d3e91470
         codigo = jTable1.getValueAt(pos, 0).toString();
         listaContratoCliente(codigo);
        
@@ -189,18 +207,30 @@ public class Cobranza extends javax.swing.JInternalFrame {
     private void btnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturarActionPerformed
 
         generaPDF pdf =new generaPDF();
+<<<<<<< HEAD
         EmpleadorDao emp=new EmpleadorDao();
         comunicacionPHP php=new comunicacionPHP();
+=======
+        EmpleadorDto emp = new EmpleadorDto();
+        String codigo;
+        codigo = jTable1.getValueAt(pos, 0).toString();
+        emp = Empleadao.obtenerEmpleadorPorID(codigo);
+>>>>>>> aff239189c77a83bc690662a94718e59d3e91470
         DefaultTableModel modeloTabla = (DefaultTableModel) jTable2.getModel();
         int pos=jTable2.getSelectedRow();
         if(pos !=1)
         {
+<<<<<<< HEAD
            emp.obtenerEmpleadorPorID(codigo); 
            EmpleadorDto Empleador = emp.obtenerEmpleadorPorID(codigo);
           
            pdf.generarPDF(Empleador.getNombEmpl()+".pdf",modeloTabla );
            
            php.llamarScriptPHP(Empleador.getEmailEmpl(),Empleador.getNombEmpl()+".pdf");
+=======
+           pdf.generarPDF(modeloTabla, emp);            
+            
+>>>>>>> aff239189c77a83bc690662a94718e59d3e91470
         }
         else
         {
@@ -210,6 +240,10 @@ public class Cobranza extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_btnFacturarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

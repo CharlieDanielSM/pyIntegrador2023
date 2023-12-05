@@ -1,21 +1,23 @@
 package modelo;
+
+import java.sql.Date;
+
 public class ContratoDto 
 {
     private String codiCont;
-    private String fechCont;
-    private String fechInicCont ;
-    private String fechFincont ;
+    private Date fechCont;
+    private Date fechInicCont;
+    private Date fechFincont;
     private String estCont;
     private String descCont;
     private String codiNego;
     private String codiEmpl;
     private String codiTrab;
 
-
     public ContratoDto() {
     }
 
-    public ContratoDto(String codiCont, String fechCont, String fechInicCont, String fechFincont, String estCont, String descCont, String codiNego, String codiEmpl, String codiTrab) {
+    public ContratoDto(String codiCont, Date fechCont, Date fechInicCont, Date fechFincont, String estCont, String descCont, String codiNego, String codiEmpl, String codiTrab) {
         this.codiCont = codiCont;
         this.fechCont = fechCont;
         this.fechInicCont = fechInicCont;
@@ -26,31 +28,12 @@ public class ContratoDto
         this.codiEmpl = codiEmpl;
         this.codiTrab = codiTrab;
     }
-
-    public String getCodiNego() {
-        return codiNego;
-    }
-
-    public void setCodiNego(String codiNego) {
-        this.codiNego = codiNego;
-    }
     
-    public String getCodiEmpl() {
-        return codiEmpl;
+    @Override
+    public String toString() {
+        return "ContratoDto{" + "codiCont=" + codiCont + ", fechCont=" + fechCont + ", fechInicCont=" + fechInicCont + ", fechFincont=" + fechFincont + ", estCont=" + estCont + ", descCont=" + descCont + ", codiNego=" + codiNego + ", codiEmpl=" + codiEmpl + ", codiTrab=" + codiTrab + '}';
     }
 
-    public void setCodiEmpl(String codiEmpl) {
-        this.codiEmpl = codiEmpl;
-    }
-
-    public String getCodiTrab() {
-        return codiTrab;
-    }
-
-    public void setCodiTrab(String codiTrab) {
-        this.codiTrab = codiTrab;
-    }
-    
     public String getCodiCont() {
         return codiCont;
     }
@@ -59,27 +42,27 @@ public class ContratoDto
         this.codiCont = codiCont;
     }
 
-    public String getFechCont() {
+    public Date getFechCont() {
         return fechCont;
     }
 
-    public void setFechCont(String fechCont) {
+    public void setFechCont(Date fechCont) {
         this.fechCont = fechCont;
     }
 
-    public String getFechInicCont() {
+    public Date getFechInicCont() {
         return fechInicCont;
     }
 
-    public void setFechInicCont(String fechInicCont) {
+    public void setFechInicCont(Date fechInicCont) {
         this.fechInicCont = fechInicCont;
     }
 
-    public String getFechFincont() {
+    public Date getFechFincont() {
         return fechFincont;
     }
 
-    public void setFechFincont(String fechFincont) {
+    public void setFechFincont(Date fechFincont) {
         this.fechFincont = fechFincont;
     }
 
@@ -99,9 +82,29 @@ public class ContratoDto
         this.descCont = descCont;
     }
 
-    @Override
-    public String toString() {
-        return "ContratoDto{" + "codiCont=" + codiCont + ", fechCont=" + fechCont + ", fechInicCont=" + fechInicCont + ", fechFincont=" + fechFincont + ", estCont=" + estCont + ", descCont=" + descCont + ", codiNego=" + codiNego + ", codiEmpl=" + codiEmpl + ", codiTrab=" + codiTrab + '}';
+    public String getCodiNego() {
+        return codiNego;
     }
+
+    public void setCodiNego(String codiNego) {
+        this.codiNego = codiNego;
+    }
+
+    public String getCodiEmpl() {
+        return codiEmpl;
+    }
+
+    public void setCodiEmpl(String codiEmpl) {
+        this.codiEmpl = codiEmpl;
+    }
+
+    public String getCodiTrab() {
+        return codiTrab;
+    }
+
+    public void setCodiTrab(String codiTrab) {
+        this.codiTrab = codiTrab;
+    }
+
     
 }
